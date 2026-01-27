@@ -1,0 +1,99 @@
+---
+import { getCollection } from "astro:content";
+import { CLASSES } from "../../classes";
+import { BLOG_CONTENT, UI_LABELS, DATE_LOCALE, DATE_OPTIONS, ROUTES } from "../../consts";
+import { ICONS } from "../../styles";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<MainLayout title="Blog">
+  <div class={CLASSES.layout.pagePadding}>
+    <div class={CLASSES.layout.container}>
+      <div class={CLASSES.layout.containerNarrow}>
+        
+        {/* Header with Search */}
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+          <h1 class={CLASSES.typography.h1Medium}>{BLOG_CONTENT.title}</h1>
+          
+          <div class={CLASSES.blog.searchWrapper}>
+            <div class={CLASSES.blog.searchIcon}>
+              <svg class={CLASSES.blog.searchIconSvg} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.search}/>
+              </svg>
+            </div>
+            <input 
+              type="text" 
+              id="search-input" 
+              class={`${CLASSES.form.input} pl-10`} 
+              placeholder={BLOG_CONTENT.searchPlaceholder} 
+            />
+          </div>
+        </div>
+        
+        <div id="posts-container" class={CLASSES.layout.stackMedium}>
+          {posts.map((post) => (
+            <article class={`${CLASSES.blog.postItem} ${CLASSES.card.base} ${CLASSES.card.hover}`} data-title={post.data.title.toLowerCase()} data-desc={post.data.description.toLowerCase()}>
+              <a href={`${ROUTES.BLOG}/${post.slug}`} class="block">
+                <p class={`${CLASSES.typography.date} mb-2`}>
+                  {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
+                </p>
+                <h2 class={CLASSES.blog.postTitle}>
+                  {post.data.title}
+                </h2>
+                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
+                  {post.data.description}
+                </p>
+                <span class={CLASSES.typography.action}>
+                  {UI_LABELS.readMore} 
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.arrowRight} />
+                  </svg>
+                </span>
+              </a>
+            </article>
+          ))}
+        </div>
+
+        {/* No results message */}
+        <p id="no-results" class="hidden text-center text-neutral-500 dark:text-neutral-400 mt-8 text-lg">
+          {BLOG_CONTENT.noResults}
+        </p>
+
+      </div>
+    </div>
+  </div>
+</MainLayout>
+
+<script>
+  const searchInput = document.getElementById('search-input');
+  const postsContainer = document.getElementById('posts-container');
+  const noResultsMsg = document.getElementById('no-results');
+  const posts = document.querySelectorAll('.post-item');
+
+  searchInput?.addEventListener('input', (e) => {
+    const term = (e.target as HTMLInputElement).value.toLowerCase();
+    let hasResults = false;
+
+    posts.forEach((post) => {
+      const title = (post as HTMLElement).dataset.title || '';
+      const desc = (post as HTMLElement).dataset.desc || '';
+
+      if (title.includes(term) || desc.includes(term)) {
+        post.classList.remove('hidden');
+        hasResults = true;
+      } else {
+        post.classList.add('hidden');
+      }
+    });
+
+    if (hasResults) {
+      noResultsMsg?.classList.add('hidden');
+    } else {
+      noResultsMsg?.classList.remove('hidden');
+    }
+  });
+</script>
