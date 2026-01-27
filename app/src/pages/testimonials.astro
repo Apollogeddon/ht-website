@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import { CLASSES } from "../classes";
+import { TESTIMONIALS_CONTENT, ROUTES } from "../consts";
+import { ICONS } from "../styles";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const testimonialsEntries = await getCollection("testimonials");
+
+// Pre-render content so we don't have async logic in the template loop
+const testimonials = await Promise.all(
+	testimonialsEntries.map(async (entry) => {
+		const { Content } = await entry.render();
+		return { entry, Content };
+	}),
+);
+---
+
+<MainLayout title="Testimonials">
+  <div class={CLASSES.layout.pagePadding}>
+    <div class={CLASSES.layout.container}>
+      <div class={CLASSES.layout.containerNarrow}>
+        <h1 class={`${CLASSES.typography.h1Medium} mb-12 text-center`}>{TESTIMONIALS_CONTENT.title}</h1>
+        
+        <div class={CLASSES.layout.stackLarge}>
+          {testimonials.map(({ entry, Content }) => (
+            <div class={`${CLASSES.card.base} relative`}>
+              <svg class={CLASSES.visual.testimonialQuoteIcon} fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                <path d={ICONS.quote} />
+              </svg>
+              <blockquote class="relative z-10">
+                <div class="text-xl text-neutral-700 dark:text-neutral-300 italic leading-relaxed mb-6">
+                  <Content />
+                </div>
+                <footer class="text-right">
+                  <div class="font-bold text-brand-600 dark:text-brand-400">{entry.data.author}</div>
+                  <div class="text-neutral-500 dark:text-neutral-500 text-sm">{entry.data.role}</div>
+                </footer>
+              </blockquote>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
