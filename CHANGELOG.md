@@ -2,7 +2,6 @@
 
 ## 1.0.0 (2026-01-27)
 
-
 ### Features
 
 * **assets:** utilise Astro Image component for logo ([949c381](https://github.com/Apollogeddon/ht-website/commit/949c381df293c2d1d07a99aca6f9b4513623ee50))

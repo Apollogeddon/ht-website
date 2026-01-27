@@ -2,6 +2,7 @@
 	"name": "app",
 	"type": "module",
 	"version": "1.0.0",
+	"homepage": "https://apollogeddon.github.io/ht-website/",
 	"scripts": {
 		"dev": "astro dev",
 		"type": "tsc",
@@ -15,7 +16,7 @@
 		"@astrojs/react": "^4.4.2",
 		"@biomejs/biome": "^2.3.13",
 		"@tailwindcss/vite": "^4.1.18",
-		"@types/react": "^19.2.9",
+		"@types/react": "^19.2.10",
 		"@types/react-dom": "^19.2.3",
 		"astro": "^5.16.15",
 		"markdownlint-cli2": "^0.20.0",
