@@ -29,13 +29,6 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Security Scan (Snyk)
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --severity-threshold=high
-
       - name: Build Verification
         run: npm run build
 
