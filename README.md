@@ -1,4 +1,9 @@
-# Harnessing Talent Website
+<div align="center">
+  <a href="https://apollogeddon.github.io/ht-website/">
+    <img src="./src/assets/logo.png" alt="Logo">
+  </a>
+  <br><br>
+</div>
 
 A modern, responsive website for **Harnessing Talent**, a management consultancy based in Adelaide. Recreated using [Astro](https://astro.build/), [React](https://react.dev/), and [Tailwind CSS v4](https://tailwindcss.com/).
 
