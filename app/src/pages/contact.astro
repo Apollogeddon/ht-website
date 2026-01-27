@@ -1,0 +1,89 @@
+---
+import { CLASSES } from "../classes";
+import { CONTACT_INFO, CONTACT_PAGE, ROUTES } from "../consts";
+import { ICONS } from "../styles";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title={CONTACT_PAGE.title}>
+  <div class={CLASSES.layout.pagePadding}>
+    <div class={CLASSES.layout.container}>
+      <div class={CLASSES.layout.containerNarrow}>
+        <div class={CLASSES.layout.grid2}>
+          
+          <div>
+            <h1 class={`${CLASSES.typography.h1Medium} mb-6`}>{CONTACT_PAGE.title}</h1>
+            <p class={`${CLASSES.typography.lead} mb-12`}>
+              {CONTACT_PAGE.subtitle}
+            </p>
+
+            <div class={CLASSES.layout.stackMedium}>
+              <div class="flex items-start gap-4">
+                <div class={CLASSES.visual.iconBoxRound}>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-500 dark:text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.mail} />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.email}</h3>
+                  <a href={`mailto:${CONTACT_INFO.email}`} class={CLASSES.typography.link}>{CONTACT_INFO.email}</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class={CLASSES.visual.iconBoxRound}>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-500 dark:text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.phone} />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.phone}</h3>
+                  <a href={`tel:${CONTACT_INFO.phone.replace(/\s+/g, '')}`} class={CLASSES.typography.link}>{CONTACT_INFO.phone}</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class={CLASSES.visual.iconBoxRound}>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-500 dark:text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.location} />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.location}</h3>
+                  <p class="text-neutral-600 dark:text-neutral-400">{CONTACT_INFO.location_full}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class={`${CLASSES.card.base} ${CLASSES.card.padded}`}>
+            <form action="#" method="POST" class={CLASSES.layout.stackSmall}>
+              <div class={CLASSES.form.grid}>
+                <div>
+                  <label for="first-name" class={CLASSES.form.label}>{CONTACT_PAGE.form.firstName}</label>
+                  <input type="text" id="first-name" name="first-name" class={CLASSES.form.input} required>
+                </div>
+                <div>
+                  <label for="last-name" class={CLASSES.form.label}>{CONTACT_PAGE.form.lastName}</label>
+                  <input type="text" id="last-name" name="last-name" class={CLASSES.form.input} required>
+                </div>
+              </div>
+              <div>
+                <label for="email" class={CLASSES.form.label}>{CONTACT_PAGE.form.email}</label>
+                <input type="email" id="email" name="email" class={CLASSES.form.input} required>
+              </div>
+              <div>
+                <label for="message" class={CLASSES.form.label}>{CONTACT_PAGE.form.message}</label>
+                <textarea id="message" name="message" rows="4" class={CLASSES.form.input} required></textarea>
+              </div>
+              <button type="submit" class={`${CLASSES.button.base} ${CLASSES.button.primary} w-full py-4 shadow-lg`}>
+                {CONTACT_PAGE.form.submit}
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

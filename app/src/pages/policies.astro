@@ -1,0 +1,42 @@
+---
+import { CLASSES } from "../classes";
+import { CONTACT_INFO, POLICIES_CONTENT, SITE_TITLE, ROUTES } from "../consts";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title={POLICIES_CONTENT.title}>
+  <div class={CLASSES.layout.pagePadding}>
+    <div class={CLASSES.layout.container}>
+      <div class={`${CLASSES.layout.containerNarrow} ${CLASSES.prose.base} ${CLASSES.layout.stackMedium}`}>
+        <h1>{POLICIES_CONTENT.privacyTitle}</h1>
+        
+        <p>
+          {SITE_TITLE} is committed to protecting the privacy of personal information obtained through its operations as a professional services organisation. {SITE_TITLE} is committed to compliance with the Privacy Act 1988 (Cth) (Privacy Act), including the Australian Privacy Principles (APPs) and any relevant privacy code registered under the Privacy Act.
+        </p>
+
+        {POLICIES_CONTENT.sections.map((section) => (
+          <div>
+            <h2>{section.title}</h2>
+            <p>{section.content}</p>
+            {section.list && (
+              <ul class={CLASSES.layout.navVertical}>
+                {section.list.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+
+        <h2>{POLICIES_CONTENT.privacyEnquiries}</h2>
+        <p>{POLICIES_CONTENT.privacyEnquiriesText}</p>
+        <p>
+          <strong>{SITE_TITLE}</strong><br/>
+          Email: <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a><br/>
+          Phone: {CONTACT_INFO.phone}
+        </p>
+
+      </div>
+    </div>
+  </div>
+</MainLayout>
