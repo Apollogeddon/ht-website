@@ -5,7 +5,7 @@ export const CLASSES = {
 		headerBrand:
 			"text-2xl font-bold text-brand-50 hover:text-white transition-colors",
 		footer:
-			"bg-neutral-300 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-400 py-12 border-t border-neutral-400 dark:border-neutral-800 transition-colors duration-300",
+			"bg-neutral-300 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-400 py-12 border-t border-neutral-400 dark:border-neutral-800 transition-colors duration-300 text-center",
 		section: "py-20 transition-colors duration-300",
 		sectionWhite:
 			"py-20 bg-white dark:bg-neutral-950 transition-colors duration-300",
