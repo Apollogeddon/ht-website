@@ -1,9 +1,5 @@
 {
-	"config": {
-		"default": true,
-		"MD013": false,
-		"MD033": false,
-		"MD041": false
-	},
+	"globs": ["**/*.md"],
+	"config": { "default": true, "MD013": false, "MD033": false, "MD041": false },
 	"ignores": ["node_modules", "dist", ".astro"]
 }

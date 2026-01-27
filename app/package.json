@@ -6,11 +6,9 @@
 		"dev": "astro dev",
 		"type": "tsc",
 		"lint:ts": "biome check --fix",
-		"lint:md": "markdownlint-cli2 --fix \"**/*.md\"",
+		"lint:md": "markdownlint-cli2 --fix",
 		"lint": "npm run lint:ts && npm run lint:md",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro"
+		"build": "astro build"
 	},
 	"dependencies": {
 		"@astrojs/react": "^4.4.2",
