@@ -29,7 +29,7 @@ import { ICONS } from "../styles";
 <script define:vars={{ THEME_STORAGE_KEY }}>
   const setupThemeToggle = () => {
     const themeToggleBtn = document.getElementById('theme-toggle');
-    if (!themeToggleBtn || themeToggleBtn.dataset.initialized) return;
+    if (!themeToggleBtn) return;
 
     themeToggleBtn.addEventListener('click', () => {
       const isDark = document.documentElement.classList.contains('dark');
@@ -43,17 +43,8 @@ import { ICONS } from "../styles";
       
       localStorage.setItem(THEME_STORAGE_KEY, newTheme);
     });
-
-    themeToggleBtn.dataset.initialized = 'true';
   };
 
-  // Run immediately if the script executes after the DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupThemeToggle);
-  } else {
-    setupThemeToggle();
-  }
-
-  // Also run on every navigation load
+  // Run on initial load and after every navigation
   document.addEventListener('astro:page-load', setupThemeToggle);
 </script>
