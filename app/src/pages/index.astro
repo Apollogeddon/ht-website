@@ -1,0 +1,78 @@
+---
+import { CLASSES } from "../classes";
+import { HERO_CONTENT, HOME_CONTENT, HOME_SERVICES, UI_LABELS, WHY_CHOOSE_US, ROUTES } from "../consts";
+import { ICONS } from "../styles";
+import MainLayout from "../layouts/MainLayout.astro";
+import { COLORS } from "../styles";
+---
+
+<MainLayout title="Home">
+  {/* Hero Section */}
+  <section 
+    class={CLASSES.layout.hero}
+    style={{ "--hero-dark-bg": COLORS.theme.hero.darkBg }}
+  >
+    <div class={CLASSES.layout.container}>
+      <div class="max-w-3xl">
+        <h1 class={`${CLASSES.typography.h1} mb-6`}>
+          {HERO_CONTENT.title}
+        </h1>
+        <p class={`${CLASSES.typography.lead} mb-8`}>
+          {HERO_CONTENT.description}
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href={ROUTES.CONTACT} class={`${CLASSES.button.base} ${CLASSES.button.primary}`}>
+            {HERO_CONTENT.primaryButton}
+          </a>
+          <a href={ROUTES.SOLUTIONS} class={`${CLASSES.button.base} ${CLASSES.button.secondary}`}>
+            {HERO_CONTENT.secondaryButton}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Why Choose Us Section */}
+  <section class={CLASSES.layout.sectionWhite}>
+    <div class={CLASSES.layout.container}>
+      <div class={CLASSES.layout.grid2}>
+        <div>
+          <h2 class={`${CLASSES.typography.h2} mb-6`}>{WHY_CHOOSE_US.title}</h2>
+          {WHY_CHOOSE_US.paragraphs.map((paragraph) => (
+             <p class={`${CLASSES.typography.body} mb-6`}>{paragraph}</p>
+          ))}
+          <div class={CLASSES.visual.quote}>
+            "{WHY_CHOOSE_US.quote}"
+          </div>
+        </div>
+        <div class={`${CLASSES.visual.imagePlaceholder} h-96`}>
+           {/* Placeholder for an image */}
+           <span class={CLASSES.visual.placeholderText}>{UI_LABELS.imagePlaceholder}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Helping Section */}
+  <section class={CLASSES.layout.sectionMuted}>
+    <div class={`${CLASSES.layout.container} text-center`}>
+      <h2 class={CLASSES.typography.h2Centered}>{HOME_CONTENT.howWeHelp}</h2>
+      <div class={CLASSES.layout.grid3}>
+        {HOME_SERVICES.map((service, index) => (
+          <div class={CLASSES.card.base}>
+            <div class={`${CLASSES.visual.iconBox} mb-6 mx-auto`}>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-500 dark:text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {index === 0 && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.engagement} />}
+                {index === 1 && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.performance} />}
+                {index === 2 && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.strategy} />}
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-neutral-900 dark:text-white">{service.title}</h3>
+            <p class="text-neutral-600 dark:text-neutral-400">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>
+</MainLayout>
