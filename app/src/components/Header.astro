@@ -13,16 +13,22 @@ import ThemeToggle from "./Themes.astro";
     <div class="flex items-center">
       <nav class="hidden md:block">
         <ul class={CLASSES.layout.navHorizontal}>
-          {NAVIGATION.map((item) => (
-            <li>
-              <a 
-                href={item.href} 
-                class={CLASSES.typography.navLink}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {NAVIGATION.map((item) => {
+            const pathname = Astro.url.pathname.replace(/\/$/, "");
+            const href = item.href.replace(/\/$/, "");
+            const isActive = pathname === href || (href !== "" && pathname.startsWith(href));
+            
+            return (
+              <li>
+                <a 
+                  href={item.href} 
+                  class={`${CLASSES.typography.navLink} ${isActive ? CLASSES.typography.navLinkActive : ""}`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </nav>
       <div class="ml-4 border-l pl-4" style={{ borderColor: COLORS.theme.header.border }}>

@@ -27,7 +27,7 @@ const { Content } = await post.render();
             <p class="text-brand-500 dark:text-brand-400 font-bold mb-4">
               {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
             </p>
-            <h1 class={`${CLASSES.typography.h1Page} mb-6`}>
+            <h1 class={`${CLASSES.typography.h1Page} mb-6`} transition:name={`title-${post.slug}`}>
               {post.data.title}
             </h1>
             <p class={`${CLASSES.typography.lead} italic`}>

@@ -43,7 +43,8 @@ export const CLASSES = {
 		link: "text-brand-600 dark:text-brand-400 hover:underline transition-colors",
 		action:
 			"text-brand-500 dark:text-brand-400 font-bold flex items-center gap-1 group-hover:gap-2 transition-all",
-		navLink: "text-brand-100/80 hover:text-white font-medium transition-colors",
+		navLink: "text-brand-100/70 hover:text-white font-medium transition-all duration-200",
+		navLinkActive: "text-white font-bold border-b-2 border-brand-400 pb-1",
 		date: "text-sm text-neutral-500 dark:text-neutral-400",
 		roleBadge: "text-brand-600 dark:text-brand-400 font-bold mb-8 uppercase tracking-widest text-xs",
 		footerHeading:
@@ -72,9 +73,9 @@ export const CLASSES = {
 		grid: "grid grid-cols-1 md:grid-cols-2 gap-6",
 	},
 	card: {
-		base: "bg-white dark:bg-neutral-800 border border-neutral-100 dark:border-neutral-700 rounded-2xl shadow-sm transition-colors duration-300 p-8",
+		base: "bg-white dark:bg-neutral-800 border border-neutral-100 dark:border-neutral-700 rounded-2xl shadow-sm transition-all duration-300 p-8",
 		padded: "p-10",
-		hover: "hover:shadow-md transition-shadow",
+		hover: "hover:shadow-xl hover:-translate-y-1 transition-all duration-300",
 		highlight:
 			"bg-brand-50 dark:bg-neutral-800 p-10 rounded-3xl transition-colors duration-300",
 	},

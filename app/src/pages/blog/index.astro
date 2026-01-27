@@ -41,7 +41,7 @@ const posts = (await getCollection("blog")).sort(
                 <p class={`${CLASSES.typography.date} mb-2`}>
                   {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
                 </p>
-                <h2 class={CLASSES.blog.postTitle}>
+                <h2 class={CLASSES.blog.postTitle} transition:name={`title-${post.slug}`}>
                   {post.data.title}
                 </h2>
                 <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
