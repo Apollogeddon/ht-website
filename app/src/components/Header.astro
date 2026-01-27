@@ -1,0 +1,33 @@
+---
+import { CLASSES } from "../classes";
+import { NAVIGATION, SITE_TITLE, ROUTES, SITE_LOGO } from "../consts";
+import { COLORS } from "../styles";
+import ThemeToggle from "./Themes.astro";
+---
+
+<header class={CLASSES.layout.header} style={{ backgroundColor: COLORS.theme.header.bg, borderColor: COLORS.theme.header.border }}>
+  <div class={CLASSES.layout.headerContainer}>
+    <a href={ROUTES.HOME} class="flex items-center">
+      <img src={SITE_LOGO} alt={SITE_TITLE} class={CLASSES.layout.headerLogo} />
+    </a>
+    <div class="flex items-center">
+      <nav class="hidden md:block">
+        <ul class={CLASSES.layout.navHorizontal}>
+          {NAVIGATION.map((item) => (
+            <li>
+              <a 
+                href={item.href} 
+                class={CLASSES.typography.navLink}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="ml-4 border-l pl-4" style={{ borderColor: COLORS.theme.header.border }}>
+        <ThemeToggle />
+      </div>
+    </div>
+  </div>
+</header>

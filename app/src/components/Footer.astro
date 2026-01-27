@@ -1,0 +1,65 @@
+---
+import { CLASSES } from "../classes";
+import {
+	BLOG_CONTENT,
+	CONTACT_INFO,
+	CONTACT_PAGE,
+	FOOTER_SECTIONS,
+	NAVIGATION,
+	POLICIES_CONTENT,
+	SITE_DESCRIPTION,
+	SITE_TITLE,
+	ROUTES,
+} from "../consts";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class={CLASSES.layout.footer}>
+  <div class={CLASSES.layout.container}>
+    <div class={CLASSES.layout.grid4}>
+      {/* Column 1: Brand */}
+      <div>
+        <h3 class={CLASSES.typography.footerHeading}>{SITE_TITLE}</h3>
+        <p class={CLASSES.typography.footerText}>
+          {SITE_DESCRIPTION}
+        </p>
+      </div>
+
+      {/* Column 2: Direct Contact */}
+      <div>
+        <h3 class={CLASSES.typography.footerHeading}>{FOOTER_SECTIONS.contact}</h3>
+        <ul class={`${CLASSES.typography.footerText} space-y-2`}>
+          <li>{CONTACT_PAGE.labels.email}: {CONTACT_INFO.email}</li>
+          <li>{CONTACT_PAGE.labels.phone}: {CONTACT_INFO.phone}</li>
+          <li>{CONTACT_PAGE.labels.location}: {CONTACT_INFO.location}</li>
+        </ul>
+      </div>
+
+      {/* Column 3: Services & Insights */}
+      <div>
+        <h3 class={CLASSES.typography.footerHeading}>{FOOTER_SECTIONS.services}</h3>
+        <ul class={`${CLASSES.typography.footerText} ${CLASSES.layout.navVertical}`}>
+          <li><a href={NAVIGATION[1].href} class={CLASSES.typography.footerLink}>{NAVIGATION[1].label}</a></li>
+
+          <li><a href={NAVIGATION[2].href} class={CLASSES.typography.footerLink}>{NAVIGATION[2].label}</a></li>
+          <li><a href={NAVIGATION[3].href} class={CLASSES.typography.footerLink}>{NAVIGATION[3].label}</a></li>
+        </ul>
+      </div>
+
+      {/* Column 4: Company */}
+      <div>
+        <h3 class={CLASSES.typography.footerHeading}>{FOOTER_SECTIONS.company}</h3>
+        <ul class={`${CLASSES.typography.footerText} ${CLASSES.layout.navVertical}`}>
+          <li><a href={NAVIGATION[4].href} class={CLASSES.typography.footerLink}>{NAVIGATION[4].label}</a></li>
+          <li><a href={ROUTES.CONTACT} class={CLASSES.typography.footerLink}>{CONTACT_PAGE.title}</a></li>
+          <li><a href={ROUTES.POLICIES} class={CLASSES.typography.footerLink}>{POLICIES_CONTENT.title}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class={CLASSES.typography.copyright}>
+      <p>&copy; {currentYear} {SITE_TITLE}. {FOOTER_SECTIONS.copyright}</p>
+    </div>
+  </div>
+</footer>
