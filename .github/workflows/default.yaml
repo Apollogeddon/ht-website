@@ -18,3 +18,10 @@ jobs:
         run: npm ci
       - name: Run Audit Fix
         run: npm audit fix
+      
+      - name: Upload updated package-lock
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-lock
+          path: package-lock.json
+          retention-days: 1

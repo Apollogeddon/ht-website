@@ -18,6 +18,11 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Download updated package-lock
+        uses: actions/download-artifact@v4
+        with:
+          name: package-lock
+      
       - name: Type Check
         run: npm run type
 
@@ -29,7 +34,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --severity-threshold=high.
+          args: --severity-threshold=high
 
       - name: Build Verification
         run: npm run build
