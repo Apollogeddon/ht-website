@@ -32,6 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     if: github.actor == 'dependabot[bot]'
+    needs: audit
     steps:
       - name: Dependabot metadata
         id: metadata
