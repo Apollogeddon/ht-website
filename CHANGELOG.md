@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/Apollogeddon/ht-website/compare/v1.0.2...v1.0.3) (2026-01-27)
+
+
+### Bug Fixes
+
+* **config:** ignore CHANGELOG.md in markdownlint ([3033cac](https://github.com/Apollogeddon/ht-website/commit/3033cacc7c88c8d6b59670c389d2d4d0c22e7018))
+
 ## [1.0.2](https://github.com/Apollogeddon/ht-website/compare/v1.0.1...v1.0.2) (2026-01-27)
 
 
