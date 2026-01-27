@@ -1,0 +1,23 @@
+name: Dependency Maintenance
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Audit Fix
+        run: npm audit fix

@@ -1,0 +1,46 @@
+name: Quality
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
+      
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Type Check
+        run: npm run type
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Security Scan (Snyk)
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+          directory: app
+
+      - name: Build Verification
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: app/dist
+          retention-days: 1

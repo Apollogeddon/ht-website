@@ -1,0 +1,30 @@
+name: Index
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+  pages: write
+
+jobs:
+  default:
+    uses: ./.github/workflows/default.yaml
+
+  quality:
+    needs: default
+    uses: ./.github/workflows/quality.yaml
+
+  release:
+    needs: quality
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/release.yaml
+    secrets: inherit
