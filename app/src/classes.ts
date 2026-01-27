@@ -13,9 +13,9 @@ export const CLASSES = {
 			"py-20 bg-neutral-100 dark:bg-neutral-800 transition-colors duration-300",
 		sectionDark:
 			"py-20 bg-brand-500 text-white transition-colors duration-300",
-		container: "container mx-auto px-4",
-		containerNarrow: "max-w-4xl mx-auto",
-		containerArticle: "max-w-3xl mx-auto",
+		container: "container mx-auto px-12 lg:px-32",
+		containerNarrow: "max-w-4xl mx-auto px-12 lg:px-32",
+		containerArticle: "max-w-3xl mx-auto px-12 lg:px-32",
 		pagePadding: "py-20",
 		headerContainer: "container mx-auto px-4 py-4 flex justify-between items-center",
 		headerLogo: "h-12 w-auto",
