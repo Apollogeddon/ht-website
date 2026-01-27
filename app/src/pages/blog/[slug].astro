@@ -1,9 +1,9 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import { CLASSES } from "../../classes";
-import { DATE_LOCALE, DATE_OPTIONS, UI_LABELS, ROUTES } from "../../consts";
-import { ICONS } from "../../styles";
+import { DATE_LOCALE, DATE_OPTIONS, ROUTES, UI_LABELS } from "../../consts";
 import MainLayout from "../../layouts/MainLayout.astro";
+import { ICONS } from "../../styles";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");

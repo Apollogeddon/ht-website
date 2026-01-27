@@ -1,9 +1,15 @@
 ---
 import { getCollection } from "astro:content";
 import { CLASSES } from "../../classes";
-import { BLOG_CONTENT, UI_LABELS, DATE_LOCALE, DATE_OPTIONS, ROUTES } from "../../consts";
-import { ICONS } from "../../styles";
+import {
+	BLOG_CONTENT,
+	DATE_LOCALE,
+	DATE_OPTIONS,
+	ROUTES,
+	UI_LABELS,
+} from "../../consts";
 import MainLayout from "../../layouts/MainLayout.astro";
+import { ICONS } from "../../styles";
 
 const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),

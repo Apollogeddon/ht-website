@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import { CLASSES } from "../classes";
-import { TESTIMONIALS_CONTENT, ROUTES } from "../consts";
-import { ICONS } from "../styles";
+import { ROUTES, TESTIMONIALS_CONTENT } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
+import { ICONS } from "../styles";
 
 const testimonialsEntries = await getCollection("testimonials");
 

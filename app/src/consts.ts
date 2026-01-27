@@ -185,7 +185,8 @@ export const HOME_CONTENT = {
 
 export const ABOUT_CONTENT = {
 	title: "About Us",
-	intro: "Helping organizations maximize workforce performance through strategic people processes and organizational design.",
+	intro:
+		"Helping organizations maximize workforce performance through strategic people processes and organizational design.",
 	valuesTitle: "Our Values",
 	profilesTitle: "Our Profiles",
 	contactLabel: "Contact:",
