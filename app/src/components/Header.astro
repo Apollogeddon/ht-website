@@ -1,14 +1,16 @@
 ---
 import { CLASSES } from "../classes";
-import { NAVIGATION, SITE_TITLE, ROUTES, SITE_LOGO } from "../consts";
+import { NAVIGATION, SITE_TITLE, ROUTES } from "../consts";
 import { COLORS } from "../styles";
 import ThemeToggle from "./Themes.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo.png";
 ---
 
 <header class={CLASSES.layout.header} style={{ backgroundColor: COLORS.theme.header.bg, borderColor: COLORS.theme.header.border }}>
   <div class={CLASSES.layout.headerContainer}>
     <a href={ROUTES.HOME} class="flex items-center">
-      <img src={SITE_LOGO} alt={SITE_TITLE} class={CLASSES.layout.headerLogo} />
+      <Image src={logoImage} alt={SITE_TITLE} class={CLASSES.layout.headerLogo} width={200} height={48} loading="eager" />
     </a>
     <div class="flex items-center">
       <nav class="hidden md:block">
