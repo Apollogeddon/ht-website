@@ -11,69 +11,49 @@ import { ICONS } from "../styles";
   aria-label="Toggle Dark Mode"
 >
   <svg
-    id="theme-toggle-dark-icon"
-    class="hidden w-5 h-5"
-    fill="currentColor"
+    class="w-6 h-6"
     viewBox="0 0 20 20"
+    fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d={ICONS.moon}></path>
-  </svg>
-  <svg
-    id="theme-toggle-light-icon"
-    class="hidden w-5 h-5"
-    fill="currentColor"
-    viewBox="0 0 20 20"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d={ICONS.sun}
-      fill-rule="evenodd"
+    <path d={ICONS.moon} class="translate-x-[-1px]"></path>
+    <path 
+      d={ICONS.sun} 
+      class="opacity-40" 
+      fill-rule="evenodd" 
       clip-rule="evenodd"
     ></path>
   </svg>
 </button>
 
 <script define:vars={{ THEME_STORAGE_KEY }}>
-  // Script to handle the toggle logic
-  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-  const themeToggleBtn = document.getElementById('theme-toggle');
+  const setupThemeToggle = () => {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (!themeToggleBtn || themeToggleBtn.dataset.initialized) return;
 
-  // Change the icons inside the button based on previous settings
-  if (
-    localStorage.getItem(THEME_STORAGE_KEY) === 'dark' ||
-    (!(THEME_STORAGE_KEY in localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    themeToggleLightIcon?.classList.remove('hidden');
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      const newTheme = isDark ? 'light' : 'dark';
+      
+      if (newTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      
+      localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+    });
+
+    themeToggleBtn.dataset.initialized = 'true';
+  };
+
+  // Run immediately if the script executes after the DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupThemeToggle);
   } else {
-    themeToggleDarkIcon?.classList.remove('hidden');
+    setupThemeToggle();
   }
 
-  themeToggleBtn?.addEventListener('click', function () {
-    // toggle icons inside button
-    themeToggleDarkIcon?.classList.toggle('hidden');
-    themeToggleLightIcon?.classList.toggle('hidden');
-
-    // if set via local storage previously
-    if (localStorage.getItem(THEME_STORAGE_KEY)) {
-      if (localStorage.getItem(THEME_STORAGE_KEY) === 'light') {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem(THEME_STORAGE_KEY, 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem(THEME_STORAGE_KEY, 'light');
-      }
-    } else {
-      // if NOT set via local storage previously
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem(THEME_STORAGE_KEY, 'light');
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem(THEME_STORAGE_KEY, 'dark');
-      }
-    }
-  });
+  // Also run on every navigation load
+  document.addEventListener('astro:page-load', setupThemeToggle);
 </script>

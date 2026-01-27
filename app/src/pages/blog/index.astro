@@ -69,31 +69,38 @@ const posts = (await getCollection("blog")).sort(
 </MainLayout>
 
 <script>
-  const searchInput = document.getElementById('search-input');
-  const postsContainer = document.getElementById('posts-container');
-  const noResultsMsg = document.getElementById('no-results');
-  const posts = document.querySelectorAll('.post-item');
+  const initSearch = () => {
+    const searchInput = document.getElementById('search-input');
+    const postsContainer = document.getElementById('posts-container');
+    const noResultsMsg = document.getElementById('no-results');
+    const posts = document.querySelectorAll('.post-item');
 
-  searchInput?.addEventListener('input', (e) => {
-    const term = (e.target as HTMLInputElement).value.toLowerCase();
-    let hasResults = false;
+    if (!searchInput) return;
 
-    posts.forEach((post) => {
-      const title = (post as HTMLElement).dataset.title || '';
-      const desc = (post as HTMLElement).dataset.desc || '';
+    searchInput.addEventListener('input', (e) => {
+      const term = (e.target as HTMLInputElement).value.toLowerCase();
+      let hasResults = false;
 
-      if (title.includes(term) || desc.includes(term)) {
-        post.classList.remove('hidden');
-        hasResults = true;
+      posts.forEach((post) => {
+        const title = (post as HTMLElement).dataset.title || '';
+        const desc = (post as HTMLElement).dataset.desc || '';
+
+        if (title.includes(term) || desc.includes(term)) {
+          post.classList.remove('hidden');
+          hasResults = true;
+        } else {
+          post.classList.add('hidden');
+        }
+      });
+
+      if (hasResults) {
+        noResultsMsg?.classList.add('hidden');
       } else {
-        post.classList.add('hidden');
+        noResultsMsg?.classList.remove('hidden');
       }
     });
+  };
 
-    if (hasResults) {
-      noResultsMsg?.classList.add('hidden');
-    } else {
-      noResultsMsg?.classList.remove('hidden');
-    }
-  });
+  // Initialize on first load and after navigation
+  document.addEventListener('astro:page-load', initSearch);
 </script>

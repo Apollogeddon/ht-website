@@ -99,7 +99,7 @@ export const CLASSES = {
 		testimonialQuoteIcon:
 			"absolute top-8 left-8 w-10 h-10 text-brand-100 dark:text-neutral-700 transform -translate-x-1/2 -translate-y-1/2",
 		themeToggle:
-			"text-neutral-500 hover:text-brand-600 focus:outline-none focus:ring-4 focus:ring-neutral-200 dark:text-neutral-400 dark:hover:text-brand-500 dark:focus:ring-neutral-700 rounded-lg text-sm p-2.5 ml-4",
+			"text-neutral-500 hover:text-brand-600 focus:outline-none dark:text-neutral-400 dark:hover:text-brand-500 rounded-lg text-sm p-2.5 ml-4",
 	},
 	blog: {
 		searchWrapper: "relative w-full md:w-64",
