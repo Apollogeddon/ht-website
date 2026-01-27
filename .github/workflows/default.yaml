@@ -27,12 +27,6 @@ jobs:
         with:
           commit_message: "chore: update dependencies via npm audit fix"
           file_pattern: package-lock.json
-      - name: Upload updated package-lock
-        uses: actions/upload-artifact@v4
-        with:
-          name: package-lock
-          path: package-lock.json
-          retention-days: 1
 
   auto-merge:
     runs-on: ubuntu-latest
