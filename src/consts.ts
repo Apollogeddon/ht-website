@@ -14,7 +14,7 @@ export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
 export const THEME_STORAGE_KEY = "theme";
 
 export const ROUTES = {
-	HOME: `${import.meta.env.BASE_UR}/`,
+	HOME: `${import.meta.env.BASE_URL}/`,
 	SOLUTIONS: `${import.meta.env.BASE_URL}/solutions`,
 	BLOG: `${import.meta.env.BASE_URL}/blog`,
 	TESTIMONIALS: `${import.meta.env.BASE_URL}/testimonials`,
