@@ -1,7 +1,7 @@
 {
 	"name": "app",
 	"type": "module",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"homepage": "https://apollogeddon.github.io/ht-website/",
 	"scripts": {
 		"dev": "astro dev",

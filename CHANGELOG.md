@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/Apollogeddon/ht-website/compare/v1.0.0...v1.0.1) (2026-01-27)
+
+
+### Bug Fixes
+
+* **readme:** add centred logo to readme ([4a39e25](https://github.com/Apollogeddon/ht-website/commit/4a39e254cb97d49d9fdd060246798e5e4d8bb14b))
+
 ## 1.0.0 (2026-01-27)
 
 ### Features
