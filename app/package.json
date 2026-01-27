@@ -8,7 +8,8 @@
 		"lint:ts": "biome check --fix",
 		"lint:md": "markdownlint-cli2 --fix",
 		"lint": "npm run lint:ts && npm run lint:md",
-		"build": "astro build"
+		"build": "astro build",
+		"preview": "astro preview"
 	},
 	"dependencies": {
 		"@astrojs/react": "^4.4.2",
