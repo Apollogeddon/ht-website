@@ -1,4 +1,4 @@
-name: Dependency Maintenance
+name: Default
 
 on:
   workflow_call:
@@ -28,7 +28,7 @@ jobs:
           commit_message: "chore: update dependencies via npm audit fix"
           file_pattern: package-lock.json
 
-  auto-merge:
+  merge:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     if: github.actor == 'dependabot[bot]'

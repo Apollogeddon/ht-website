@@ -15,22 +15,22 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       
-      - name: Install Dependencies
+      - name: Install
         run: npm ci
       
-      - name: Generate Astro Types
+      - name: Sync Astro
         run: npx astro sync
       
       - name: Type Check
         run: npm run type
 
-      - name: Lint
+      - name: Linting
         run: npm run lint
 
-      - name: Build Verification
+      - name: Bundle
         run: npm run build
 
-      - name: Upload Build Artifact
+      - name: Upload Build
         uses: actions/upload-artifact@v4
         with:
           name: build-output
