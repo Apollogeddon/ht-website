@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # Limit open PRs to prevent flooding
+    open-pull-requests-limit: 10
+    # Group non-major updates to reduce PR volume
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    # Ensure commit messages follow your convention (e.g., 'chore(deps): ...')
+    commit-message:
+      prefix: "fix(deps)"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "chore(ci)"
+    ignore:
+      - dependency-name: "apollogeddon/forgejs"
