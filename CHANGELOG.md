@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/Apollogeddon/ht-website/compare/v1.0.1...v1.0.2) (2026-01-27)
+
+
+### Bug Fixes
+
+* **config:** correct base url typo ([0fbcbfc](https://github.com/Apollogeddon/ht-website/commit/0fbcbfcc1249eec3ad50ff1aed4c5faa608adb4f))
+
 ## [1.0.1](https://github.com/Apollogeddon/ht-website/compare/v1.0.0...v1.0.1) (2026-01-27)
 
 
