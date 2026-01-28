@@ -18,7 +18,7 @@ import { COLORS, ICONS } from "../styles";
     class={CLASSES.layout.hero}
     style={{ "--hero-dark-bg": COLORS.theme.hero.darkBg }}
   >
-    <div class={CLASSES.layout.container}>
+    <div class={CLASSES.layout.containerHome}>
       <div class="max-w-3xl">
         <h1 class={`${CLASSES.typography.h1} mb-6`}>
           {HERO_CONTENT.title}
@@ -40,7 +40,7 @@ import { COLORS, ICONS } from "../styles";
 
   {/* Why Choose Us Section */}
   <section class={CLASSES.layout.sectionWhite}>
-    <div class={CLASSES.layout.container}>
+    <div class={CLASSES.layout.containerHome}>
       <div class={CLASSES.layout.grid2}>
         <div>
           <h2 class={`${CLASSES.typography.h2} mb-6`}>{WHY_CHOOSE_US.title}</h2>
@@ -61,7 +61,7 @@ import { COLORS, ICONS } from "../styles";
 
   {/* Helping Section */}
   <section class={CLASSES.layout.sectionMuted}>
-    <div class={`${CLASSES.layout.container} text-center`}>
+    <div class={`${CLASSES.layout.containerHome} text-center`}>
       <h2 class={CLASSES.typography.h2Centered}>{HOME_CONTENT.howWeHelp}</h2>
       <div class={CLASSES.layout.grid3}>
         {HOME_SERVICES.map((service, index) => (
