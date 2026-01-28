@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://apollogeddon.github.io/ht-website/">
+  <a href="https://ht.apollogeddon.com">
     <img src="./src/assets/logo.png" alt="Logo">
   </a>
   <br><br>

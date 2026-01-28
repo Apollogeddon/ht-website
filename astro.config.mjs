@@ -7,8 +7,8 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://apollogeddon.github.io",
-	base: "/ht-website",
+	site: "https://ht.apollogeddon.com",
+	base: "",
 	vite: {
 		plugins: [tailwindcss()],
 	},
