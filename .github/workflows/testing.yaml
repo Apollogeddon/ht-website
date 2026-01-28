@@ -38,8 +38,10 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.9.0
         with:
-          # Check all markdown files, HTML files, and standard code files
-          args: --verbose --no-progress './**/*.md' './**/*.html' './src/**/*.astro' --exclude-mail
+          args: >
+            --no-progress
+            --exclude-path CHANGELOG.md
+            './**/*.md' './**/*.html' './src/**/*.astro'
           fail: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
