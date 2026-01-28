@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/Apollogeddon/ht-website/compare/v1.0.3...v1.0.4) (2026-01-28)
+
+
+### Bug Fixes
+
+* **config:** configure custom site domain ([87f681c](https://github.com/Apollogeddon/ht-website/commit/87f681c8d9f696bee0a3e7a367cf0f6a9b7bc99d))
+
 ## [1.0.3](https://github.com/Apollogeddon/ht-website/compare/v1.0.2...v1.0.3) (2026-01-27)
 
 
