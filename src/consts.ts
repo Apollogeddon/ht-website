@@ -2,7 +2,7 @@ export const SITE_TITLE = "Harnessing Talent";
 export const SITE_DESCRIPTION =
 	"Management consultancy helping businesses achieve success through the best utilisation of their people resources.";
 export const SITE_LANG = "en";
-export const SITE_LOGO = `${import.meta.env.BASE_URL}/harnessing-talent-logo.png`;
+export const SITE_LOGO = `${import.meta.env.BASE_URL}harnessing-talent-logo.png`;
 
 export const DATE_LOCALE = "en-au";
 export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
@@ -14,13 +14,13 @@ export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
 export const THEME_STORAGE_KEY = "theme";
 
 export const ROUTES = {
-	HOME: `${import.meta.env.BASE_URL}/`,
-	SOLUTIONS: `${import.meta.env.BASE_URL}/solutions`,
-	BLOG: `${import.meta.env.BASE_URL}/blog`,
-	TESTIMONIALS: `${import.meta.env.BASE_URL}/testimonials`,
-	ABOUT: `${import.meta.env.BASE_URL}/about`,
-	CONTACT: `${import.meta.env.BASE_URL}/contact`,
-	POLICIES: `${import.meta.env.BASE_URL}/policies`,
+	HOME: import.meta.env.BASE_URL,
+	SOLUTIONS: `${import.meta.env.BASE_URL}solutions`,
+	BLOG: `${import.meta.env.BASE_URL}blog`,
+	TESTIMONIALS: `${import.meta.env.BASE_URL}testimonials`,
+	ABOUT: `${import.meta.env.BASE_URL}about`,
+	CONTACT: `${import.meta.env.BASE_URL}contact`,
+	POLICIES: `${import.meta.env.BASE_URL}policies`,
 };
 
 export const CONTACT_INFO = {
