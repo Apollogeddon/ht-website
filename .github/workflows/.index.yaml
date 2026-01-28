@@ -23,8 +23,11 @@ jobs:
   quality:
     uses: ./.github/workflows/quality.yaml
 
+  testing:
+    uses: ./.github/workflows/testing.yaml
+
   release:
-    needs: quality
+    needs: [quality, testing]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/release.yaml
     secrets: inherit
