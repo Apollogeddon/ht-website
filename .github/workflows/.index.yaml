@@ -10,15 +10,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
-  id-token: write
-  pages: write
+  contents: read
 
 jobs:
   default:
     if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
     uses: ./.github/workflows/default.yaml
+    permissions:
+      contents: write
+      pull-requests: write
 
   quality:
     uses: ./.github/workflows/quality.yaml
@@ -30,4 +30,3 @@ jobs:
     needs: [quality, testing]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/release.yaml
-    secrets: inherit
