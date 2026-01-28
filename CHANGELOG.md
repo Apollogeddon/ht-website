@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/Apollogeddon/ht-website/compare/v1.0.4...v1.0.5) (2026-01-28)
+
+
+### Bug Fixes
+
+* **config:** align base URL path handling ([7e5ead8](https://github.com/Apollogeddon/ht-website/commit/7e5ead88c3019fd7a08cd992f2f1b92535d25053))
+
 ## [1.0.4](https://github.com/Apollogeddon/ht-website/compare/v1.0.3...v1.0.4) (2026-01-28)
 
 
