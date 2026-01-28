@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/Apollogeddon/ht-website/compare/v1.1.0...v1.1.1) (2026-01-28)
+
+
+### Bug Fixes
+
+* **testing:** exclude changelog from link checker ([2d298bd](https://github.com/Apollogeddon/ht-website/commit/2d298bdc48cff83642809987015e469ebd58895f))
+
 ## [1.1.0](https://github.com/Apollogeddon/ht-website/compare/v1.0.5...v1.1.0) (2026-01-28)
 
 
