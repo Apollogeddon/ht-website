@@ -25,7 +25,7 @@ import { ICONS } from "../styles";
                   </svg>
                 </div>
                 <div>
-                  <h3 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.email}</h3>
+                  <h2 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.email}</h3>
                   <a href={`mailto:${CONTACT_INFO.email}`} class={CLASSES.typography.link}>{CONTACT_INFO.email}</a>
                 </div>
               </div>
@@ -37,7 +37,7 @@ import { ICONS } from "../styles";
                   </svg>
                 </div>
                 <div>
-                  <h3 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.phone}</h3>
+                  <h2 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.phone}</h3>
                   <a href={`tel:${CONTACT_INFO.phone.replace(/\s+/g, '')}`} class={CLASSES.typography.link}>{CONTACT_INFO.phone}</a>
                 </div>
               </div>
@@ -49,7 +49,7 @@ import { ICONS } from "../styles";
                   </svg>
                 </div>
                 <div>
-                  <h3 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.location}</h3>
+                  <h2 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.location}</h3>
                   <p class="text-neutral-600 dark:text-neutral-400">{CONTACT_INFO.location_full}</p>
                 </div>
               </div>
@@ -61,11 +61,11 @@ import { ICONS } from "../styles";
               <div class={CLASSES.form.grid}>
                 <div>
                   <label for="first-name" class={CLASSES.form.label}>{CONTACT_PAGE.form.firstName}</label>
-                  <input type="text" id="first-name" name="first-name" class={CLASSES.form.input} required>
+                  <input type="text" id="first-name" name="firstName" class={CLASSES.form.input} required>
                 </div>
                 <div>
                   <label for="last-name" class={CLASSES.form.label}>{CONTACT_PAGE.form.lastName}</label>
-                  <input type="text" id="last-name" name="last-name" class={CLASSES.form.input} required>
+                  <input type="text" id="last-name" name="lastName" class={CLASSES.form.input} required>
                 </div>
               </div>
               <div>

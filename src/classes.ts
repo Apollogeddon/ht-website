@@ -96,7 +96,7 @@ export const CLASSES = {
 			"w-12 h-12 bg-brand-100 dark:bg-neutral-800 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300",
 		imagePlaceholder:
 			"bg-neutral-100 dark:bg-neutral-700 rounded-3xl border-2 border-dashed border-neutral-300 dark:border-neutral-600 flex items-center justify-center",
-		placeholderText: "text-neutral-400 dark:text-neutral-500 font-bold",
+		placeholderText: "text-neutral-600 dark:text-neutral-400 font-bold",
 		avatarPlaceholder:
 			"w-32 h-32 bg-neutral-100 dark:bg-neutral-700 rounded-full border-4 border-white dark:border-neutral-600 shadow-md flex-shrink-0 flex items-center justify-center",
 		avatarAccent:
