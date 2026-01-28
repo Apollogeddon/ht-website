@@ -27,6 +27,22 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={`${title} | ${SITE_TITLE}`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(`${import.meta.env.BASE_URL}favicon.svg`, Astro.site)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={`${title} | ${SITE_TITLE}`} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(`${import.meta.env.BASE_URL}favicon.svg`, Astro.site)} />
+
 		<title>{title} | {SITE_TITLE}</title>
 		<ClientRouter />
 		<script is:inline define:vars={{ THEME_STORAGE_KEY }}>

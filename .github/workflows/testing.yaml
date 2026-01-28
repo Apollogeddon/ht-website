@@ -29,3 +29,17 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+  link-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.9.0
+        with:
+          # Check all markdown files, HTML files, and standard code files
+          args: --verbose --no-progress './**/*.md' './**/*.html' './src/**/*.astro' --exclude-mail
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
