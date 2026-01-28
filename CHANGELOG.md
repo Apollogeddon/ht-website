@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/Apollogeddon/ht-website/compare/v1.0.5...v1.1.0) (2026-01-28)
+
+
+### Features
+
+* **contact:** prepare contact form for dynamic submission ([762f821](https://github.com/Apollogeddon/ht-website/commit/762f821595d9eef66614e8f15691cb0bc5c6808f))
+
+
+### Bug Fixes
+
+* **seo:** add comprehensive SEO and social sharing metadata ([23497cb](https://github.com/Apollogeddon/ht-website/commit/23497cb7cbf0bfbdbd1a82eff290e5c3013555e8))
+
 ## [1.0.5](https://github.com/Apollogeddon/ht-website/compare/v1.0.4...v1.0.5) (2026-01-28)
 
 
