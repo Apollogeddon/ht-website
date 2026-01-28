@@ -3,14 +3,18 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-brand-50: #fff7ed;
-  --color-brand-100: #ffedd5;
-  --color-brand-200: #fed7aa;
-  --color-brand-300: #fdba74;
-  --color-brand-400: #fb923c;
-  --color-brand-500: #c2410c;
-  --color-brand-600: #9a3412;
-  --color-brand-700: #9a3412;
-  --color-brand-800: #7c2d12;
-  --color-brand-900: #431407;
+  --color-brand-50: #fffaf5;
+  --color-brand-100: #fff1e0;
+  --color-brand-200: #fedbb7;
+  --color-brand-300: #f9b578;
+  --color-brand-400: #f28b3c;
+  --color-brand-500: #b45309;
+  --color-brand-600: #b45309;
+  --color-brand-700: #92400e;
+  --color-brand-800: #78350f;
+  --color-brand-900: #451a03;
+
+  --color-zinc-50: #fafafa;
+  --color-zinc-900: #18181b;
+  --color-zinc-950: #09090b;
 }

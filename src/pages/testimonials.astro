@@ -20,7 +20,7 @@ const testimonials = await Promise.all(
   <div class={CLASSES.layout.pagePadding}>
     <div class={CLASSES.layout.container}>
       <div class={CLASSES.layout.containerNarrow}>
-        <h1 class={`${CLASSES.typography.h1Medium} mb-12 text-center`}>{TESTIMONIALS_CONTENT.title}</h1>
+        <h1 class={`${CLASSES.typography.h1Medium} ${CLASSES.visual.m12} text-center`}>{TESTIMONIALS_CONTENT.title}</h1>
         
         <div class={CLASSES.layout.stackLarge}>
           {testimonials.map(({ entry, Content }) => (
@@ -29,12 +29,12 @@ const testimonials = await Promise.all(
                 <path d={ICONS.quote} />
               </svg>
               <blockquote class="relative z-10">
-                <div class="text-xl text-neutral-700 dark:text-neutral-300 italic leading-relaxed mb-6">
+                <div class="text-xl text-zinc-700 dark:text-zinc-300 italic leading-relaxed mb-6">
                   <Content />
                 </div>
                 <footer class="text-right">
                   <div class="font-bold text-brand-600 dark:text-brand-400">{entry.data.author}</div>
-                  <div class="text-neutral-500 dark:text-neutral-500 text-sm">{entry.data.role}</div>
+                  <div class="text-zinc-500 dark:text-zinc-500 text-sm">{entry.data.role}</div>
                 </footer>
               </blockquote>
             </div>

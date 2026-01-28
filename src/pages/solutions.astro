@@ -7,6 +7,7 @@ import {
 	SOLUTIONS_INTRO,
 } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
+import { ICONS } from "../styles";
 ---
 
 <MainLayout title={SOLUTIONS_CONTENT.title}>
@@ -14,22 +15,22 @@ import MainLayout from "../layouts/MainLayout.astro";
     <div class={CLASSES.layout.container}>
       <div class="max-w-5xl mx-auto">
         <h1 class={`${CLASSES.typography.h1Medium} mb-6 text-center`}>{SOLUTIONS_CONTENT.title}</h1>
-        <p class="text-xl text-neutral-600 dark:text-neutral-400 text-center mb-16 max-w-3xl mx-auto">
+        <p class="text-xl text-zinc-600 dark:text-zinc-400 text-center mb-16 max-w-3xl mx-auto">
           {SOLUTIONS_INTRO}
         </p>
 
         <div class={CLASSES.layout.grid2}>
           {SOLUTIONS.map((item) => (
             <div class={`${CLASSES.card.base} ${CLASSES.card.hover} p-8`}>
-              <h2 class="text-2xl font-bold text-neutral-900 dark:text-white mb-4">{item.title}</h2>
-              <p class="text-neutral-700 dark:text-neutral-300 mb-6 leading-relaxed">
+              <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mb-4">{item.title}</h2>
+              <p class="text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
                 {item.description}
               </p>
               <ul class={CLASSES.layout.navVertical}>
                 {item.features.map((feature) => (
                   <li class={CLASSES.typography.listItem}>
                     <svg xmlns="http://www.w3.org/2000/svg" class={CLASSES.visual.checkIcon} viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      <path fill-rule="evenodd" d={ICONS.check} clip-rule="evenodd" />
                     </svg>
                     <span>{feature}</span>
                   </li>

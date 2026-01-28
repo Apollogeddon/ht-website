@@ -44,13 +44,13 @@ import { ICONS } from "../styles";
 
               <div class="flex items-start gap-4">
                 <div class={CLASSES.visual.iconBoxRound}>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-500 dark:text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class={`${CLASSES.visual.svg6} text-brand-500 dark:text-brand-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.location} />
                   </svg>
                 </div>
                 <div>
                   <h2 class={CLASSES.typography.h3}>{CONTACT_PAGE.labels.location}</h3>
-                  <p class="text-neutral-600 dark:text-neutral-400">{CONTACT_INFO.location_full}</p>
+                  <p class="text-zinc-600 dark:text-zinc-400">{CONTACT_INFO.location_full}</p>
                 </div>
               </div>
             </div>

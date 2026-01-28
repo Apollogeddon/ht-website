@@ -23,11 +23,11 @@ const { Content } = await post.render();
     <div class={CLASSES.layout.container}>
       <div class={CLASSES.layout.containerArticle}>
         <div class={`${CLASSES.card.base} ${CLASSES.card.padded}`}>
-          <header class="mb-12 border-b border-neutral-100 dark:border-neutral-700 pb-12">
+          <header class={`${CLASSES.visual.m12} border-b border-zinc-100 dark:border-zinc-700 pb-12`}>
             <p class="text-brand-500 dark:text-brand-400 font-bold mb-4">
               {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
             </p>
-            <h1 class={`${CLASSES.typography.h1Page} mb-6`} transition:name={`title-${post.slug}`}>
+            <h1 class={`${CLASSES.typography.h1Page} ${CLASSES.visual.m6}`} transition:name={`title-${post.slug}`}>
               {post.data.title}
             </h1>
             <p class={`${CLASSES.typography.lead} italic`}>
@@ -39,9 +39,9 @@ const { Content } = await post.render();
             <Content />
           </div>
 
-          <div class="mt-16 pt-8 border-t border-neutral-100 dark:border-neutral-700">
+          <div class="mt-16 pt-8 border-t border-zinc-100 dark:border-zinc-700">
             <a href={ROUTES.BLOG} class={`${CLASSES.typography.action} gap-2`}>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class={CLASSES.visual.svg4} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.arrowLeft} />
               </svg>
               {UI_LABELS.backToBlog}

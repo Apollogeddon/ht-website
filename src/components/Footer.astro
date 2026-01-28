@@ -29,7 +29,7 @@ const currentYear = new Date().getFullYear();
       {/* Column 2: Direct Contact */}
       <div>
         <h3 class={CLASSES.typography.footerHeading}>{FOOTER_SECTIONS.contact}</h3>
-        <ul class={`${CLASSES.typography.footerText} space-y-2`}>
+        <ul class={`${CLASSES.typography.footerText} ${CLASSES.layout.navVertical}`}>
           <li>{CONTACT_PAGE.labels.email}: {CONTACT_INFO.email}</li>
           <li>{CONTACT_PAGE.labels.phone}: {CONTACT_INFO.phone}</li>
           <li>{CONTACT_PAGE.labels.location}: {CONTACT_INFO.location}</li>

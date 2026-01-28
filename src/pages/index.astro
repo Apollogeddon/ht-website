@@ -43,9 +43,9 @@ import { COLORS, ICONS } from "../styles";
     <div class={CLASSES.layout.containerHome}>
       <div class={CLASSES.layout.grid2}>
         <div>
-          <h2 class={`${CLASSES.typography.h2} mb-6`}>{WHY_CHOOSE_US.title}</h2>
+          <h2 class={`${CLASSES.typography.h2} ${CLASSES.visual.m6}`}>{WHY_CHOOSE_US.title}</h2>
           {WHY_CHOOSE_US.paragraphs.map((paragraph) => (
-             <p class={`${CLASSES.typography.body} mb-6`}>{paragraph}</p>
+             <p class={`${CLASSES.typography.body} ${CLASSES.visual.m6}`}>{paragraph}</p>
           ))}
           <div class={CLASSES.visual.quote}>
             "{WHY_CHOOSE_US.quote}"
@@ -66,15 +66,15 @@ import { COLORS, ICONS } from "../styles";
       <div class={CLASSES.layout.grid3}>
         {HOME_SERVICES.map((service, index) => (
           <div class={CLASSES.card.base}>
-            <div class={`${CLASSES.visual.iconBox} mb-6 mx-auto`}>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-500 dark:text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class={`${CLASSES.visual.iconBox} ${CLASSES.visual.m6} mx-auto`}>
+              <svg xmlns="http://www.w3.org/2000/svg" class={`${CLASSES.visual.svg6} text-brand-500 dark:text-brand-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {index === 0 && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.engagement} />}
                 {index === 1 && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.performance} />}
                 {index === 2 && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.strategy} />}
               </svg>
             </div>
-            <h3 class="text-xl font-bold mb-4 text-neutral-900 dark:text-white">{service.title}</h3>
-            <p class="text-neutral-600 dark:text-neutral-400">{service.description}</p>
+            <h3 class="text-xl font-bold mb-4 text-zinc-900 dark:text-white">{service.title}</h3>
+            <p class="text-zinc-600 dark:text-zinc-400">{service.description}</p>
           </div>
         ))}
       </div>

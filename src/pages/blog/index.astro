@@ -50,12 +50,12 @@ const posts = (await getCollection("blog")).sort(
                 <h2 class={CLASSES.blog.postTitle} transition:name={`title-${post.slug}`}>
                   {post.data.title}
                 </h2>
-                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
+                <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
                   {post.data.description}
                 </p>
                 <span class={CLASSES.typography.action}>
                   {UI_LABELS.readMore} 
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class={CLASSES.visual.svg4} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.arrowRight} />
                   </svg>
                 </span>
@@ -65,7 +65,7 @@ const posts = (await getCollection("blog")).sort(
         </div>
 
         {/* No results message */}
-        <p id="no-results" class="hidden text-center text-neutral-500 dark:text-neutral-400 mt-8 text-lg">
+        <p id="no-results" class="hidden text-center text-zinc-500 dark:text-zinc-400 mt-8 text-lg">
           {BLOG_CONTENT.noResults}
         </p>
 
