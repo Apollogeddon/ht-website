@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/Apollogeddon/ht-website/compare/v1.1.1...v1.1.2) (2026-01-29)
+
+
+### Bug Fixes
+
+* **deps:** bump astro from 5.16.16 to 5.17.1 in the dependencies group ([8f5e8b1](https://github.com/Apollogeddon/ht-website/commit/8f5e8b1b1010f07d0dbc4332525f42a89b29d9b9))
+* **deps:** bump the dependencies group with 2 updates ([029102b](https://github.com/Apollogeddon/ht-website/commit/029102ba34c5cf7259cbe4deee24b6915728685e))
+
 ## [1.1.1](https://github.com/Apollogeddon/ht-website/compare/v1.1.0...v1.1.1) (2026-01-28)
 
 
