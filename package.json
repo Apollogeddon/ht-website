@@ -17,10 +17,10 @@
 	"devDependencies": {
 		"@astrojs/react": "^4.4.2",
 		"@axe-core/playwright": "^4.11.1",
-		"@biomejs/biome": "^2.4.4",
+		"@biomejs/biome": "^2.4.5",
 		"@playwright/test": "^1.58.2",
 		"@tailwindcss/vite": "^4.2.1",
-		"@types/node": "^25.3.2",
+		"@types/node": "^25.3.3",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"astro": "^5.18.0",
