@@ -1,5 +1,4 @@
 ---
-import { CLASSES } from "../classes";
 import {
   BLOG_CONTENT,
   CONTACT_INFO,
@@ -15,50 +14,46 @@ import {
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class={CLASSES.layout.footer}>
-  <div class={CLASSES.layout.container}>
-    <div class={CLASSES.layout.grid4}>
-      {/* Column 1: Brand */}
+<footer class="bg-[var(--bg-muted)] text-[var(--text-secondary)] border-t border-[var(--border-subtle)] transition-colors duration-300">
+  <div class="h-[3px] bg-brand-gradient w-full"></div>
+  <div class="container mx-auto px-6 lg:px-12 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div>
-        <h3 class={CLASSES.typography.footerHeading}>{SITE_TITLE}</h3>
-        <p class={CLASSES.typography.footerText}>
+        <h3 class="text-lg font-bold mb-4 text-gradient-brand">{SITE_TITLE}</h3>
+        <p class="text-[var(--text-secondary)] text-sm leading-relaxed">
           {SITE_DESCRIPTION}
         </p>
       </div>
 
-      {/* Column 2: Direct Contact */}
       <div>
-        <h3 class={CLASSES.typography.footerHeading}>{FOOTER_SECTIONS.contact}</h3>
-        <ul class={`${CLASSES.typography.footerText} ${CLASSES.layout.navVertical}`}>
+        <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.contact}</h3>
+        <ul class="text-[var(--text-secondary)] text-sm space-y-2">
           <li>{CONTACT_PAGE.labels.email}: {CONTACT_INFO.email}</li>
           <li>{CONTACT_PAGE.labels.phone}: {CONTACT_INFO.phone}</li>
           <li>{CONTACT_PAGE.labels.location}: {CONTACT_INFO.location}</li>
         </ul>
       </div>
 
-      {/* Column 3: Services & Insights */}
       <div>
-        <h3 class={CLASSES.typography.footerHeading}>{FOOTER_SECTIONS.services}</h3>
-        <ul class={`${CLASSES.typography.footerText} ${CLASSES.layout.navVertical}`}>
-          <li><a href={NAVIGATION[1].href} class={CLASSES.typography.footerLink}>{NAVIGATION[1].label}</a></li>
-
-          <li><a href={NAVIGATION[2].href} class={CLASSES.typography.footerLink}>{NAVIGATION[2].label}</a></li>
-          <li><a href={NAVIGATION[3].href} class={CLASSES.typography.footerLink}>{NAVIGATION[3].label}</a></li>
+        <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.services}</h3>
+        <ul class="text-[var(--text-secondary)] text-sm space-y-2">
+          <li><a href={NAVIGATION[1].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[1].label}</a></li>
+          <li><a href={NAVIGATION[2].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[2].label}</a></li>
+          <li><a href={NAVIGATION[3].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[3].label}</a></li>
         </ul>
       </div>
 
-      {/* Column 4: Company */}
       <div>
-        <h3 class={CLASSES.typography.footerHeading}>{FOOTER_SECTIONS.company}</h3>
-        <ul class={`${CLASSES.typography.footerText} ${CLASSES.layout.navVertical}`}>
-          <li><a href={NAVIGATION[4].href} class={CLASSES.typography.footerLink}>{NAVIGATION[4].label}</a></li>
-          <li><a href={ROUTES.CONTACT} class={CLASSES.typography.footerLink}>{CONTACT_PAGE.title}</a></li>
-          <li><a href={ROUTES.POLICIES} class={CLASSES.typography.footerLink}>{POLICIES_CONTENT.title}</a></li>
+        <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.company}</h3>
+        <ul class="text-[var(--text-secondary)] text-sm space-y-2">
+          <li><a href={NAVIGATION[4].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[4].label}</a></li>
+          <li><a href={ROUTES.CONTACT} class="hover:text-[var(--brand-accent)] transition-colors">{CONTACT_PAGE.title}</a></li>
+          <li><a href={ROUTES.POLICIES} class="hover:text-[var(--brand-accent)] transition-colors">{POLICIES_CONTENT.title}</a></li>
         </ul>
       </div>
     </div>
 
-    <div class={CLASSES.typography.copyright}>
+    <div class="border-t border-[var(--border-subtle)] mt-12 pt-8 text-center text-[var(--text-secondary)] text-sm opacity-80">
       <p>&copy; {currentYear} {SITE_TITLE}. {FOOTER_SECTIONS.copyright}</p>
     </div>
   </div>
