@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   testing:
-    uses: apollogeddon/forgejs/.github/workflows/testing.yml@v2.0.3
+    uses: apollogeddon/forgejs/.github/workflows/testing.yml@v2.1.1
     with:
       node_version: '22'
       working_directory: '.'
@@ -24,7 +24,7 @@ jobs:
   deploy:
     needs: testing
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    uses: apollogeddon/forgejs/.github/workflows/website.yml@v2.0.3
+    uses: apollogeddon/forgejs/.github/workflows/website.yml@v2.1.1
     with:
       artifact_name: 'dist'
     permissions:
