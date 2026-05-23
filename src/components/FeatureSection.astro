@@ -1,0 +1,38 @@
+---
+import IllustrationPanel from "./IllustrationPanel.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  paragraphs: string[];
+  quote?: string;
+}
+
+const { eyebrow, title, paragraphs, quote } = Astro.props;
+---
+
+<section class="section-padding bg-[var(--bg-secondary)] scroll-reveal">
+  <div class="container-site">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div>
+        <SectionHeading eyebrow={eyebrow} title={title} />
+        <div class="mt-6 space-y-4">
+          {paragraphs.map((paragraph) => (
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed">{paragraph}</p>
+          ))}
+        </div>
+        {
+          quote && (
+            <div class="mt-8 border-l-4 border-[var(--brand-accent)] pl-6 italic text-[var(--text-secondary)]">
+              "{quote}"
+            </div>
+          )
+        }
+      </div>
+      <div>
+        <IllustrationPanel variant="growth" />
+      </div>
+    </div>
+  </div>
+</section>

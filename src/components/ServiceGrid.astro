@@ -1,0 +1,57 @@
+---
+import { ICONS } from "../styles";
+import SectionHeading from "./SectionHeading.astro";
+
+interface Service {
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+interface Props {
+  title: string;
+  services: Service[];
+  eyebrow?: string;
+}
+
+const { title, services, eyebrow } = Astro.props;
+
+const defaultIcons = [ICONS.engagement, ICONS.performance, ICONS.strategy];
+---
+
+<section class="section-padding bg-[var(--bg-muted)] scroll-reveal">
+  <div class="container-site">
+    <div class="mb-12">
+      <SectionHeading eyebrow={eyebrow} title={title} align="center" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        services.map((service, index) => (
+          <div
+            class="card-interactive p-8 scroll-reveal"
+            style={`--delay: ${index * 100}ms`}
+          >
+            <div class="w-12 h-12 rounded-xl bg-brand-gradient flex items-center justify-center mb-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d={service.icon ?? defaultIcons[index % 3]}
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-[var(--text-primary)] mb-3">{service.title}</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed">{service.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

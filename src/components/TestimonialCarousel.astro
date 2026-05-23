@@ -1,0 +1,121 @@
+---
+interface Testimonial {
+  author: string;
+  role: string;
+  body: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+}
+
+const { testimonials } = Astro.props;
+---
+
+<div class="relative" id="testimonial-carousel-wrapper">
+  <div
+    id="testimonial-track"
+    class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 scroll-smooth"
+    style="scrollbar-width: none; -ms-overflow-style: none;"
+  >
+    {
+      testimonials.map((t) => (
+        <div class="card-base p-8 snap-start flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
+          <svg
+            class="h-10 w-10 text-[var(--border-strong)] opacity-40 mb-4"
+            fill="currentColor"
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+          >
+            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+          </svg>
+          <blockquote class="flex-grow text-[var(--text-secondary)] italic leading-relaxed text-lg mb-6">
+            "{t.body}"
+          </blockquote>
+          <footer>
+            <div class="font-bold text-[var(--text-primary)]">{t.author}</div>
+            <div class="text-sm text-[var(--brand-accent)] font-semibold">{t.role}</div>
+          </footer>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="flex items-center justify-center gap-4 mt-8">
+    <button
+      id="carousel-prev"
+      class="btn-ghost p-2 rounded-full"
+      aria-label="Previous testimonial"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <div id="carousel-dots" class="flex gap-2">
+      {
+        testimonials.map((_, i) => (
+          <button
+            class={`w-2.5 h-2.5 rounded-full transition-all duration-200 carousel-dot ${i === 0 ? "bg-[var(--brand-accent)] w-6" : "bg-[var(--border-strong)]"}`}
+            data-index={i}
+            aria-label={`Go to testimonial ${i + 1}`}
+          />
+        ))
+      }
+    </div>
+
+    <button
+      id="carousel-next"
+      class="btn-ghost p-2 rounded-full"
+      aria-label="Next testimonial"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  const initCarousel = () => {
+    const track = document.getElementById("testimonial-track");
+    const prevBtn = document.getElementById("carousel-prev");
+    const nextBtn = document.getElementById("carousel-next");
+    const dots = document.querySelectorAll<HTMLElement>(".carousel-dot");
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    let current = 0;
+    const total = dots.length;
+
+    const getItemWidth = () => {
+      const firstChild = track.firstElementChild as HTMLElement | null;
+      if (!firstChild) return 0;
+      return firstChild.offsetWidth + 24;
+    };
+
+    const goTo = (index: number) => {
+      current = Math.max(0, Math.min(index, total - 1));
+      track.scrollTo({ left: current * getItemWidth(), behavior: "smooth" });
+
+      dots.forEach((dot, i) => {
+        if (i === current) {
+          dot.classList.add("bg-[var(--brand-accent)]", "w-6");
+          dot.classList.remove("bg-[var(--border-strong)]");
+        } else {
+          dot.classList.remove("bg-[var(--brand-accent)]", "w-6");
+          dot.classList.add("bg-[var(--border-strong)]");
+        }
+      });
+    };
+
+    prevBtn.addEventListener("click", () => goTo(current - 1));
+    nextBtn.addEventListener("click", () => goTo(current + 1));
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => goTo(i));
+    });
+  };
+
+  document.addEventListener("astro:page-load", initCarousel);
+</script>

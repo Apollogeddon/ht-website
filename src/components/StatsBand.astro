@@ -1,0 +1,79 @@
+---
+interface Stat {
+  value: number;
+  suffix?: string;
+  label: string;
+}
+
+interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="section-padding-sm bg-[var(--bg-muted)]">
+  <div class="container-site">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6" id="stats-band">
+      {
+        stats.map((stat) => (
+          <div class="card-stat scroll-reveal" data-value={stat.value} data-suffix={stat.suffix ?? ""}>
+            <div
+              class="text-gradient-brand text-4xl lg:text-5xl font-extrabold mb-2 stat-number"
+              data-target={stat.value}
+              data-suffix={stat.suffix ?? ""}
+            >
+              0{stat.suffix ?? ""}
+            </div>
+            <div class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide">
+              {stat.label}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const initStats = () => {
+    const band = document.getElementById("stats-band");
+    if (!band) return;
+
+    const counters = band.querySelectorAll<HTMLElement>(".stat-number");
+    let started = false;
+
+    const runCountUp = () => {
+      counters.forEach((el) => {
+        const target = parseInt(el.dataset.target ?? "0", 10);
+        const suffix = el.dataset.suffix ?? "";
+        const duration = 1500;
+        const startTime = performance.now();
+
+        const tick = (now: number) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(ease * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !started) {
+          started = true;
+          runCountUp();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(band);
+  };
+
+  document.addEventListener("astro:page-load", initStats);
+</script>

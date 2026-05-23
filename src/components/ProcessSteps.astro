@@ -1,0 +1,40 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+
+interface Step {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  steps: Step[];
+}
+
+const { eyebrow, title, steps } = Astro.props;
+---
+
+<section class="section-padding bg-[var(--bg-secondary)]">
+  <div class="container-site">
+    <div class="mb-12">
+      <SectionHeading eyebrow={eyebrow} title={title} align="center" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+      {
+        steps.map((step, i) => (
+          <div
+            class="card-base p-8 scroll-reveal relative"
+            style={`--delay: ${i * 120}ms`}
+          >
+            <div class="text-gradient-brand text-6xl font-extrabold leading-none mb-4 select-none">
+              {String(i + 1).padStart(2, "0")}
+            </div>
+            <h3 class="text-xl font-bold text-[var(--text-primary)] mb-3">{step.title}</h3>
+            <p class="text-[var(--text-secondary)] leading-relaxed text-sm">{step.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+interface Props {
+  name: string;
+  role?: string;
+  src?: string;
+  size?: "sm" | "md" | "lg";
+}
+
+const { name, role, src, size = "md" } = Astro.props;
+
+const sizeClasses: Record<string, string> = {
+  sm: "w-16 h-16 text-lg",
+  md: "w-24 h-24 text-2xl",
+  lg: "w-32 h-32 text-3xl",
+};
+
+const initials = name
+  .split(" ")
+  .map((word) => word[0])
+  .join("")
+  .toUpperCase()
+  .slice(0, 2);
+---
+
+<div class="flex flex-col items-center gap-3">
+  {
+    src ? (
+      <img
+        src={src}
+        alt={name}
+        class={`${sizeClasses[size]} rounded-full object-cover border-4 border-[var(--bg-secondary)] shadow-md`}
+      />
+    ) : (
+      <div
+        class={`${sizeClasses[size]} rounded-full bg-brand-gradient flex items-center justify-center font-extrabold text-white border-4 border-[var(--bg-secondary)] shadow-md flex-shrink-0`}
+      >
+        {initials}
+      </div>
+    )
+  }
+  <div class="text-center">
+    <div class="font-bold text-[var(--text-primary)]">{name}</div>
+    {role && <div class="text-sm text-[var(--brand-accent)] font-semibold uppercase tracking-wide">{role}</div>}
+  </div>
+</div>
