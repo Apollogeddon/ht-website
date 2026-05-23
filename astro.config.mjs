@@ -7,11 +7,11 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://ht.apollogeddon.com",
-	base: "/",
-	vite: {
-		plugins: [tailwindcss()],
-	},
+  site: "https://ht.apollogeddon.com",
+  base: "/",
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
-	integrations: [react()],
+  integrations: [react()],
 });

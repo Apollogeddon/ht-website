@@ -9,10 +9,10 @@ const testimonialsEntries = await getCollection("testimonials");
 
 // Pre-render content so we don't have async logic in the template loop
 const testimonials = await Promise.all(
-	testimonialsEntries.map(async (entry) => {
-		const { Content } = await entry.render();
-		return { entry, Content };
-	}),
+  testimonialsEntries.map(async (entry) => {
+    const { Content } = await entry.render();
+    return { entry, Content };
+  }),
 );
 ---
 
