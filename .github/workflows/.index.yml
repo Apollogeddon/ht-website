@@ -18,10 +18,12 @@ jobs:
       packages: read
     secrets: inherit
 
-  release:
+  deploy:
     needs: testing
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    uses: apollogeddon/forgejs/.github/workflows/version.yml@main
+    uses: apollogeddon/forgejs/.github/workflows/website.yml@main
+    with:
+      artifact_name: 'dist'
     permissions:
       contents: write
       pull-requests: write
