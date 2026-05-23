@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  testing:
+    uses: apollogeddon/forgejs/.github/workflows/testing.yml@main
+    with:
+      node_version: '22'
+    secrets: inherit
+
+  version:
+    needs: testing
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    uses: apollogeddon/forgejs/.github/workflows/version.yml@main
+    permissions:
+      contents: write
+      pull-requests: write
+    secrets: inherit
