@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import { DATE_LOCALE, DATE_OPTIONS, ROUTES, UI_LABELS } from "../../consts";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { ICONS } from "../../styles";
@@ -7,14 +7,14 @@ import { ICONS } from "../../styles";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: post,
   }));
 }
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <MainLayout title={post.data.title} description={post.data.description}>
@@ -28,7 +28,7 @@ const { Content } = await post.render();
             </p>
             <h1
               class="text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] leading-tight mb-6"
-              transition:name={`title-${post.slug}`}
+              transition:name={`title-${post.id}`}
             >
               {post.data.title}
             </h1>

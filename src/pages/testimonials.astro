@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import CtaSection from "../components/CtaSection.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import StatsBand from "../components/StatsBand.astro";
@@ -9,17 +9,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 const testimonialsEntries = await getCollection("testimonials");
 
-const testimonials = await Promise.all(
-  testimonialsEntries.map(async (entry) => {
-    const { Content } = await entry.render();
-    return { entry, Content };
-  }),
-);
-
-const testimonialData = testimonials.map(({ entry }) => ({
+const testimonialData = testimonialsEntries.map((entry) => ({
   author: entry.data.author,
   role: entry.data.role,
-  body: entry.body.trim().replace(/^"|"$/g, ""),
+  body: entry.body?.trim().replace(/^"|"$/g, "") || "",
 }));
 ---
 

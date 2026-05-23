@@ -38,13 +38,13 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
                 data-title={post.data.title.toLowerCase()}
                 data-desc={post.data.description.toLowerCase()}
               >
-                <a href={`${ROUTES.BLOG}/${post.slug}`} class="block">
+                <a href={`${ROUTES.BLOG}/${post.id}`} class="block">
                   <p class="text-sm text-[var(--text-secondary)] opacity-80 mb-2">
                     {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
                   </p>
                   <h2
                     class="text-2xl font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors mb-4"
-                    transition:name={`title-${post.slug}`}
+                    transition:name={`title-${post.id}`}
                   >
                     {post.data.title}
                   </h2>
