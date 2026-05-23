@@ -38,8 +38,8 @@
   --border-subtle: #e8e3dd;
   --border-strong: #d6cfc7;
 
-  --brand-accent: var(--color-brand-500);
-  --brand-accent-hover: var(--color-brand-600);
+  --brand-accent: var(--color-brand-600);
+  --brand-accent-hover: var(--color-brand-700);
   --brand-light: var(--color-brand-50);
 
   --header-bg: rgba(225, 218, 208, 0.92);
