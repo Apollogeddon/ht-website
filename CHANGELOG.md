@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/Apollogeddon/ht-website/compare/v1.2.1...v1.2.2) (2026-05-23)
+
+
+### Bug Fixes
+
+* bumped deps, and fixed conflicts ([a6563f7](https://github.com/Apollogeddon/ht-website/commit/a6563f7739610cc46d4c523cfe23a6a85211a402))
+
 ## [1.2.1](https://github.com/Apollogeddon/ht-website/compare/v1.2.0...v1.2.1) (2026-05-23)
 
 
