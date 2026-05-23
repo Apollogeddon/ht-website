@@ -10,6 +10,7 @@ node_modules/
 # testing output
 playwright-*
 test-results
+junit-report.xml
 
 # logs
 npm-debug.log*
