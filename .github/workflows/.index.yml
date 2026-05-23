@@ -32,4 +32,3 @@ jobs:
       pull-requests: write
       pages: write
       id-token: write
-    secrets: inherit

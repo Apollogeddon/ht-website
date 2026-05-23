@@ -4,7 +4,14 @@ import { BLOG_CONTENT, DATE_LOCALE, DATE_OPTIONS, ROUTES, UI_LABELS } from "../.
 import MainLayout from "../../layouts/MainLayout.astro";
 import { ICONS } from "../../styles";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const allPosts = await getCollection("blog");
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const postsWithMeta = posts.map((post) => {
+  const wordCount = post.body?.split(/\s+/).filter(Boolean).length ?? 0;
+  const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+  return { post, readingTime };
+});
 ---
 
 <MainLayout title="Blog">
@@ -32,7 +39,7 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
 
         <div id="posts-container" class="space-y-6">
           {
-            posts.map((post) => (
+            postsWithMeta.map(({ post, readingTime }) => (
               <article
                 class="group post-item card-interactive p-8"
                 data-title={post.data.title.toLowerCase()}
@@ -41,6 +48,8 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
                 <a href={`${ROUTES.BLOG}/${post.id}`} class="block">
                   <p class="text-sm text-[var(--text-secondary)] opacity-80 mb-2">
                     {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
+                    <span class="mx-2">·</span>
+                    {readingTime} min read
                   </p>
                   <h2
                     class="text-2xl font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors mb-4"

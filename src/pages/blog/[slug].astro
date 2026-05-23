@@ -15,17 +15,37 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await render(post);
+const readingTime = Math.max(1, Math.ceil((post.body?.split(/\s+/).filter(Boolean).length ?? 0) / 200));
 ---
 
 <MainLayout title={post.data.title} description={post.data.description}>
-  <article class="section-padding">
+  <div class="section-padding">
     <div class="container-site">
       <div class="max-w-4xl mx-auto">
-        <div class="card-base p-10">
+
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
+            <li>
+              <a href={ROUTES.HOME} class="hover:text-[var(--brand-accent)] transition-colors">Home</a>
+            </li>
+            <li aria-hidden="true" class="opacity-40">/</li>
+            <li>
+              <a href={ROUTES.BLOG} class="hover:text-[var(--brand-accent)] transition-colors">Blog</a>
+            </li>
+            <li aria-hidden="true" class="opacity-40">/</li>
+            <li class="text-[var(--text-primary)] font-medium truncate max-w-xs">{post.data.title}</li>
+          </ol>
+        </nav>
+
+        <article class="card-base p-10">
           <header class="mb-12 border-b border-[var(--border-subtle)] pb-12">
-            <p class="text-[var(--brand-accent)] font-bold mb-4">
-              {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
-            </p>
+            <div class="flex items-center gap-3 mb-4 text-sm text-[var(--text-secondary)]">
+              <time class="text-[var(--brand-accent)] font-bold">
+                {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
+              </time>
+              <span class="opacity-40">·</span>
+              <span>{readingTime} min read</span>
+            </div>
             <h1
               class="text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] leading-tight mb-6"
               transition:name={`title-${post.id}`}
@@ -49,8 +69,9 @@ const { Content } = await render(post);
               {UI_LABELS.backToBlog}
             </a>
           </div>
-        </div>
+        </article>
+
       </div>
     </div>
-  </article>
+  </div>
 </MainLayout>

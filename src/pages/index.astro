@@ -3,20 +3,24 @@ import { getCollection } from "astro:content";
 import CtaSection from "../components/CtaSection.astro";
 import FeatureSection from "../components/FeatureSection.astro";
 import Hero from "../components/Hero.astro";
+import HomepageTestimonial from "../components/HomepageTestimonial.astro";
 import LatestPosts from "../components/LatestPosts.astro";
 import ProcessSteps from "../components/ProcessSteps.astro";
 import QuotesSection from "../components/QuotesSection.astro";
 import ServiceGrid from "../components/ServiceGrid.astro";
 import StatsBand from "../components/StatsBand.astro";
+import TrustedBy from "../components/TrustedBy.astro";
 import {
   HERO_CONTENT,
   HOME_CONTENT,
   HOME_CTA,
   HOME_SERVICES,
+  HOME_TESTIMONIAL,
   PROCESS_STEPS,
   QUOTES,
   ROUTES,
   STATS,
+  TRUSTED_ORGS,
   WHY_CHOOSE_US,
 } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
@@ -38,6 +42,8 @@ const recentPosts = (await getCollection("blog"))
 
   <StatsBand stats={STATS} />
 
+  <TrustedBy orgs={TRUSTED_ORGS} />
+
   <FeatureSection
     eyebrow={WHY_CHOOSE_US.eyebrow}
     title={WHY_CHOOSE_US.title}
@@ -54,6 +60,12 @@ const recentPosts = (await getCollection("blog"))
   />
 
   <ProcessSteps eyebrow={HOME_CONTENT.processEyebrow} title={HOME_CONTENT.processTitle} steps={PROCESS_STEPS} />
+
+  <HomepageTestimonial
+    quote={HOME_TESTIMONIAL.quote}
+    author={HOME_TESTIMONIAL.author}
+    role={HOME_TESTIMONIAL.role}
+  />
 
   <LatestPosts posts={recentPosts} />
 

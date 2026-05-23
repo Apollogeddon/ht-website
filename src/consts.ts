@@ -50,11 +50,10 @@ export const NAVIGATION = [
     label: "About Us",
     href: ROUTES.ABOUT,
     children: [
-      { label: "Company Overview", href: ROUTES.ABOUT },
-      { label: "Our Values", href: ROUTES.ABOUT },
-      { label: "Profiles", href: ROUTES.ABOUT },
+      { label: "Company Overview", href: `${ROUTES.ABOUT}#overview` },
+      { label: "Our Values", href: `${ROUTES.ABOUT}#values` },
+      { label: "Profiles", href: `${ROUTES.ABOUT}#team` },
       { label: "Policies", href: ROUTES.POLICIES },
-      { label: "Latest Information", href: ROUTES.BLOG },
     ],
   },
 ];
@@ -78,6 +77,15 @@ export const QUOTES = [
   },
 ];
 
+export const HOME_TESTIMONIAL = {
+  quote:
+    "Tina gave me a much clearer understanding of what makes good organisations work well — I'm very glad I asked for her help!",
+  author: "Sara Blunt",
+  role: "CEO, Kalyra Communities",
+};
+
+export const TRUSTED_ORGS = ["Kalyra Communities"];
+
 export const COMPANY_VALUES = [
   {
     title: "Value to Customers",
@@ -97,6 +105,7 @@ export const PRINCIPAL_CONSULTANT = {
   name: "Tina Hudson",
   role: "Principal Consultant",
   bio: "Tina is a seasoned human resources and organizational design professional with extensive experience in helping businesses optimize their people resources.",
+  linkedin: "",
 };
 
 export const SOLUTIONS = [
@@ -162,7 +171,7 @@ export const HERO_CONTENT = {
   title: "Business success through",
   titleHighlight: " people",
   description:
-    "At Harnessing Talent, we help businesses achieve success through the best utilisation of their people resources. We work with you to improve employee engagement and trust through practical, outcome-focused solutions.",
+    "We help Australian businesses build better organisations — through strategic HR, clear accountability, and the right people in the right roles.",
   primaryButton: "Get in Touch",
   secondaryButton: "Our Solutions",
 };
