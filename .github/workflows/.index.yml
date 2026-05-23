@@ -1,4 +1,4 @@
-name: Workflow Index
+name: Index
 
 on:
   push:
@@ -11,13 +11,19 @@ jobs:
     uses: apollogeddon/forgejs/.github/workflows/testing.yml@main
     with:
       node_version: '22'
-    secrets: inherit
-
-  version:
-    needs: testing
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    uses: apollogeddon/forgejs/.github/workflows/version.yml@main
+      working_directory: '.'
     permissions:
       contents: write
       pull-requests: write
+    secrets: inherit
+
+  release:
+    needs: testing
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/release.yaml
+    permissions:
+      contents: write
+      pull-requests: write
+      pages: write
+      id-token: write
     secrets: inherit
