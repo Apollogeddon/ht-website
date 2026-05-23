@@ -1,5 +1,45 @@
 # Changelog
 
+## [1.2.0](https://github.com/Apollogeddon/ht-website/compare/v1.1.2...v1.2.0) (2026-05-23)
+
+
+### Features
+
+* add new UI components ([b22189e](https://github.com/Apollogeddon/ht-website/commit/b22189ea30e987f559cb51c009c357f57b876667))
+* modernise pages with new components and layout ([671903d](https://github.com/Apollogeddon/ht-website/commit/671903d762d96d15b3390a8c692c3dc6128363d8))
+* rebuild design system with CSS component classes ([5608b27](https://github.com/Apollogeddon/ht-website/commit/5608b27575d790d171e4eee933289f0e40c48e11))
+
+
+### Bug Fixes
+
+* added env for type check astro ([95489c5](https://github.com/Apollogeddon/ht-website/commit/95489c573528fa78437cf5172d33de40d0f80413))
+* bumped forgejs library ([d94bede](https://github.com/Apollogeddon/ht-website/commit/d94bedea0ebfdf717d7a0e0df69789c88a7f65d7))
+* bumped the forgejs library ([6478408](https://github.com/Apollogeddon/ht-website/commit/6478408835ba47618675e9c8b35cc3482eb7bb60))
+* corrected issues with css tagging for dark/light mode ([a2debd6](https://github.com/Apollogeddon/ht-website/commit/a2debd66c468d6441f09040292d7916e11d5aae3))
+* **deps:** bump @biomejs/biome in the dependencies group ([73a4d0e](https://github.com/Apollogeddon/ht-website/commit/73a4d0ee1bd7241d68796e5a4fc4472738300f67))
+* **deps:** bump @biomejs/biome in the dependencies group ([b2f31c2](https://github.com/Apollogeddon/ht-website/commit/b2f31c2c746a324af7df08e2056b81a9e83cc493))
+* **deps:** bump @biomejs/biome in the dependencies group ([760251f](https://github.com/Apollogeddon/ht-website/commit/760251f4075956dc4d6181ab653d15d4171549bd))
+* **deps:** bump @playwright/test in the dependencies group ([aaef7e0](https://github.com/Apollogeddon/ht-website/commit/aaef7e018ed7a9201d902728e8be3512f349d8a1))
+* **deps:** bump @types/node in the dependencies group ([b10be79](https://github.com/Apollogeddon/ht-website/commit/b10be79989e255619792bdb9ad4a6a95d718b77c))
+* **deps:** bump @types/node in the dependencies group ([761af83](https://github.com/Apollogeddon/ht-website/commit/761af8399d56c6db0c1c2097a8f3681604e48031))
+* **deps:** bump @types/node in the dependencies group ([7999b42](https://github.com/Apollogeddon/ht-website/commit/7999b42d3abd4ad2884a2d329b8adf2d3527a0c1))
+* **deps:** bump @types/node in the dependencies group ([ec41be0](https://github.com/Apollogeddon/ht-website/commit/ec41be0ffca3a17e3f39908745d5da98c3062a40))
+* **deps:** bump @types/node in the dependencies group ([b7eb3d1](https://github.com/Apollogeddon/ht-website/commit/b7eb3d14f0062b1ba2c6d93527255f9b5ff8b4b8))
+* **deps:** bump @types/react in the dependencies group ([b41171a](https://github.com/Apollogeddon/ht-website/commit/b41171a80e52e742e46432ef0b250d4154217a3c))
+* **deps:** bump the dependencies group across 1 directory with 4 updates ([15b9f9c](https://github.com/Apollogeddon/ht-website/commit/15b9f9c1161d185d5a2b875dbb7b5f8498c35061))
+* **deps:** bump the dependencies group across 1 directory with 5 updates ([6155cb3](https://github.com/Apollogeddon/ht-website/commit/6155cb394ca1f11eb83ff34287178e1816f5ef2f))
+* **deps:** bump the dependencies group with 2 updates ([0c8a284](https://github.com/Apollogeddon/ht-website/commit/0c8a2847780db5069ef59552c29f547a0cff9122))
+* **deps:** bump the dependencies group with 2 updates ([e5c3cb1](https://github.com/Apollogeddon/ht-website/commit/e5c3cb116d7b6da80dc41f39fd252d46f0c004b2))
+* **deps:** bump the dependencies group with 2 updates ([4062194](https://github.com/Apollogeddon/ht-website/commit/40621940a9ae0be6e13459b920e88add2c1504e8))
+* **deps:** bump the dependencies group with 2 updates ([e8a22ad](https://github.com/Apollogeddon/ht-website/commit/e8a22ad71ab980c46efc22acdbe106ae0f5140e9))
+* **deps:** bump the dependencies group with 2 updates ([6b7e0d4](https://github.com/Apollogeddon/ht-website/commit/6b7e0d455488f1bdb291832895888ed70a4239b5))
+* **deps:** bump the dependencies group with 2 updates ([bdaa454](https://github.com/Apollogeddon/ht-website/commit/bdaa454ae2641419bed3489e525b3439f356ae0b))
+* fixed the rendering issues with the md based blogs ([19ec5d2](https://github.com/Apollogeddon/ht-website/commit/19ec5d2416b9d3a52b2f771fbb96d57666d6c81e))
+* lint, tests, and accessibility ([22b74d7](https://github.com/Apollogeddon/ht-website/commit/22b74d7cce3a547e371550315a431084ea2d589f))
+* overhaul dark/light theme toggle ([0e80806](https://github.com/Apollogeddon/ht-website/commit/0e80806bf2bd15cc3a0f9f180787c0cd3e1a4ee4))
+* updated ci to use the forgejs workflows ([ea54dcd](https://github.com/Apollogeddon/ht-website/commit/ea54dcdc418fef2545bfd9090796ed65f08f7aa9))
+* updated the colour contrast for testing ([e515a0b](https://github.com/Apollogeddon/ht-website/commit/e515a0b6364dcf05650d1bacd659be4951b9aa8e))
+
 ## [1.1.2](https://github.com/Apollogeddon/ht-website/compare/v1.1.1...v1.1.2) (2026-01-29)
 
 
