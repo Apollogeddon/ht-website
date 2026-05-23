@@ -20,16 +20,16 @@
   "devDependencies": {
     "@apollogeddon/forgejs": "2.0.2",
     "@astrojs/react": "^4.4.2",
-    "@axe-core/playwright": "^4.11.1",
-    "@playwright/test": "^1.58.2",
-    "@tailwindcss/vite": "^4.2.1",
+    "@axe-core/playwright": "^4.11.3",
+    "@playwright/test": "^1.60.0",
+    "@tailwindcss/vite": "^4.3.0",
     "@types/node": "^25.4.0",
-    "@types/react": "^19.2.14",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.18.0",
-    "markdownlint-cli2": "^0.21.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "markdownlint-cli2": "^0.22.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "tailwindcss": "^4.1.18"
   },
   "private": true
