@@ -1,102 +1,104 @@
 ---
-import { CLASSES } from "../classes";
-import {
-  ABOUT_CONTENT,
-  COMPANY_OVERVIEW,
-  COMPANY_VALUES,
-  CONTACT_INFO,
-  PRINCIPAL_CONSULTANT,
-  ROUTES,
-  SITE_TITLE,
-  UI_LABELS,
-} from "../consts";
+import Avatar from "../components/Avatar.astro";
+import CtaSection from "../components/CtaSection.astro";
+import FeatureSection from "../components/FeatureSection.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { ABOUT_CONTENT, ABOUT_CTA, COMPANY_OVERVIEW, COMPANY_VALUES, PRINCIPAL_CONSULTANT, ROUTES } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
-import { COLORS, ICONS } from "../styles";
+import { ICONS } from "../styles";
 ---
 
 <MainLayout title={ABOUT_CONTENT.title}>
-  {/* Header Section */}
-  <section     class={CLASSES.layout.hero}
-    style={{ "--hero-dark-bg": COLORS.theme.hero.darkBg }}>
-    <div class={CLASSES.layout.container}>
-      <div class={CLASSES.layout.containerNarrow}>
-        <h1 class={`${CLASSES.typography.h1Page} ${CLASSES.visual.m6}`}>{ABOUT_CONTENT.title}</h1>
-        <p class={CLASSES.typography.lead}>
-          {ABOUT_CONTENT.intro}
+  <Hero
+    title={ABOUT_CONTENT.title}
+    description={ABOUT_CONTENT.intro}
+    primaryButtonText={ABOUT_CONTENT.primaryButton}
+    secondaryButtonText={ABOUT_CONTENT.secondaryButton}
+  />
+
+  <section class="section-padding bg-[var(--bg-muted)] scroll-reveal">
+    <div class="container-site">
+      <div class="max-w-5xl mx-auto">
+        <SectionHeading eyebrow={COMPANY_OVERVIEW.eyebrow} title={COMPANY_OVERVIEW.title} />
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-10 mt-6">
+          {COMPANY_OVERVIEW.description}
         </p>
-      </div>
-    </div>
-  </section>
-
-  {/* Overview Section */}
-  <section class={CLASSES.layout.sectionMuted}>
-    <div class={CLASSES.layout.container}>
-      <div class={CLASSES.layout.containerNarrow}>
-        <div class="grid grid-cols-1 gap-12">
-          <div>
-            <h2 class={`${CLASSES.typography.h2Page} mb-8`}>{COMPANY_OVERVIEW.title}</h2>
-            <p class={`${CLASSES.typography.body} ${CLASSES.visual.m12}`}>
-              {COMPANY_OVERVIEW.description}
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-              {COMPANY_OVERVIEW.points.map((point) => (
-                <div class="flex items-start gap-3">
-                  <div class={CLASSES.visual.checkIconWrapper}>
-                    <svg xmlns="http://www.w3.org/2000/svg" class={`${CLASSES.visual.svg4} text-brand-600 dark:text-brand-400`} viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d={ICONS.check} clip-rule="evenodd" />
-                    </svg>
-                  </div>
-                  <span class={CLASSES.typography.listItemLabel}>{point}</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+          {
+            COMPANY_OVERVIEW.points.map((point) => (
+              <div class="flex items-start gap-3">
+                <div class="mt-1 bg-[var(--brand-light)] p-1 rounded-full flex-shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 text-[var(--brand-accent)]"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path fill-rule="evenodd" d={ICONS.check} clip-rule="evenodd" />
+                  </svg>
                 </div>
-              ))}
-            </div>
-          </div>
+                <span class="text-[var(--text-primary)] leading-tight font-medium">{point}</span>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
   </section>
 
-  {/* Values Section */}
-  <section class={CLASSES.layout.sectionWhite}>
-    <div class={CLASSES.layout.container}>
-      <div class={CLASSES.layout.containerNarrow}>
-        <h2 class={`${CLASSES.typography.h2Page} ${CLASSES.visual.m12} text-center`}>{ABOUT_CONTENT.valuesTitle}</h2>
-        <div class={CLASSES.layout.grid3}>
-          {COMPANY_VALUES.map((value) => (
-            <div class="space-y-4">
-              <div class={CLASSES.visual.accentLine}></div>
-              <h3 class={CLASSES.typography.h3}>{value.title}</h3>
-              <p class="text-zinc-600 dark:text-zinc-400 italic text-sm leading-relaxed">{value.description}</p>
-            </div>
-          ))}
+  <FeatureSection
+    eyebrow={ABOUT_CONTENT.valuesEyebrow}
+    title={ABOUT_CONTENT.valuesTitle}
+    paragraphs={[]}
+  />
+
+  <section class="section-padding bg-[var(--bg-secondary)] scroll-reveal">
+    <div class="container-site">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {
+            COMPANY_VALUES.map((value, i) => (
+              <div class="card-base p-8 scroll-reveal" style={`--delay: ${i * 100}ms`}>
+                <div class="h-1 w-12 bg-brand-gradient rounded-full mb-5"></div>
+                <h3 class="text-xl font-bold text-[var(--text-primary)] mb-3">{value.title}</h3>
+                <p class="text-[var(--text-secondary)] italic text-sm leading-relaxed">{value.description}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
   </section>
 
-  {/* Profile Section */}
-  <section class={CLASSES.layout.sectionMuted}>
-    <div class={CLASSES.layout.container}>
-      <div class={CLASSES.layout.containerNarrow}>
-        <div class="flex flex-col md:flex-row gap-12 items-center md:items-start pt-8">
-          <div class="relative">
-             <div class={CLASSES.visual.avatarPlaceholder}>
-                <span class={CLASSES.visual.placeholderText}>{UI_LABELS.photoPlaceholder}</span>
-             </div>
-             <div class={CLASSES.visual.avatarAccent}></div>
+  <section class="section-padding bg-[var(--bg-muted)] scroll-reveal">
+    <div class="container-site">
+      <div class="max-w-5xl mx-auto">
+        <SectionHeading eyebrow={ABOUT_CONTENT.profilesEyebrow} title={ABOUT_CONTENT.profilesTitle} />
+        <div class="mt-10 flex flex-col md:flex-row gap-10 items-center md:items-start">
+          <div class="flex-shrink-0">
+            <Avatar
+              name={PRINCIPAL_CONSULTANT.name}
+              role={PRINCIPAL_CONSULTANT.role}
+              size="lg"
+            />
           </div>
           <div class="flex-grow">
-            <h2 class={`${CLASSES.typography.h2Page} mb-2`}>{PRINCIPAL_CONSULTANT.name}</h2>
-            <p class={CLASSES.typography.roleBadge}>{PRINCIPAL_CONSULTANT.role}</p>
-            <div class="space-y-6">
-              <p class={CLASSES.typography.body}>
-                {PRINCIPAL_CONSULTANT.bio} 
-              </p>
-            </div>
+            <p class="text-lg text-[var(--text-secondary)] leading-relaxed">
+              {PRINCIPAL_CONSULTANT.bio}
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
-</MainLayout>
+
+  <CtaSection
+    title={ABOUT_CTA.title}
+    description={ABOUT_CTA.description}
+    primaryLabel={ABOUT_CTA.primaryLabel}
+    primaryHref={ROUTES.CONTACT}
+    secondaryLabel={ABOUT_CTA.secondaryLabel}
+    secondaryHref={ROUTES.SOLUTIONS}
+  />
 </MainLayout>

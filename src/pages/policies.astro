@@ -1,41 +1,46 @@
 ---
-import { CLASSES } from "../classes";
-import { CONTACT_INFO, POLICIES_CONTENT, ROUTES, SITE_TITLE } from "../consts";
+import SectionHeading from "../components/SectionHeading.astro";
+import { CONTACT_INFO, POLICIES_CONTENT, SITE_TITLE } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title={POLICIES_CONTENT.title}>
-  <div class={CLASSES.layout.pagePadding}>
-    <div class={CLASSES.layout.container}>
-      <div class={`${CLASSES.layout.containerNarrow} ${CLASSES.prose.base} ${CLASSES.layout.stackMedium}`}>
-        <h1>{POLICIES_CONTENT.privacyTitle}</h1>
-        
-        <p>
-          {SITE_TITLE} is committed to protecting the privacy of personal information obtained through its operations as a professional services organisation. {SITE_TITLE} is committed to compliance with the Privacy Act 1988 (Cth) (Privacy Act), including the Australian Privacy Principles (APPs) and any relevant privacy code registered under the Privacy Act.
-        </p>
+  <div class="section-padding">
+    <div class="container-site">
+      <div class="max-w-5xl mx-auto">
+        <SectionHeading eyebrow={POLICIES_CONTENT.eyebrow} title={POLICIES_CONTENT.privacyTitle} />
 
-        {POLICIES_CONTENT.sections.map((section) => (
-          <div>
-            <h2>{section.title}</h2>
-            <p>{section.content}</p>
-            {section.list && (
-              <ul class={CLASSES.layout.navVertical}>
-                {section.list.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            )}
+        <div class="mt-8 space-y-6 text-[var(--text-secondary)] text-lg leading-relaxed">
+          <p>
+            {SITE_TITLE} is committed to protecting the privacy of personal information obtained through its operations as a professional services organisation. {SITE_TITLE} is committed to compliance with the Privacy Act 1988 (Cth) (Privacy Act), including the Australian Privacy Principles (APPs) and any relevant privacy code registered under the Privacy Act.
+          </p>
+
+          {
+            POLICIES_CONTENT.sections.map((section) => (
+              <div class="border-l-2 border-[var(--brand-accent)] pl-6 mb-8">
+                <h2 class="text-xl font-bold text-[var(--text-primary)] mb-3">{section.title}</h2>
+                <p>{section.content}</p>
+                {section.list && (
+                  <ul class="mt-3 space-y-1 list-disc list-inside">
+                    {section.list.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))
+          }
+
+          <div class="border-l-2 border-[var(--brand-accent)] pl-6 mb-8">
+            <h2 class="text-xl font-bold text-[var(--text-primary)] mb-3">{POLICIES_CONTENT.privacyEnquiries}</h2>
+            <p>{POLICIES_CONTENT.privacyEnquiriesText}</p>
+            <p class="mt-3">
+              <strong class="text-[var(--text-primary)]">{SITE_TITLE}</strong><br />
+              Email: <a href={`mailto:${CONTACT_INFO.email}`} class="text-[var(--brand-accent)] hover:underline">{CONTACT_INFO.email}</a><br />
+              Phone: {CONTACT_INFO.phone}
+            </p>
           </div>
-        ))}
-
-        <h2>{POLICIES_CONTENT.privacyEnquiries}</h2>
-        <p>{POLICIES_CONTENT.privacyEnquiriesText}</p>
-        <p>
-          <strong>{SITE_TITLE}</strong><br/>
-          Email: <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a><br/>
-          Phone: {CONTACT_INFO.phone}
-        </p>
-
+        </div>
       </div>
     </div>
   </div>

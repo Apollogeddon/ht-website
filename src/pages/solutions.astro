@@ -1,40 +1,42 @@
 ---
-import { CLASSES } from "../classes";
-import { ROUTES, SOLUTIONS, SOLUTIONS_CONTENT, SOLUTIONS_INTRO } from "../consts";
+import CtaSection from "../components/CtaSection.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import SolutionCard from "../components/SolutionCard.astro";
+import { ROUTES, SOLUTIONS, SOLUTIONS_CONTENT, SOLUTIONS_CTA, SOLUTIONS_INTRO } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
-import { ICONS } from "../styles";
 ---
 
 <MainLayout title={SOLUTIONS_CONTENT.title}>
-  <div class={CLASSES.layout.pagePadding}>
-    <div class={CLASSES.layout.container}>
-      <div class="max-w-5xl mx-auto">
-        <h1 class={`${CLASSES.typography.h1Medium} mb-6 text-center`}>{SOLUTIONS_CONTENT.title}</h1>
-        <p class="text-xl text-zinc-600 dark:text-zinc-400 text-center mb-16 max-w-3xl mx-auto">
-          {SOLUTIONS_INTRO}
-        </p>
+  <div class="section-padding">
+    <div class="container-site">
+      <div class="mb-12 text-center">
+        <SectionHeading
+          eyebrow={SOLUTIONS_CONTENT.eyebrow}
+          title={SOLUTIONS_CONTENT.title}
+          description={SOLUTIONS_INTRO}
+          align="center"
+        />
+      </div>
 
-        <div class={CLASSES.layout.grid2}>
-          {SOLUTIONS.map((item) => (
-            <div class={`${CLASSES.card.base} ${CLASSES.card.hover} p-8`}>
-              <h2 class="text-2xl font-bold text-zinc-900 dark:text-white mb-4">{item.title}</h2>
-              <p class="text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
-                {item.description}
-              </p>
-              <ul class={CLASSES.layout.navVertical}>
-                {item.features.map((feature) => (
-                  <li class={CLASSES.typography.listItem}>
-                    <svg xmlns="http://www.w3.org/2000/svg" class={CLASSES.visual.checkIcon} viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d={ICONS.check} clip-rule="evenodd" />
-                    </svg>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {
+          SOLUTIONS.map((item, i) => (
+            <SolutionCard
+              title={item.title}
+              description={item.description}
+              features={item.features}
+              index={i}
+            />
+          ))
+        }
       </div>
     </div>
   </div>
+
+  <CtaSection
+    title={SOLUTIONS_CTA.title}
+    description={SOLUTIONS_CTA.description}
+    primaryLabel={SOLUTIONS_CTA.primaryLabel}
+    primaryHref={ROUTES.CONTACT}
+  />
 </MainLayout>

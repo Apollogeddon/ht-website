@@ -1,6 +1,5 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import { CLASSES } from "../../classes";
 import { DATE_LOCALE, DATE_OPTIONS, ROUTES, UI_LABELS } from "../../consts";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { ICONS } from "../../styles";
@@ -19,29 +18,32 @@ const { Content } = await post.render();
 ---
 
 <MainLayout title={post.data.title} description={post.data.description}>
-  <article class={CLASSES.layout.pagePadding}>
-    <div class={CLASSES.layout.container}>
-      <div class={CLASSES.layout.containerArticle}>
-        <div class={`${CLASSES.card.base} ${CLASSES.card.padded}`}>
-          <header class={`${CLASSES.visual.m12} border-b border-zinc-100 dark:border-zinc-700 pb-12`}>
-            <p class="text-brand-500 dark:text-brand-400 font-bold mb-4">
+  <article class="section-padding">
+    <div class="container-site">
+      <div class="max-w-4xl mx-auto">
+        <div class="card-base p-10">
+          <header class="mb-12 border-b border-[var(--border-subtle)] pb-12">
+            <p class="text-[var(--brand-accent)] font-bold mb-4">
               {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
             </p>
-            <h1 class={`${CLASSES.typography.h1Page} ${CLASSES.visual.m6}`} transition:name={`title-${post.slug}`}>
+            <h1
+              class="text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] leading-tight mb-6"
+              transition:name={`title-${post.slug}`}
+            >
               {post.data.title}
             </h1>
-            <p class={`${CLASSES.typography.lead} italic`}>
+            <p class="text-xl text-[var(--text-secondary)] leading-relaxed italic">
               {post.data.description}
             </p>
           </header>
 
-          <div class={CLASSES.prose.base}>
+          <div class="prose prose-lg prose-zinc max-w-none text-[var(--text-secondary)] prose-headings:text-[var(--text-primary)] prose-a:text-[var(--brand-accent)]">
             <Content />
           </div>
 
-          <div class="mt-16 pt-8 border-t border-zinc-100 dark:border-zinc-700">
-            <a href={ROUTES.BLOG} class={`${CLASSES.typography.action} gap-2`}>
-              <svg xmlns="http://www.w3.org/2000/svg" class={CLASSES.visual.svg4} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="mt-16 pt-8 border-t border-[var(--border-subtle)]">
+            <a href={ROUTES.BLOG} class="btn-ghost gap-2 pl-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.arrowLeft} />
               </svg>
               {UI_LABELS.backToBlog}

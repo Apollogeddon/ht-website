@@ -1,46 +1,52 @@
 ---
 import { getCollection } from "astro:content";
-import { CLASSES } from "../classes";
-import { ROUTES, TESTIMONIALS_CONTENT } from "../consts";
+import CtaSection from "../components/CtaSection.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import StatsBand from "../components/StatsBand.astro";
+import TestimonialCarousel from "../components/TestimonialCarousel.astro";
+import { ROUTES, STATS, TESTIMONIALS_CONTENT, TESTIMONIALS_CTA } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
-import { ICONS } from "../styles";
 
 const testimonialsEntries = await getCollection("testimonials");
 
-// Pre-render content so we don't have async logic in the template loop
 const testimonials = await Promise.all(
   testimonialsEntries.map(async (entry) => {
     const { Content } = await entry.render();
     return { entry, Content };
   }),
 );
+
+const testimonialData = testimonials.map(({ entry }) => ({
+  author: entry.data.author,
+  role: entry.data.role,
+  body: entry.body.trim().replace(/^"|"$/g, ""),
+}));
 ---
 
-<MainLayout title="Testimonials">
-  <div class={CLASSES.layout.pagePadding}>
-    <div class={CLASSES.layout.container}>
-      <div class={CLASSES.layout.containerNarrow}>
-        <h1 class={`${CLASSES.typography.h1Medium} ${CLASSES.visual.m12} text-center`}>{TESTIMONIALS_CONTENT.title}</h1>
-        
-        <div class={CLASSES.layout.stackLarge}>
-          {testimonials.map(({ entry, Content }) => (
-            <div class={`${CLASSES.card.base} relative`}>
-              <svg class={CLASSES.visual.testimonialQuoteIcon} fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-                <path d={ICONS.quote} />
-              </svg>
-              <blockquote class="relative z-10">
-                <div class="text-xl text-zinc-700 dark:text-zinc-300 italic leading-relaxed mb-6">
-                  <Content />
-                </div>
-                <footer class="text-right">
-                  <div class="font-bold text-brand-600 dark:text-brand-400">{entry.data.author}</div>
-                  <div class="text-zinc-500 dark:text-zinc-500 text-sm">{entry.data.role}</div>
-                </footer>
-              </blockquote>
-            </div>
-          ))}
-        </div>
+<MainLayout title={TESTIMONIALS_CONTENT.title}>
+  <div class="section-padding">
+    <div class="container-site">
+      <div class="mb-12 text-center">
+        <SectionHeading
+          eyebrow={TESTIMONIALS_CONTENT.eyebrow}
+          title={TESTIMONIALS_CONTENT.title}
+          description={TESTIMONIALS_CONTENT.description}
+          align="center"
+        />
       </div>
+
+      <TestimonialCarousel testimonials={testimonialData} />
     </div>
   </div>
+
+  <StatsBand stats={STATS} />
+
+  <CtaSection
+    title={TESTIMONIALS_CTA.title}
+    description={TESTIMONIALS_CTA.description}
+    primaryLabel={TESTIMONIALS_CTA.primaryLabel}
+    primaryHref={ROUTES.CONTACT}
+    secondaryLabel={TESTIMONIALS_CTA.secondaryLabel}
+    secondaryHref={ROUTES.SOLUTIONS}
+  />
 </MainLayout>
