@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Apollogeddon/ht-website/compare/v1.2.0...v1.2.1) (2026-05-23)
+
+
+### Bug Fixes
+
+* updated to use the website workflow ([f0f8a4b](https://github.com/Apollogeddon/ht-website/commit/f0f8a4ba2e7d84bc91b2d78ff854b7fb65522071))
+
 ## [1.2.0](https://github.com/Apollogeddon/ht-website/compare/v1.1.2...v1.2.0) (2026-05-23)
 
 
