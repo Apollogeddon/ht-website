@@ -1,50 +1,41 @@
 ---
-import { CLASSES } from "../classes";
-import { THEME_STORAGE_KEY } from "../consts";
 import { ICONS } from "../styles";
 ---
 
 <button
-  id="theme-toggle"
   type="button"
-  class={CLASSES.visual.themeToggle}
+  class="theme-toggle-btn text-[var(--text-secondary)] hover:text-[var(--brand-accent)] focus:outline-none rounded-lg text-sm p-2.5 ml-4 transition-all duration-300"
   aria-label="Toggle Dark Mode"
+  aria-pressed="false"
 >
-  <svg
-    class="w-6 h-6"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d={ICONS.moon} class="translate-x-[-1px]"></path>
-    <path 
-      d={ICONS.sun} 
-      class="opacity-40" 
-      fill-rule="evenodd" 
-      clip-rule="evenodd"
-    ></path>
-  </svg>
+  <span class="toggle-icon block transition-transform duration-300">
+    <svg
+      class="sun-icon w-6 h-6 text-[var(--brand-accent)]"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d={ICONS.sun} fill-rule="evenodd" clip-rule="evenodd"></path>
+    </svg>
+
+    <svg
+      class="moon-icon w-6 h-6 text-[var(--text-secondary)]"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d={ICONS.moon}></path>
+    </svg>
+  </span>
 </button>
 
-<script define:vars={{ THEME_STORAGE_KEY }}>
-  const setupThemeToggle = () => {
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    if (!themeToggleBtn) return;
+<style>
+  .sun-icon { display: none; }
+  .moon-icon { display: block; }
 
-    themeToggleBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      const newTheme = isDark ? 'light' : 'dark';
-      
-      if (newTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      
-      localStorage.setItem(THEME_STORAGE_KEY, newTheme);
-    });
-  };
+  :global(html.dark) .sun-icon { display: block; }
+  :global(html.dark) .moon-icon { display: none; }
 
-  // Run on initial load and after every navigation
-  document.addEventListener('astro:page-load', setupThemeToggle);
-</script>
+  :global(html.dark) .toggle-icon { transform: rotate(180deg); }
+</style>
+

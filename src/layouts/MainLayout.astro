@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
-import { CLASSES } from "../classes";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_LANG, SITE_TITLE, THEME_STORAGE_KEY } from "../consts";
@@ -52,9 +51,40 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 
 			applyTheme();
 			document.addEventListener('astro:after-swap', applyTheme);
+
+			document.addEventListener('click', function(e) {
+				if (e.target.closest('.theme-toggle-btn')) {
+					const isDark = document.documentElement.classList.toggle('dark');
+					localStorage.setItem(THEME_STORAGE_KEY, isDark ? 'dark' : 'light');
+				}
+			});
+		</script>
+		<script>
+			const initScrollReveal = () => {
+				const observerOptions = {
+					root: null,
+					rootMargin: '0px',
+					threshold: 0.1
+				};
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('visible');
+							observer.unobserve(entry.target);
+						}
+					});
+				}, observerOptions);
+
+				document.querySelectorAll('.scroll-reveal').forEach(el => {
+					observer.observe(el);
+				});
+			};
+
+			document.addEventListener('astro:page-load', initScrollReveal);
 		</script>
 	</head>
-	<body class={CLASSES.layout.body}>
+	<body>
 		<Header />
 		<main class="flex-grow">
 			<slot />
