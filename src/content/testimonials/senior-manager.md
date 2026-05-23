@@ -2,4 +2,4 @@
 author: "Senior Manager"
 role: "Finance Industry"
 ---
-Harnessing Talent provided us with exceptional insight into our organizational dynamics. The strategic advice was practical, actionable, and delivered with a deep understanding of our specific challenges.
+Tina's advice was invaluable during the growth phase of our business, helping us to clarify the roles required and identifying people with the right capabilities to fill them.

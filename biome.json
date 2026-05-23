@@ -1,9 +1,6 @@
 {
   "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
   "extends": ["node_modules/@apollogeddon/forgejs/biome.json"],
-  "files": {
-    "includes": ["**/*", "!!**/src/styles/global.css"]
-  },
   "css": {
     "parser": {
       "tailwindDirectives": true
@@ -12,13 +9,17 @@
   "javascript": {
     "globals": ["Astro"]
   },
-  "linter": {
-    "rules": {
-      "recommended": true,
-      "correctness": {
-        "noUnusedImports": "warn",
-        "noUnusedVariables": "warn"
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off"
+          }
+        }
       }
     }
-  }
+  ]
 }

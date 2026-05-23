@@ -11,8 +11,7 @@
     "lint": "biome check --fix && npm run lint:md",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "vitest run",
-    "test:e2e": "playwright test",
+    "test": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "security": "osv-scanner scan -r .",
     "prepare": "lefthook install"

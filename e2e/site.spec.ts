@@ -18,7 +18,7 @@ test("navigation to blog works", async ({ page }) => {
   await page.goto("/");
 
   // Click the Blog link.
-  await page.getByRole("navigation").getByRole("link", { name: "Blog Posts" }).click();
+  await page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Blog Posts" }).click();
 
   // Expects page to have a heading with the name of blog.
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Blog Posts");
