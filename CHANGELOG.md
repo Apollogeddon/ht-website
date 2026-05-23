@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.3](https://github.com/Apollogeddon/ht-website/compare/v1.2.2...v1.2.3) (2026-05-23)
+
+
+### Bug Fixes
+
+* cleaned up the ui content ([cf0099f](https://github.com/Apollogeddon/ht-website/commit/cf0099fa9d12b43d94085d449356c6622b97d566))
+* updated the tags for the workflows ([6c5d8c4](https://github.com/Apollogeddon/ht-website/commit/6c5d8c406b0964fec10331857d6b89e4b5afdaac))
+
 ## [1.2.2](https://github.com/Apollogeddon/ht-website/compare/v1.2.1...v1.2.2) (2026-05-23)
 
 
