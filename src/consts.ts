@@ -32,10 +32,50 @@ export const CONTACT_INFO = {
 
 export const NAVIGATION = [
   { label: "Home", href: ROUTES.HOME },
-  { label: "Solutions", href: ROUTES.SOLUTIONS },
+  {
+    label: "Solutions",
+    href: ROUTES.SOLUTIONS,
+    children: [
+      { label: "Strategic People Partner", href: ROUTES.SOLUTIONS },
+      { label: "Organisation Analysis", href: ROUTES.SOLUTIONS },
+      { label: "Strategy into Action", href: ROUTES.SOLUTIONS },
+      { label: "Improving Accountability", href: ROUTES.SOLUTIONS },
+      { label: "The Right People in the Right Jobs", href: ROUTES.SOLUTIONS },
+      { label: "HR Leadership Network", href: ROUTES.SOLUTIONS },
+    ],
+  },
   { label: "Blog Posts", href: ROUTES.BLOG },
   { label: "Testimonials", href: ROUTES.TESTIMONIALS },
-  { label: "About Us", href: ROUTES.ABOUT },
+  {
+    label: "About Us",
+    href: ROUTES.ABOUT,
+    children: [
+      { label: "Company Overview", href: ROUTES.ABOUT },
+      { label: "Our Values", href: ROUTES.ABOUT },
+      { label: "Profiles", href: ROUTES.ABOUT },
+      { label: "Policies", href: ROUTES.POLICIES },
+      { label: "Latest Information", href: ROUTES.BLOG },
+    ],
+  },
+];
+
+export const QUOTES = [
+  {
+    text: "I have far more respect for the person with a single idea who gets there than for the person with a thousand ideas who does nothing.",
+    author: "Thomas Edison",
+  },
+  {
+    text: "Insanity is doing the same thing over and over again and expecting different results.",
+    author: "Albert Einstein",
+  },
+  {
+    text: "The right people in your organisation are your most important asset.",
+    author: "Jim Collins",
+  },
+  {
+    text: "Doing the right thing is more important than doing the thing right.",
+    author: "Peter Drucker",
+  },
 ];
 
 export const COMPANY_VALUES = [

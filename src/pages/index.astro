@@ -1,8 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import CtaSection from "../components/CtaSection.astro";
 import FeatureSection from "../components/FeatureSection.astro";
 import Hero from "../components/Hero.astro";
+import LatestPosts from "../components/LatestPosts.astro";
 import ProcessSteps from "../components/ProcessSteps.astro";
+import QuotesSection from "../components/QuotesSection.astro";
 import ServiceGrid from "../components/ServiceGrid.astro";
 import StatsBand from "../components/StatsBand.astro";
 import {
@@ -11,11 +14,16 @@ import {
   HOME_CTA,
   HOME_SERVICES,
   PROCESS_STEPS,
+  QUOTES,
   ROUTES,
   STATS,
   WHY_CHOOSE_US,
 } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
+
+const recentPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
 ---
 
 <MainLayout title="Home">
@@ -37,6 +45,8 @@ import MainLayout from "../layouts/MainLayout.astro";
     quote={WHY_CHOOSE_US.quote}
   />
 
+  <QuotesSection quotes={QUOTES} />
+
   <ServiceGrid
     eyebrow={HOME_CONTENT.howWeHelpEyebrow}
     title={HOME_CONTENT.howWeHelp}
@@ -44,6 +54,8 @@ import MainLayout from "../layouts/MainLayout.astro";
   />
 
   <ProcessSteps eyebrow={HOME_CONTENT.processEyebrow} title={HOME_CONTENT.processTitle} steps={PROCESS_STEPS} />
+
+  <LatestPosts posts={recentPosts} />
 
   <CtaSection
     title={HOME_CTA.title}

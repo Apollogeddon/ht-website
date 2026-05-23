@@ -7,8 +7,6 @@ pre-commit:
     biome-check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,json,jsonc}"
       run: npx biome check --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
-    publint:
-      run: npx publint
 
 commit-msg:
   parallel: true

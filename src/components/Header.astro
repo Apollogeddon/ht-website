@@ -21,19 +21,51 @@ import ThemeToggle from "./Themes.astro";
               const pathname = Astro.url.pathname.replace(/\/$/, "");
               const href = item.href.replace(/\/$/, "");
               const isActive = pathname === href || (href !== "" && pathname.startsWith(href));
+              const hasChildren = "children" in item && item.children && item.children.length > 0;
 
               return (
-                <li>
+                <li class={hasChildren ? "relative group" : ""}>
                   <a
                     href={item.href}
-                    class={`relative font-medium transition-colors duration-200 pb-1 ${
+                    class={`relative font-medium transition-colors duration-200 pb-1 inline-flex items-center gap-1 ${
                       isActive
                         ? "text-[var(--brand-accent)] font-bold border-b-2 border-[var(--brand-accent)]"
                         : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                     }`}
                   >
                     {item.label}
+                    {hasChildren && (
+                      <svg
+                        class="h-3 w-3 transition-transform duration-200 group-hover:rotate-180"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        aria-hidden="true"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
                   </a>
+                  {hasChildren && (
+                    <ul
+                      class="absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-56 rounded-lg shadow-lg border py-1 z-10
+                             opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                             transition-all duration-200 translate-y-1 group-hover:translate-y-0"
+                      style={{ backgroundColor: "var(--bg-secondary)", borderColor: "var(--border-subtle)" }}
+                    >
+                      {(item as any).children.map((child: { label: string; href: string }) => (
+                        <li>
+                          <a
+                            href={child.href}
+                            class="block px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--brand-accent)] hover:bg-[var(--bg-muted)] transition-colors"
+                          >
+                            {child.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               );
             })
@@ -61,7 +93,7 @@ import ThemeToggle from "./Themes.astro";
 <div
   id="mobile-menu"
   inert
-  class="fixed inset-0 z-[100] bg-[var(--brand-accent)] flex flex-col items-center justify-center space-y-8 transition-transform duration-300 translate-x-full"
+  class="fixed inset-0 z-[100] bg-[var(--brand-accent)] flex flex-col items-center justify-center overflow-y-auto py-16 transition-transform duration-300 translate-x-full"
 >
   <button
     id="mobile-menu-close"
@@ -76,17 +108,30 @@ import ThemeToggle from "./Themes.astro";
   <nav>
     <ul class="flex flex-col items-center space-y-6">
       {
-        NAVIGATION.map((item) => (
-          <li>
-            <a href={item.href} class="text-2xl font-bold text-white hover:opacity-80 transition-opacity">
-              {item.label}
-            </a>
-          </li>
-        ))
+        NAVIGATION.map((item) => {
+          const hasChildren = "children" in item && item.children && item.children.length > 0;
+          return (
+            <li class="text-center">
+              <a href={item.href} class="text-2xl font-bold text-white hover:opacity-80 transition-opacity">
+                {item.label}
+              </a>
+              {hasChildren && (
+                <ul class="mt-2 flex flex-col items-center space-y-1">
+                  {(item as any).children.map((child: { label: string; href: string }) => (
+                    <li>
+                      <a href={child.href} class="text-sm text-white/70 hover:text-white transition-colors">
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })
       }
     </ul>
   </nav>
-
 </div>
 
 <script>
