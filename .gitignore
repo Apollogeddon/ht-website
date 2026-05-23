@@ -24,5 +24,8 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# npm secrets
+.npmrc
+
 # jetbrains setting folder
 .idea/
