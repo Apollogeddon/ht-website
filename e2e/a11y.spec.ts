@@ -33,7 +33,7 @@ test.describe("accessibility", () => {
       });
 
       // Wait for theme script to run and layout to stabilize
-      await page.waitForTimeout(1000);
+      await page.waitForTimeout(500);
 
       const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
       expect(accessibilityScanResults.violations).toEqual([]);

@@ -2,62 +2,57 @@
 import { CONTACT_INFO, CONTACT_PAGE } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
 import { ICONS } from "../styles";
+
+const contactDetails = [
+  { label: CONTACT_PAGE.labels.email, value: CONTACT_INFO.email, icon: "email" },
+  { label: CONTACT_PAGE.labels.phone, value: CONTACT_INFO.phone, icon: "phone" },
+  { label: CONTACT_PAGE.labels.location, value: CONTACT_INFO.location_full, icon: "location" },
+];
 ---
 
 <MainLayout title={CONTACT_PAGE.title}>
-  <div class="section-padding">
-    <div class="container-site">
+  <div class="section-padding pt-32 lg:pt-40">
+    <div class="container-custom">
       <div class="max-w-5xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+          <!-- Contact Info -->
           <div>
-            <h1 class="text-4xl font-extrabold text-[var(--text-primary)] leading-tight mb-6">{CONTACT_PAGE.title}</h1>
-            <p class="text-xl text-[var(--text-secondary)] leading-relaxed mb-12">
-              {CONTACT_PAGE.subtitle}
+            <h1 class="text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-6 leading-tight">
+              {CONTACT_PAGE.title}
+            </h1>
+            <p class="text-lg text-[var(--text-secondary)] mb-12 max-w-md">
+              {CONTACT_PAGE.description}
             </p>
 
-            <div class="card-base card-grid-pattern p-8 space-y-8">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-[var(--brand-light)] rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--brand-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.mail} />
-                  </svg>
-                </div>
-                <div>
-                  <h2 class="text-xl font-bold text-[var(--text-primary)] mb-1">{CONTACT_PAGE.labels.email}</h2>
-                  <a href={`mailto:${CONTACT_INFO.email}`} class="text-[var(--brand-accent)] hover:text-[var(--brand-accent-hover)] hover:underline transition-colors">{CONTACT_INFO.email}</a>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-[var(--brand-light)] rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--brand-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.phone} />
-                  </svg>
-                </div>
-                <div>
-                  <h2 class="text-xl font-bold text-[var(--text-primary)] mb-1">{CONTACT_PAGE.labels.phone}</h2>
-                  <a href={`tel:${CONTACT_INFO.phone.replace(/\s+/g, '')}`} class="text-[var(--brand-accent)] hover:text-[var(--brand-accent-hover)] hover:underline transition-colors">{CONTACT_INFO.phone}</a>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-[var(--brand-light)] rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--brand-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS.location} />
-                  </svg>
-                </div>
-                <div>
-                  <h2 class="text-xl font-bold text-[var(--text-primary)] mb-1">{CONTACT_PAGE.labels.location}</h2>
-                  <p class="text-[var(--text-secondary)]">{CONTACT_INFO.location_full}</p>
-                </div>
-              </div>
+            <div class="space-y-8">
+              {
+                contactDetails.map((item) => (
+                  <div class="flex gap-5">
+                    <div class="w-12 h-12 rounded-xl bg-[var(--brand-accent-soft)] flex items-center justify-center shrink-0">
+                      <svg
+                        class="w-6 h-6 text-[var(--brand-accent)]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ICONS[item.icon as keyof typeof ICONS]} />
+                      </svg>
+                    </div>
+                    <div>
+                      <h2 class="font-bold text-[var(--text-primary)] mb-1">{item.label}</h2>
+                      <p class="text-[var(--text-secondary)]">{item.value}</p>
+                    </div>
+                  </div>
+                ))
+              }
             </div>
           </div>
 
-          <div class="card-base p-10">
+          <!-- Contact Form -->
+          <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 lg:p-10 border border-[var(--border-strong)] shadow-sm">
             <form id="contact-form" class="space-y-4">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label for="first-name" class="block text-sm font-medium text-[var(--text-secondary)] mb-1">{CONTACT_PAGE.form.firstName}</label>
                   <input
@@ -126,3 +121,61 @@ import { ICONS } from "../styles";
     </div>
   </div>
 </MainLayout>
+
+<script>
+  const initContactForm = () => {
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+    const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+    const formMessage = document.getElementById("form-message");
+
+    if (!form || !submitBtn || !formMessage) return;
+    if (form.dataset.initialized === "true") return;
+
+    form.dataset.initialized = "true";
+
+    const WORKER_URL = import.meta.env.PUBLIC_CONTACT_WORKER_URL || "https://ht-contact-api.your-subdomain.workers.dev";
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = "Sending...";
+      formMessage.classList.add("hidden");
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          formMessage.textContent = result.message || "Thank you! Your message has been sent successfully.";
+          formMessage.classList.remove("hidden", "bg-red-100", "text-red-700", "border-red-200");
+          formMessage.classList.add("bg-green-100", "text-green-700", "border-green-200", "border");
+          form.reset();
+        } else {
+          throw new Error(result.message || result.error || "Something went wrong.");
+        }
+      } catch (err: any) {
+        formMessage.textContent = err.message || "Failed to send message. Please try again later.";
+        formMessage.classList.remove("hidden", "bg-green-100", "text-green-700", "border-green-200");
+        formMessage.classList.add("bg-red-100", "text-red-700", "border-red-200", "border");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    });
+  };
+
+  initContactForm();
+  document.addEventListener("astro:page-load", initContactForm);
+</script>

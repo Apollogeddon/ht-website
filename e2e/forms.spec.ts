@@ -28,9 +28,8 @@ test.describe("Contact form", () => {
     });
 
     await page.goto("/contact");
-    await page.waitForLoadState("networkidle");
 
-    // Wait for the form script to be initialized
+    // Wait for the form script to be initialized (Astro script hydration)
     const form = page.locator("#contact-form");
     await expect(form).toHaveAttribute("data-initialized", "true", { timeout: 10000 });
 
@@ -43,7 +42,6 @@ test.describe("Contact form", () => {
 
     // Ensure the button is ready
     await submitBtn.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(500);
 
     // Set up request/response listeners before clicking
     const requestPromise = page.waitForRequest((request) => request.method() === "POST");
