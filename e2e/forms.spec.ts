@@ -12,15 +12,16 @@ test.describe("Contact form", () => {
   });
 
   test("feedback message becomes visible after submission", async ({ page }) => {
-    await page.route("**", (route) => {
-      if (route.request().method() === "POST") {
-        return route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify({ ok: true }),
-        });
-      }
-      return route.continue();
+    // Mock the contact form submission API
+    await page.route("**/ht-contact-api**", (route) => {
+      return route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          ok: true,
+          message: "Thank you! Your message has been sent successfully.",
+        }),
+      });
     });
 
     await page.goto("/contact");
@@ -30,7 +31,12 @@ test.describe("Contact form", () => {
     await page.fill("#email", "test@example.com");
     await page.fill("#message", "This is an automated test message.");
 
-    await page.click("#submit-btn");
+    const submitBtn = page.locator("#submit-btn");
+
+    // Ensure the button is in view and wait for potential animations
+    await submitBtn.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(100);
+    await submitBtn.click();
 
     await expect(page.locator("#form-message")).toBeVisible({ timeout: 5000 });
   });
