@@ -580,7 +580,8 @@
     animation: none;
   }
 
-  .scroll-reveal {
+  .scroll-reveal,
+  .scroll-reveal.visible {
     opacity: 1;
     transform: none;
     transition: none;
