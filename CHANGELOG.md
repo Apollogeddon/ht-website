@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.4](https://github.com/Apollogeddon/ht-website/compare/v1.2.3...v1.2.4) (2026-05-24)
+
+
+### Bug Fixes
+
+* bumped dependencies, updated workflows, and redid config ([4d71a34](https://github.com/Apollogeddon/ht-website/commit/4d71a34d9f67fd832cc31fd672f3a6716612aadd))
+* fixed issues with the a11y test cases based on recent changes ([c6c3243](https://github.com/Apollogeddon/ht-website/commit/c6c324371db3b98bb43e410aa451a1545da86f89))
+
 ## [1.2.3](https://github.com/Apollogeddon/ht-website/compare/v1.2.2...v1.2.3) (2026-05-23)
 
 
