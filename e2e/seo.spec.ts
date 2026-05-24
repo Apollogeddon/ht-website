@@ -7,7 +7,8 @@ const pagesToCheck = [
   { path: "/blog", name: "Blog Index" },
   { path: "/solutions", name: "Solutions" },
   { path: "/testimonials", name: "Testimonials" },
-  // Add a specific blog post if you have a stable one, e.g., '/blog/welcome'
+  { path: "/policies", name: "Policies" },
+  { path: "/blog/welcome", name: "Blog post" },
 ];
 
 test.describe("SEO Metadata", () => {

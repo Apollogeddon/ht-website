@@ -32,3 +32,11 @@ jobs:
       pull-requests: write
       pages: write
       id-token: write
+
+  validate:
+    needs: deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate live site
+        run: curl -f --retry 5 --retry-delay 10 --retry-connrefused https://ht.apollogeddon.com
