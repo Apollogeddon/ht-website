@@ -28,6 +28,11 @@ test.describe("Contact form", () => {
     });
 
     await page.goto("/contact");
+    await page.waitForLoadState("networkidle");
+
+    // Wait for the form script to be initialized
+    const form = page.locator("#contact-form");
+    await expect(form).toHaveAttribute("data-initialized", "true", { timeout: 10000 });
 
     await page.fill("#first-name", "Test");
     await page.fill("#last-name", "User");
@@ -36,13 +41,25 @@ test.describe("Contact form", () => {
 
     const submitBtn = page.locator("#submit-btn");
 
-    // Ensure the button is in view and wait for potential animations
+    // Ensure the button is ready
     await submitBtn.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(500);
+
+    // Set up request/response listeners before clicking
+    const requestPromise = page.waitForRequest((request) => request.method() === "POST");
+    const responsePromise = page.waitForResponse(
+      (response) => response.request().method() === "POST" && response.status() === 200,
+    );
+
+    // Click and wait for the network activity
     await submitBtn.click();
 
-    // Wait for the button to indicate sending or for the message to appear
+    await requestPromise;
+    await responsePromise;
+
+    // Wait for the success message to appear in the UI
     await expect(page.locator("#form-message")).toBeVisible({ timeout: 10000 });
+    await expect(page.locator("#form-message")).toContainText(/successfully/i);
   });
 
   test("required fields enforce HTML5 validation before submission", async ({ page }) => {

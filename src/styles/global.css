@@ -576,14 +576,31 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: Required for CI stability during a11y scans */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Required for CI stability during a11y scans */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Required for CI stability during a11y scans */
+    transition-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Required for CI stability during a11y scans */
+    scroll-behavior: auto !important;
+  }
+
   .animate-float {
-    animation: none;
+    /* biome-ignore lint/complexity/noImportantStyles: Required for CI stability during a11y scans */
+    animation: none !important;
   }
 
   .scroll-reveal,
   .scroll-reveal.visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    /* biome-ignore lint/complexity/noImportantStyles: Required for CI stability during a11y scans */
+    opacity: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Required for CI stability during a11y scans */
+    transform: none !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Required for CI stability during a11y scans */
+    transition: none !important;
   }
 }
