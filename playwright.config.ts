@@ -37,6 +37,6 @@ export default defineConfig({
     command: "npm run build && npx astro preview",
     url: "http://localhost:4321",
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
+    timeout: 300 * 1000,
   },
 });

@@ -1,5 +1,5 @@
 {
-  "extends": "@apollogeddon/forgejs/tsconfig.json",
+  "extends": "@apollogeddon/forgejs/configs/tsconfig.json",
   "compilerOptions": {
     "rootDir": ".",
     "noEmit": true,
