@@ -17,6 +17,7 @@ const { testimonials } = Astro.props;
     id="testimonial-track"
     class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 scroll-smooth"
     style="scrollbar-width: none; -ms-overflow-style: none;"
+    tabindex="0"
   >
     {
       testimonials.map((t) => (

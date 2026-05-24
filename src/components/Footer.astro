@@ -19,14 +19,14 @@ const currentYear = new Date().getFullYear();
   <div class="container mx-auto px-6 lg:px-12 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div>
-        <h3 class="text-lg font-bold mb-4 text-gradient-brand">{SITE_TITLE}</h3>
+        <p class="text-lg font-bold mb-4 text-gradient-brand">{SITE_TITLE}</p>
         <p class="text-[var(--text-secondary)] text-sm leading-relaxed">
           {SITE_DESCRIPTION}
         </p>
       </div>
 
       <div>
-        <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.contact}</h3>
+        <p class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.contact}</p>
         <ul class="text-[var(--text-secondary)] text-sm space-y-2">
           <li>{CONTACT_PAGE.labels.email}: {CONTACT_INFO.email}</li>
           <li>{CONTACT_PAGE.labels.phone}: {CONTACT_INFO.phone}</li>
@@ -35,7 +35,7 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <div>
-        <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.services}</h3>
+        <p class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.services}</p>
         <ul class="text-[var(--text-secondary)] text-sm space-y-2">
           <li><a href={NAVIGATION[1].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[1].label}</a></li>
           <li><a href={NAVIGATION[2].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[2].label}</a></li>
@@ -44,7 +44,7 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <div>
-        <h3 class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.company}</h3>
+        <p class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.company}</p>
         <ul class="text-[var(--text-secondary)] text-sm space-y-2">
           <li><a href={NAVIGATION[4].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[4].label}</a></li>
           <li><a href={ROUTES.CONTACT} class="hover:text-[var(--brand-accent)] transition-colors">{CONTACT_PAGE.title}</a></li>

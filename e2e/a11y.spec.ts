@@ -10,7 +10,7 @@ const pagesToCheck = [
   { path: "/policies", name: "Policies" },
   { path: "/blog", name: "Blog" },
   { path: "/blog/welcome", name: "Blog post" },
-  { path: "/404", name: "404" },
+  { path: "/404.html", name: "404" },
 ];
 
 test.describe("accessibility", () => {
