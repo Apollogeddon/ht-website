@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.5](https://github.com/Apollogeddon/ht-website/compare/v1.2.4...v1.2.5) (2026-05-27)
+
+
+### Bug Fixes
+
+* **deps:** bump the dependencies group across 1 directory with 8 updates ([f806908](https://github.com/Apollogeddon/ht-website/commit/f80690898d00920213e0dec639b4bb168105be57))
+* **deps:** bump the dependencies group across 1 directory with 8 updates ([0dd134b](https://github.com/Apollogeddon/ht-website/commit/0dd134bbed2b405188f629da11a2e6e5b866f5ab))
+
 ## [1.2.4](https://github.com/Apollogeddon/ht-website/compare/v1.2.3...v1.2.4) (2026-05-24)
 
 
