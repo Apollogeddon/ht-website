@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import adelaideNorthTerrace from "../assets/external/adelaide-north-terrace.jpg";
 import { CONTACT_INFO, CONTACT_PAGE } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
 import { ICONS } from "../styles";
@@ -11,7 +13,18 @@ const contactDetails = [
 ---
 
 <MainLayout title={CONTACT_PAGE.title}>
-  <div class="section-padding pt-32 lg:pt-40">
+  <div class="relative h-52 md:h-64 overflow-hidden">
+    <Image
+      src={adelaideNorthTerrace}
+      alt="Adelaide North Terrace"
+      class="w-full h-full object-cover object-center"
+      widths={[640, 1280, 1920]}
+      sizes="100vw"
+    />
+    <div class="absolute inset-0 bg-[var(--bg-inverse)] opacity-40"></div>
+  </div>
+
+  <div class="section-padding">
     <div class="container-custom">
       <div class="max-w-5xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
@@ -21,14 +34,14 @@ const contactDetails = [
               {CONTACT_PAGE.title}
             </h1>
             <p class="text-lg text-[var(--text-secondary)] mb-12 max-w-md">
-              {CONTACT_PAGE.description}
+              {CONTACT_PAGE.subtitle}
             </p>
 
             <div class="space-y-8">
               {
                 contactDetails.map((item) => (
                   <div class="flex gap-5">
-                    <div class="w-12 h-12 rounded-xl bg-[var(--brand-accent-soft)] flex items-center justify-center shrink-0">
+                    <div class="w-12 h-12 rounded-xl bg-[var(--brand-light)] flex items-center justify-center shrink-0">
                       <svg
                         class="w-6 h-6 text-[var(--brand-accent)]"
                         fill="none"

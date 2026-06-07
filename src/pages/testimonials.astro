@@ -1,10 +1,11 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
+import meetingHands from "../assets/external/meeting-hands.jpg";
 import CtaSection from "../components/CtaSection.astro";
+import FeatureSection from "../components/FeatureSection.astro";
 import SectionHeading from "../components/SectionHeading.astro";
-import StatsBand from "../components/StatsBand.astro";
 import TestimonialCarousel from "../components/TestimonialCarousel.astro";
-import { ROUTES, STATS, TESTIMONIALS_CONTENT, TESTIMONIALS_CTA } from "../consts";
+import { ROUTES, TESTIMONIALS_CONTENT, WE_CAN_HELP } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
 
 const testimonialsEntries = await getCollection("testimonials");
@@ -17,30 +18,25 @@ const testimonialData = testimonialsEntries.map((entry) => ({
 ---
 
 <MainLayout title={TESTIMONIALS_CONTENT.title}>
-  <div class="section-padding">
-    <div class="container-site">
-      <div class="mb-12 text-center">
-        <SectionHeading
-          eyebrow={TESTIMONIALS_CONTENT.eyebrow}
-          title={TESTIMONIALS_CONTENT.title}
-          description={TESTIMONIALS_CONTENT.description}
-          align="center"
-          level={1}
-        />
-      </div>
+  <FeatureSection
+    title={TESTIMONIALS_CONTENT.title}
+    paragraphs={[TESTIMONIALS_CONTENT.description]}
+    imageSrc={meetingHands}
+    imageAlt="Collaborative team meeting"
+    level={1}
+    reverse={true}
+  />
 
+  <div class="section-padding bg-[var(--bg-muted)]">
+    <div class="container-site">
       <TestimonialCarousel testimonials={testimonialData} />
     </div>
   </div>
 
-  <StatsBand stats={STATS} />
-
   <CtaSection
-    title={TESTIMONIALS_CTA.title}
-    description={TESTIMONIALS_CTA.description}
-    primaryLabel={TESTIMONIALS_CTA.primaryLabel}
+    title={WE_CAN_HELP.title}
+    description={WE_CAN_HELP.description}
+    primaryLabel={WE_CAN_HELP.primaryLabel}
     primaryHref={ROUTES.CONTACT}
-    secondaryLabel={TESTIMONIALS_CTA.secondaryLabel}
-    secondaryHref={ROUTES.SOLUTIONS}
   />
 </MainLayout>

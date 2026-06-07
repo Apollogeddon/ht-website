@@ -1,24 +1,24 @@
 ---
+import pexelsPhoto from "../assets/external/pexels-photo.jpg";
 import CtaSection from "../components/CtaSection.astro";
-import SectionHeading from "../components/SectionHeading.astro";
+import FeatureSection from "../components/FeatureSection.astro";
 import SolutionCard from "../components/SolutionCard.astro";
-import { ROUTES, SOLUTIONS, SOLUTIONS_CONTENT, SOLUTIONS_CTA, SOLUTIONS_INTRO } from "../consts";
+import { ROUTES, SOLUTIONS, SOLUTIONS_CONTENT, SOLUTIONS_INTRO, WE_CAN_HELP } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title={SOLUTIONS_CONTENT.title}>
+  <FeatureSection
+    title={SOLUTIONS_CONTENT.title}
+    paragraphs={[SOLUTIONS_INTRO]}
+    imageSrc={pexelsPhoto}
+    imageAlt="Professional workspace"
+    level={1}
+    muted={true}
+  />
+
   <div class="section-padding">
     <div class="container-site">
-      <div class="mb-12 text-center">
-        <SectionHeading
-          eyebrow={SOLUTIONS_CONTENT.eyebrow}
-          title={SOLUTIONS_CONTENT.title}
-          description={SOLUTIONS_INTRO}
-          align="center"
-          level={1}
-        />
-      </div>
-
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {
           SOLUTIONS.map((item, i) => (
@@ -27,6 +27,7 @@ import MainLayout from "../layouts/MainLayout.astro";
               description={item.description}
               features={item.features}
               index={i}
+              href={`${ROUTES.SOLUTIONS}/${item.slug}`}
             />
           ))
         }
@@ -35,9 +36,9 @@ import MainLayout from "../layouts/MainLayout.astro";
   </div>
 
   <CtaSection
-    title={SOLUTIONS_CTA.title}
-    description={SOLUTIONS_CTA.description}
-    primaryLabel={SOLUTIONS_CTA.primaryLabel}
+    title={WE_CAN_HELP.title}
+    description={WE_CAN_HELP.description}
+    primaryLabel={WE_CAN_HELP.primaryLabel}
     primaryHref={ROUTES.CONTACT}
   />
 </MainLayout>

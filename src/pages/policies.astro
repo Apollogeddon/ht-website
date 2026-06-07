@@ -1,6 +1,7 @@
 ---
+import CtaSection from "../components/CtaSection.astro";
 import SectionHeading from "../components/SectionHeading.astro";
-import { CONTACT_INFO, POLICIES_CONTENT, SITE_TITLE } from "../consts";
+import { POLICIES_CONTENT, ROUTES, SITE_TITLE, WE_CAN_HELP } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
@@ -8,7 +9,7 @@ import MainLayout from "../layouts/MainLayout.astro";
   <div class="section-padding">
     <div class="container-site">
       <div class="max-w-5xl mx-auto">
-        <SectionHeading eyebrow={POLICIES_CONTENT.eyebrow} title={POLICIES_CONTENT.privacyTitle} level={1} />
+        <SectionHeading title={POLICIES_CONTENT.privacyTitle} level={1} />
 
         <div class="mt-8 space-y-6 text-[var(--text-secondary)] text-lg leading-relaxed">
           <p>
@@ -30,18 +31,15 @@ import MainLayout from "../layouts/MainLayout.astro";
               </div>
             ))
           }
-
-          <div class="border-l-2 border-[var(--brand-accent)] pl-6 mb-8">
-            <h2 class="text-xl font-bold text-[var(--text-primary)] mb-3">{POLICIES_CONTENT.privacyEnquiries}</h2>
-            <p>{POLICIES_CONTENT.privacyEnquiriesText}</p>
-            <p class="mt-3">
-              <strong class="text-[var(--text-primary)]">{SITE_TITLE}</strong><br />
-              Email: <a href={`mailto:${CONTACT_INFO.email}`} class="text-[var(--brand-accent)] hover:underline">{CONTACT_INFO.email}</a><br />
-              Phone: {CONTACT_INFO.phone}
-            </p>
-          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <CtaSection
+    title={WE_CAN_HELP.title}
+    description={WE_CAN_HELP.description}
+    primaryLabel={WE_CAN_HELP.primaryLabel}
+    primaryHref={ROUTES.CONTACT}
+  />
 </MainLayout>
