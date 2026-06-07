@@ -1,0 +1,75 @@
+---
+import CtaSection from "../../components/CtaSection.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { ROUTES, SOLUTIONS, WE_CAN_HELP } from "../../consts";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+export function getStaticPaths() {
+  return SOLUTIONS.map((solution) => ({
+    params: { slug: solution.slug },
+    props: { solution },
+  }));
+}
+
+const { solution } = Astro.props;
+---
+
+<MainLayout title={solution.title}>
+  <div class="section-padding">
+    <div class="container-site">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-4">
+          <a
+            href={ROUTES.SOLUTIONS}
+            class="text-sm font-medium text-[var(--brand-accent)] hover:underline inline-flex items-center gap-1"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            All Solutions
+          </a>
+        </div>
+
+        <SectionHeading title={solution.title} level={1} />
+
+        <p class="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">{solution.description}</p>
+
+        <div class="mt-10 text-lg text-[var(--text-secondary)] leading-relaxed space-y-4">
+          <p>{solution.body}</p>
+        </div>
+
+        {solution.features.length > 0 && (
+          <div class="mt-10">
+            <h2 class="text-xl font-bold text-[var(--text-primary)] mb-4">Key Services</h2>
+            <ul class="space-y-3">
+              {solution.features.map((feature) => (
+                <li class="flex items-start gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-[var(--brand-accent)] mt-0.5 flex-shrink-0"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-[var(--text-secondary)]">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <CtaSection
+    title={WE_CAN_HELP.title}
+    description={WE_CAN_HELP.description}
+    primaryLabel={WE_CAN_HELP.primaryLabel}
+    primaryHref={ROUTES.CONTACT}
+  />
+</MainLayout>

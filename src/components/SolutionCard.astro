@@ -5,9 +5,11 @@ interface Props {
   features: string[];
   index: number;
   icon?: string;
+  href?: string;
 }
 
-const { title, description, features, index, icon } = Astro.props;
+const { title, description, features, index, icon, href } = Astro.props;
+const Tag = (href ? "a" : "div") as "a" | "div";
 
 const iconPaths: Record<number, string> = {
   0: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
@@ -21,7 +23,8 @@ const iconPaths: Record<number, string> = {
 const iconPath = icon ?? iconPaths[index % 6] ?? iconPaths[0];
 ---
 
-<div
+<Tag
+  href={href}
   class="card-interactive p-8 scroll-reveal flex flex-col"
   style={`--delay: ${index * 100}ms`}
 >
@@ -63,4 +66,4 @@ const iconPath = icon ?? iconPaths[index % 6] ?? iconPaths[0];
       ))
     }
   </ul>
-</div>
+</Tag>
