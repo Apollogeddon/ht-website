@@ -1,8 +1,11 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 interface Props {
   name: string;
   role?: string;
-  src?: string;
+  src?: ImageMetadata;
   size?: "sm" | "md" | "lg";
 }
 
@@ -12,6 +15,12 @@ const sizeClasses: Record<string, string> = {
   sm: "w-16 h-16 text-lg",
   md: "w-24 h-24 text-2xl",
   lg: "w-32 h-32 text-3xl",
+};
+
+const sizePx: Record<string, number> = {
+  sm: 64,
+  md: 96,
+  lg: 128,
 };
 
 const initials = name
@@ -25,10 +34,12 @@ const initials = name
 <div class="flex flex-col items-center gap-3">
   {
     src ? (
-      <img
+      <Image
         src={src}
         alt={name}
-        class={`${sizeClasses[size]} rounded-full object-cover border-4 border-[var(--bg-secondary)] shadow-md`}
+        width={sizePx[size]}
+        height={sizePx[size]}
+        class={`${sizeClasses[size]} rounded-full object-cover border-4 border-[var(--bg-secondary)] shadow-md flex-shrink-0`}
       />
     ) : (
       <div

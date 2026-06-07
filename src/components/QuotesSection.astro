@@ -1,4 +1,6 @@
 ---
+import geoBg from "../assets/external/geometic-bg-white-2.jpg";
+
 interface Quote {
   text: string;
   author: string;
@@ -11,8 +13,12 @@ interface Props {
 const { quotes } = Astro.props;
 ---
 
-<section class="section-padding-sm bg-[var(--bg-muted)]">
-  <div class="container-site">
+<section
+  class="section-padding-sm relative overflow-hidden bg-[var(--bg-muted)]"
+  style={`background-image: url(${geoBg.src}); background-size: cover; background-position: center;`}
+>
+  <div class="absolute inset-0 bg-[var(--bg-primary)] opacity-90 dark:opacity-95"></div>
+  <div class="container-site relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {
         quotes.map((q) => (
