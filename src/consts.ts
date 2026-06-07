@@ -2,7 +2,6 @@ export const SITE_TITLE = "Harnessing Talent";
 export const SITE_DESCRIPTION =
   "Management consultancy helping businesses achieve success through the best utilisation of their people resources.";
 export const SITE_LANG = "en";
-export const SITE_LOGO = `${import.meta.env.BASE_URL}logo.png`;
 
 export const DATE_LOCALE = "en-au";
 export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
@@ -18,9 +17,9 @@ export const ROUTES = {
   SOLUTIONS: `${import.meta.env.BASE_URL}solutions`,
   BLOG: `${import.meta.env.BASE_URL}blog`,
   TESTIMONIALS: `${import.meta.env.BASE_URL}testimonials`,
-  ABOUT: `${import.meta.env.BASE_URL}about`,
   CONTACT: `${import.meta.env.BASE_URL}contact`,
   POLICIES: `${import.meta.env.BASE_URL}policies`,
+  PROFILES: `${import.meta.env.BASE_URL}profiles`,
 };
 
 export const CONTACT_INFO = {
@@ -32,28 +31,16 @@ export const CONTACT_INFO = {
 
 export const NAVIGATION = [
   { label: "Home", href: ROUTES.HOME },
-  {
-    label: "Solutions",
-    href: ROUTES.SOLUTIONS,
-    children: [
-      { label: "Strategic People Partner", href: ROUTES.SOLUTIONS },
-      { label: "Organisation Analysis", href: ROUTES.SOLUTIONS },
-      { label: "Strategy into Action", href: ROUTES.SOLUTIONS },
-      { label: "Improving Accountability", href: ROUTES.SOLUTIONS },
-      { label: "The Right People in the Right Jobs", href: ROUTES.SOLUTIONS },
-      { label: "HR Leadership Network", href: ROUTES.SOLUTIONS },
-    ],
-  },
+  { label: "Solutions", href: ROUTES.SOLUTIONS },
   { label: "Blog Posts", href: ROUTES.BLOG },
   { label: "Testimonials", href: ROUTES.TESTIMONIALS },
   {
     label: "About Us",
-    href: ROUTES.ABOUT,
+    href: ROUTES.PROFILES,
     children: [
-      { label: "Company Overview", href: `${ROUTES.ABOUT}#overview` },
-      { label: "Our Values", href: `${ROUTES.ABOUT}#values` },
-      { label: "Profiles", href: `${ROUTES.ABOUT}#team` },
+      { label: "Profiles", href: ROUTES.PROFILES },
       { label: "Policies", href: ROUTES.POLICIES },
+      { label: "Contact", href: ROUTES.CONTACT },
     ],
   },
 ];
@@ -86,21 +73,6 @@ export const HOME_TESTIMONIAL = {
 
 export const TRUSTED_ORGS = ["Kalyra Communities"];
 
-export const COMPANY_VALUES = [
-  {
-    title: "Value to Customers",
-    description: "Listening well and delivering outcomes that resolve problems and improve performance.",
-  },
-  {
-    title: "Integrity and Respect",
-    description: "Highest levels of integrity, ethical behavior, and valuing diversity.",
-  },
-  {
-    title: "Practical Solutions",
-    description: "Delivering results that are easy to implement with significant impact.",
-  },
-];
-
 export const PRINCIPAL_CONSULTANT = {
   name: "Tina Hudson",
   role: "Principal Consultant",
@@ -110,6 +82,7 @@ export const PRINCIPAL_CONSULTANT = {
 
 export const SOLUTIONS = [
   {
+    slug: "strategic-people-partner",
     title: "Strategic People Partner",
     description: "Develop strategic people plans to align with business strategy and foster high-performing cultures.",
     features: [
@@ -117,8 +90,10 @@ export const SOLUTIONS = [
       "Analyzing talent pools for workforce and succession planning",
       "Identifying gaps in organizational and employee capabilities",
     ],
+    body: "[Placeholder — content to be supplied]",
   },
   {
+    slug: "organisation-analysis",
     title: "Organisation Analysis",
     description: "Deliver human resources strategic plans that support organizational effectiveness.",
     features: [
@@ -126,54 +101,50 @@ export const SOLUTIONS = [
       "Manage human resource costs effectively",
       "Align structure with strategic priorities",
     ],
+    body: "[Placeholder — content to be supplied]",
   },
   {
+    slug: "strategy-into-action",
     title: "Strategy into Action",
     description:
       "Translating your high-level business goals into practical, day-to-day employee activities and metrics.",
     features: ["Performance management systems", "KPI development", "Change management support"],
+    body: "[Placeholder — content to be supplied]",
   },
   {
+    slug: "improving-accountability",
     title: "Improving Accountability",
     description:
       "Drive accountability through careful job design, clarifying roles and authorities to improve performance management.",
     features: ["Job description review", "Decision rights framework", "Performance review processes"],
+    body: "[Placeholder — content to be supplied]",
   },
   {
+    slug: "the-right-people-in-the-right-jobs",
     title: "The Right People in the Right Jobs",
     description: "Ensuring you have the right talent in critical roles to drive business success.",
     features: ["Capability assessment", "Recruitment framework", "Succession planning"],
+    body: "[Placeholder — content to be supplied]",
   },
   {
+    slug: "hr-leadership-network",
     title: "HR Leadership Network",
     description: "Connecting HR leaders and providing them with the tools and support they need to drive change.",
     features: ["Networking opportunities", "Best practice sharing", "Leadership development"],
+    body: "[Placeholder — content to be supplied]",
   },
 ];
 
-export const HOME_SERVICES = [
-  {
-    title: "Engagement",
-    description: "Improve employee engagement and trust through practical people-related processes.",
-  },
-  {
-    title: "Performance",
-    description: "Maximise workforce performance by building organizational structures aligned with strategy.",
-  },
-  {
-    title: "Strategic Results",
-    description: "Reduce costs, drive growth, and strengthen long-term organizational health.",
-  },
-];
+export const HOME_ABOUT_US = {
+  eyebrow: "About Us",
+  title: "About Harnessing Talent",
+  paragraphs: ["[Placeholder — content to be supplied from old site]"],
+};
 
-export const HERO_CONTENT = {
-  eyebrow: "Harnessing Talent",
-  title: "Business success through",
-  titleHighlight: " people",
-  description:
-    "We help Australian businesses build better organisations — through strategic HR, clear accountability, and the right people in the right roles.",
-  primaryButton: "Get in Touch",
-  secondaryButton: "Our Solutions",
+export const HOME_SOLUTIONS_EXPERTISE = {
+  eyebrow: "Solutions & Expertise",
+  title: "Our Solutions & Expertise",
+  paragraphs: ["[Placeholder — content to be supplied from old site]"],
 };
 
 export const WHY_CHOOSE_US = {
@@ -182,20 +153,7 @@ export const WHY_CHOOSE_US = {
   paragraphs: [
     "We take time to understand the business need and believe that creating the best people and organisation design solutions means doing more and going further.",
     "We support leaders through the use of diagnostic tools, delivery of practical solutions and the provision of honest advice.",
-  ],
-  quote:
-    "We don’t just think about your business for today – we also focus on tomorrow – how you can get the best out of your people both now and in the future.",
-};
-
-export const COMPANY_OVERVIEW = {
-  eyebrow: "Overview",
-  title: "Company Overview",
-  description: `${SITE_TITLE} helps organizations maximize workforce performance by building organizational structures and people processes aligned with business strategies. We aim to reduce costs, drive growth, and strengthen both short-term performance and long-term organizational health.`,
-  points: [
-    "Analyze and review organizational structure to ensure effective work completion.",
-    "Link people processes to strategy, focusing management attention on strategic priorities.",
-    "Drive accountability through careful job design and role clarity.",
-    "Realize people's potential by ensuring they are in the right roles at the right time.",
+    "We don't just think about your business for today – we also focus on tomorrow – how you can get the best out of your people both now and in the future.",
   ],
 };
 
@@ -207,38 +165,10 @@ export const SOLUTIONS_CONTENT = {
   eyebrow: "What We Offer",
 };
 
-export const SOLUTIONS_CTA = {
-  title: "Ready to get started?",
-  description: "Talk to us about which solutions fit your organisation's needs.",
+export const WE_CAN_HELP = {
+  title: "We Can Help",
+  description: "Get in touch to find out how Harnessing Talent can help your organisation thrive.",
   primaryLabel: "Contact Us",
-};
-
-export const HOME_CONTENT = {
-  howWeHelp: "How We Can Help",
-  howWeHelpEyebrow: "Our Services",
-  processTitle: "How We Work",
-  processEyebrow: "Our Approach",
-};
-
-export const ABOUT_CONTENT = {
-  title: "About Us",
-  intro:
-    "Helping organizations maximize workforce performance through strategic people processes and organizational design.",
-  overviewEyebrow: "Overview",
-  valuesTitle: "Our Values",
-  valuesEyebrow: "Our Purpose",
-  profilesTitle: "Our Profiles",
-  profilesEyebrow: "Our Team",
-  contactLabel: "Contact:",
-  primaryButton: "Contact Us",
-  secondaryButton: "Our Solutions",
-};
-
-export const ABOUT_CTA = {
-  title: "Ready to work together?",
-  description: "Let's talk about how Harnessing Talent can help your organisation thrive.",
-  primaryLabel: "Get in Touch",
-  secondaryLabel: "View Our Solutions",
 };
 
 export const FOOTER_SECTIONS = {
@@ -280,46 +210,8 @@ export const CONTACT_PAGE = {
 
 export const TESTIMONIALS_CONTENT = {
   title: "Testimonials",
-  eyebrow: "Client Voices",
   description: "Hear what our clients say about working with Harnessing Talent.",
 };
-
-export const TESTIMONIALS_CTA = {
-  title: "Ready to join them?",
-  description: "Let's talk about how we can help your organisation achieve the same results.",
-  primaryLabel: "Start the conversation",
-  secondaryLabel: "Our Solutions",
-};
-
-export const STATS = [
-  { value: 15, suffix: "+", label: "Years Experience" },
-  { value: 200, suffix: "+", label: "Organisations Supported" },
-  { value: 95, suffix: "%", label: "Client Satisfaction" },
-  { value: 40, suffix: "%", label: "Avg Retention Improvement" },
-];
-
-export const PROCESS_STEPS = [
-  {
-    title: "Discover",
-    description:
-      "We begin with deep listening — understanding your business goals, culture, and the people challenges holding you back.",
-  },
-  {
-    title: "Diagnose",
-    description:
-      "Through structured analysis and evidence-based frameworks, we identify root causes and prioritise the highest-impact opportunities.",
-  },
-  {
-    title: "Design",
-    description:
-      "We co-create tailored strategies with your leadership team, ensuring ownership and commitment from day one.",
-  },
-  {
-    title: "Deliver",
-    description:
-      "Hands-on implementation support, coaching, and accountability mechanisms to turn strategy into measurable outcomes.",
-  },
-];
 
 export const HOME_CTA = {
   title: "Ready to unlock the potential of your people?",
@@ -330,10 +222,7 @@ export const HOME_CTA = {
 
 export const POLICIES_CONTENT = {
   title: "Our Policies",
-  eyebrow: "Legal",
   privacyTitle: "Privacy Policy",
-  privacyEnquiries: "Privacy Enquiries",
-  privacyEnquiriesText: "If you have any queries or complaints about our Privacy Policy please contact us at:",
   sections: [
     {
       title: "Purpose of the Policy",
