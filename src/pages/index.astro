@@ -1,73 +1,64 @@
 ---
-import { getCollection } from "astro:content";
+import marketingStrategy from "../assets/external/marketing-board-strategy.jpg";
+import meetingCoffee from "../assets/external/meeting-coffee.jpg";
 import CtaSection from "../components/CtaSection.astro";
 import FeatureSection from "../components/FeatureSection.astro";
-import Hero from "../components/Hero.astro";
 import HomepageTestimonial from "../components/HomepageTestimonial.astro";
-import LatestPosts from "../components/LatestPosts.astro";
-import ProcessSteps from "../components/ProcessSteps.astro";
 import QuotesSection from "../components/QuotesSection.astro";
-import ServiceGrid from "../components/ServiceGrid.astro";
-import StatsBand from "../components/StatsBand.astro";
 import TrustedBy from "../components/TrustedBy.astro";
 import {
-  HERO_CONTENT,
-  HOME_CONTENT,
+  HOME_ABOUT_US,
   HOME_CTA,
-  HOME_SERVICES,
+  HOME_SOLUTIONS_EXPERTISE,
   HOME_TESTIMONIAL,
-  PROCESS_STEPS,
   QUOTES,
   ROUTES,
-  STATS,
   TRUSTED_ORGS,
   WHY_CHOOSE_US,
 } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
-
-const recentPosts = (await getCollection("blog"))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 3);
 ---
 
 <MainLayout title="Home">
-  <Hero
-    eyebrow={HERO_CONTENT.eyebrow}
-    title={HERO_CONTENT.title}
-    titleHighlight={HERO_CONTENT.titleHighlight}
-    description={HERO_CONTENT.description}
-    primaryButtonText={HERO_CONTENT.primaryButton}
-    secondaryButtonText={HERO_CONTENT.secondaryButton}
+  <FeatureSection
+    eyebrow={HOME_ABOUT_US.eyebrow}
+    title={HOME_ABOUT_US.title}
+    paragraphs={HOME_ABOUT_US.paragraphs}
+    imageSrc={meetingCoffee}
+    imageAlt="Team meeting"
+    muted={true}
+    level={1}
   />
 
-  <StatsBand stats={STATS} />
-
-  <TrustedBy orgs={TRUSTED_ORGS} />
+  <FeatureSection
+    eyebrow={HOME_SOLUTIONS_EXPERTISE.eyebrow}
+    title={HOME_SOLUTIONS_EXPERTISE.title}
+    paragraphs={HOME_SOLUTIONS_EXPERTISE.paragraphs}
+    imageSrc={marketingStrategy}
+    imageAlt="Strategy and planning"
+    reverse={true}
+  />
 
   <FeatureSection
     eyebrow={WHY_CHOOSE_US.eyebrow}
     title={WHY_CHOOSE_US.title}
     paragraphs={WHY_CHOOSE_US.paragraphs}
-    quote={WHY_CHOOSE_US.quote}
+    primaryLabel="Contact Us"
+    primaryHref={ROUTES.CONTACT}
+    secondaryLabel="Our Solutions"
+    secondaryHref={ROUTES.SOLUTIONS}
+    muted={true}
   />
 
   <QuotesSection quotes={QUOTES} />
 
-  <ServiceGrid
-    eyebrow={HOME_CONTENT.howWeHelpEyebrow}
-    title={HOME_CONTENT.howWeHelp}
-    services={HOME_SERVICES}
-  />
-
-  <ProcessSteps eyebrow={HOME_CONTENT.processEyebrow} title={HOME_CONTENT.processTitle} steps={PROCESS_STEPS} />
+  <TrustedBy orgs={TRUSTED_ORGS} />
 
   <HomepageTestimonial
     quote={HOME_TESTIMONIAL.quote}
     author={HOME_TESTIMONIAL.author}
     role={HOME_TESTIMONIAL.role}
   />
-
-  <LatestPosts posts={recentPosts} />
 
   <CtaSection
     title={HOME_CTA.title}
