@@ -1,0 +1,15 @@
+---
+import logoRaw from "../assets/logo.svg?raw";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+// Inject the class directly onto the <svg> element so CSS sizing (h-12 w-auto)
+// works without a wrapper element, and currentColor inherits from the parent.
+const svg = logoRaw.replace("<svg", `<svg class="${className}"`);
+---
+
+<Fragment set:html={svg} />

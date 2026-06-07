@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 114" role="img" aria-label="Harnessing Talent">
+  <!--
+    Symbol: auto-traced from logo.png via potrace.
+    Stylised H mark — curved arch replaces the straight top bar,
+    standard H crossbar in the middle, base bar at the foot.
+  -->
+  <path
+    stroke="none"
+    fill="#f28b3c"
+    fill-rule="evenodd"
+    d="M 61.131 17.541 C 51.419 19.648, 43.122 24.019, 35.762 30.903 C 28.018 38.148, 23.603 44.654, 20.350 53.617 C 16.915 63.079, 17.089 64, 22.311 64 L 26.621 64 28.445 57.913 C 32.042 45.905, 42.018 34.583, 53.500 29.479 C 79.305 18.008, 109.579 32.016, 117.639 59.157 L 119.077 64 123.618 64 L 128.159 64 127.458 60.750 C 122.863 39.445, 105.336 21.935, 84.099 17.434 C 75.968 15.710, 69.428 15.741, 61.131 17.541
+    M 46 53.500 L 46 64 51 64 L 56 64 56 58 L 56 52 62 52 L 68 52 68 58 L 68 64 72.450 64 L 76.900 64 77.200 58.250 L 77.500 52.500 83.500 52.500 L 89.500 52.500 89.800 58.250 L 90.100 64 94.550 64 L 99 64 99 53.500 L 99 43 72.500 43 L 46 43 46 53.500
+    M 68 81 L 68 88 62 88 L 56 88 56 92.524 L 56 97.048 72.750 96.774 L 89.500 96.500 89.805 92.299 L 90.110 88.098 83.805 87.799 L 77.500 87.500 77.204 80.750 L 76.909 74 72.454 74 L 68 74 68 81"
+  />
+
+  <!--
+    Text: fill="currentColor" inherits CSS color from the parent element,
+    giving automatic dark (light mode) / light (dark mode) adaptation.
+    Font sizes are in the original 383×114 coordinate space; the SVG scales
+    uniformly when height is set via CSS (e.g. h-12 = 48px → scale ≈ 0.42).
+  -->
+  <text
+    x="148" y="69"
+    font-family="Inter, system-ui, -apple-system, sans-serif"
+    font-weight="700"
+    font-size="34"
+    fill="currentColor"
+  >HARNESSING TALENT</text>
+</svg>

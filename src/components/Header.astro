@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import logoImage from "../assets/logo.png";
-import { NAVIGATION, ROUTES, SITE_TITLE } from "../consts";
+import { NAVIGATION, ROUTES } from "../consts";
+import Logo from "./Logo.astro";
 import ThemeToggle from "./Themes.astro";
 ---
 
@@ -10,8 +9,8 @@ import ThemeToggle from "./Themes.astro";
   style={{ backgroundColor: "var(--header-bg)", borderColor: "var(--header-border)" }}
 >
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <a href={ROUTES.HOME} class="flex items-center">
-      <Image src={logoImage} alt={SITE_TITLE} class="h-12 w-auto" width={200} height={48} loading="eager" />
+    <a href={ROUTES.HOME} class="flex items-center text-[var(--text-primary)]">
+      <Logo class="h-12 w-auto" />
     </a>
     <div class="flex items-center">
       <nav class="hidden md:block" aria-label="Main navigation">
