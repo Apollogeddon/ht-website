@@ -30,6 +30,9 @@ import MainLayout from "../layouts/MainLayout.astro";
           <!-- Contact Form -->
           <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 lg:p-10 border border-[var(--border-strong)] shadow-sm">
             <form id="contact-form" class="space-y-4">
+              <!-- Web3Forms Honeypot Spam Protection -->
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+              
               <div class="grid sm:grid-cols-2 gap-4">
                 <FormField label={CONTACT_PAGE.form.firstName} id="first-name" name="firstName" required />
                 <FormField label={CONTACT_PAGE.form.lastName} id="last-name" name="lastName" required />
@@ -63,7 +66,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
     form.dataset.initialized = "true";
 
-    const WORKER_URL = import.meta.env.PUBLIC_CONTACT_WORKER_URL || "https://ht-contact-api.your-subdomain.workers.dev";
+    const WORKER_URL = "https://api.web3forms.com/submit";
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -74,6 +77,12 @@ import MainLayout from "../layouts/MainLayout.astro";
       formMessage.classList.add("hidden");
 
       const formData = new FormData(form);
+      
+      // Use Web3Forms Access Key from environment variables
+      const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY;
+      formData.append("access_key", accessKey);
+      formData.append("subject", "New Inquiry from Harnessing Talent Website");
+
       const data = Object.fromEntries(formData.entries());
 
       try {
@@ -81,6 +90,7 @@ import MainLayout from "../layouts/MainLayout.astro";
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Accept: "application/json",
           },
           body: JSON.stringify(data),
         });
@@ -88,12 +98,12 @@ import MainLayout from "../layouts/MainLayout.astro";
         const result = await response.json();
 
         if (response.ok) {
-          formMessage.textContent = result.message || "Thank you! Your message has been sent successfully.";
+          formMessage.textContent = "Thank you! Your message has been sent successfully.";
           formMessage.classList.remove("hidden", "bg-red-100", "text-red-700", "border-red-200");
           formMessage.classList.add("bg-green-100", "text-green-700", "border-green-200", "border");
           form.reset();
         } else {
-          throw new Error(result.message || result.error || "Something went wrong.");
+          throw new Error(result.message || "Something went wrong.");
         }
       } catch (err: any) {
         formMessage.textContent = err.message || "Failed to send message. Please try again later.";
