@@ -55,6 +55,16 @@ Most of the static text on the website (titles, descriptions, service lists, and
 3. **Edit the text:** Update the strings inside the quotes. For lists (like `SOLUTIONS`), ensure you maintain the array and object structure.
 4. **Save the file.** The changes will reflect across the site immediately.
 
+## ✉️ Updating Contact Form Delivery
+
+The contact form is powered by Web3Forms. If you ever need to change the email address that receives contact form submissions:
+
+1. Go to [Web3Forms](https://web3forms.com/) and enter the **new** email address.
+2. They will email a new Access Key to that address.
+3. Open `src/pages/contact.astro` in this project.
+4. Locate the line with `const accessKey = "YOUR_KEY_HERE";` (around line 78) and update it with the new key.
+5. Save and commit your changes to redeploy.
+
 ## 🖼️ Updating Images
 
 ### Recommended: Using Optimized Assets

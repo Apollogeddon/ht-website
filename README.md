@@ -25,7 +25,7 @@ A modern, responsive website for **Harnessing Talent**, a management consultancy
 │   ├── components/     # Reusable UI components (Header, Footer, ThemeToggle)
 │   ├── content/        # Content Collections (Blog posts and Testimonials)
 │   ├── layouts/        # Page wrappers (MainLayout)
-│   ├── pages/          # Route definitions (index, about, solutions, etc.)
+│   ├── pages/          # Route definitions (index, profiles, solutions, etc.)
 │   ├── styles/         # Global CSS with Tailwind v4 imports
 │   ├── classes.ts      # Tailwind CSS class constants for UI consistency
 │   ├── consts.ts       # Global site constants and content

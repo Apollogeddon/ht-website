@@ -44,6 +44,13 @@ nvm use lts
     npm install
     ```
 
+3. **Configure the Contact Form:**
+
+    The website uses [Web3Forms](https://web3forms.com/) for serverless email submissions.
+    - Get a free Access Key from Web3Forms by entering your email on their website.
+    - Open `src/pages/contact.astro` and find `const accessKey = ...`.
+    - Replace the placeholder string with your actual Web3Forms Access Key.
+
 ## 3. Development
 
 To start the local development server:
