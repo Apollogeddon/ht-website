@@ -1,4 +1,6 @@
 ---
+import Quote from "./Quote.astro";
+
 interface Props {
   quote: string;
   author: string;
@@ -10,24 +12,6 @@ const { quote, author, role } = Astro.props;
 
 <section class="section-padding-sm bg-[var(--brand-accent)]">
   <div class="container-site">
-    <div class="max-w-3xl mx-auto text-center">
-      <svg
-        class="h-10 w-10 mx-auto mb-6 opacity-40"
-        fill="white"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path
-          d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
-        ></path>
-      </svg>
-      <blockquote class="text-xl lg:text-2xl font-medium text-white leading-relaxed mb-8">
-        "{quote}"
-      </blockquote>
-      <div>
-        <p class="font-bold text-white">{author}</p>
-        <p class="text-white/90 text-sm mt-1">{role}</p>
-      </div>
-    </div>
+    <Quote text={quote} author={author} role={role} variant="hero" />
   </div>
 </section>

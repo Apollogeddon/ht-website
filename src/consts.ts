@@ -22,13 +22,6 @@ export const ROUTES = {
   PROFILES: `${import.meta.env.BASE_URL}profiles`,
 };
 
-export const CONTACT_INFO = {
-  email: "tina@harnessingtalent.com.au",
-  phone: "0412 857 639",
-  location: "Adelaide, SA",
-  location_full: "Adelaide, South Australia",
-};
-
 export const NAVIGATION = [
   { label: "Home", href: ROUTES.HOME },
   { label: "Solutions", href: ROUTES.SOLUTIONS },
@@ -38,9 +31,9 @@ export const NAVIGATION = [
     label: "About Us",
     href: ROUTES.PROFILES,
     children: [
-      { label: "Profiles", href: ROUTES.PROFILES },
-      { label: "Policies", href: ROUTES.POLICIES },
-      { label: "Contact", href: ROUTES.CONTACT },
+      { label: "Our Team", href: ROUTES.PROFILES },
+      { label: "Our Policies", href: ROUTES.POLICIES },
+      { label: "Contact Us", href: ROUTES.CONTACT },
     ],
   },
 ];
@@ -78,6 +71,15 @@ export const PRINCIPAL_CONSULTANT = {
   role: "Principal Consultant",
   bio: "Tina is a seasoned human resources and organizational design professional with extensive experience in helping businesses optimize their people resources.",
   linkedin: "",
+};
+
+export const SOLUTION_ICON_PATHS: Record<number, string> = {
+  0: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z",
+  1: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+  2: "M13 10V3L4 14h7v7l9-11h-7z",
+  3: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+  4: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
+  5: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
 };
 
 export const SOLUTIONS = [
@@ -193,12 +195,9 @@ export const BLOG_CONTENT = {
 
 export const CONTACT_PAGE = {
   title: "Contact Us",
-  subtitle: "Ready to improve your business performance through people? Get in touch with us today.",
-  labels: {
-    email: "Email",
-    phone: "Phone",
-    location: "Location",
-  },
+  subtitle: "Ready to improve your business performance through people? Get in touch and we'll start the conversation.",
+  intro:
+    "When you reach out, you're taking the first step toward unlocking your organisation's people potential. Tell us a little about what you're looking for and we'll get back to you.",
   form: {
     firstName: "First Name",
     lastName: "Last Name",

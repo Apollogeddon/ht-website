@@ -1,25 +1,16 @@
 ---
-import { Image } from "astro:assets";
 import adelaideRiver from "../assets/external/adelaide-river-torrens.jpg";
 import tinaHudson from "../assets/external/tina-hudson.jpg";
 import Avatar from "../components/Avatar.astro";
 import CtaSection from "../components/CtaSection.astro";
+import PageHero from "../components/PageHero.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import { PRINCIPAL_CONSULTANT, ROUTES, WE_CAN_HELP } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Our Profiles">
-  <div class="relative h-56 md:h-72 overflow-hidden">
-    <Image
-      src={adelaideRiver}
-      alt="Adelaide River Torrens"
-      class="w-full h-full object-cover object-center"
-      widths={[640, 1280, 1920]}
-      sizes="100vw"
-    />
-    <div class="absolute inset-0 bg-[var(--bg-inverse)] opacity-30"></div>
-  </div>
+  <PageHero src={adelaideRiver} alt="Adelaide River Torrens" height="md" overlayOpacity="30" />
 
   <section class="section-padding bg-[var(--bg-muted)] scroll-reveal">
     <div class="container-site">

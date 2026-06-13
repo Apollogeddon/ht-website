@@ -1,0 +1,73 @@
+---
+interface Props {
+  text: string;
+  author: string;
+  role?: string;
+  variant?: "grid" | "card" | "hero";
+  class?: string;
+}
+
+const { text, author, role, variant = "card", class: className = "" } = Astro.props;
+
+const QUOTE_PATH =
+  "M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z";
+---
+
+{
+  variant === "grid" && (
+    <blockquote class={`card-base p-6 flex flex-col gap-3 ${className}`}>
+      <svg
+        class="h-6 w-6 text-[var(--brand-accent)] flex-shrink-0"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d={QUOTE_PATH} />
+      </svg>
+      <p class="text-[var(--text-secondary)] italic leading-relaxed flex-1">{text}</p>
+      <footer class="text-sm font-semibold text-[var(--brand-accent)]">— {author}</footer>
+    </blockquote>
+  )
+}
+{
+  variant === "card" && (
+    <div class={`card-base p-8 flex flex-col ${className}`}>
+      <svg
+        class="h-10 w-10 text-[var(--border-strong)] opacity-40 mb-4"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d={QUOTE_PATH} />
+      </svg>
+      <blockquote class="flex-grow text-[var(--text-secondary)] italic leading-relaxed text-lg mb-6">
+        "{text}"
+      </blockquote>
+      <footer>
+        <div class="font-bold text-[var(--text-primary)]">{author}</div>
+        {role && <div class="text-sm text-[var(--brand-accent)] font-semibold">{role}</div>}
+      </footer>
+    </div>
+  )
+}
+{
+  variant === "hero" && (
+    <div class={`max-w-3xl mx-auto text-center ${className}`}>
+      <svg
+        class="h-10 w-10 mx-auto mb-6 opacity-40"
+        fill="white"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d={QUOTE_PATH} />
+      </svg>
+      <blockquote class="text-xl lg:text-2xl font-medium text-white leading-relaxed mb-8">
+        "{text}"
+      </blockquote>
+      <footer>
+        <p class="font-bold text-white">{author}</p>
+        {role && <p class="text-white/90 text-sm mt-1">{role}</p>}
+      </footer>
+    </div>
+  )
+}

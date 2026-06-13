@@ -49,7 +49,6 @@ Most of the static text on the website (titles, descriptions, service lists, and
 1. **Open:** `src/consts.ts`
 2. **Find the relevant section:** The file is organized into exported constants such as:
     - `SITE_TITLE` & `SITE_DESCRIPTION`: Global site identity.
-    - `CONTACT_INFO`: Email, phone, and location.
     - `SOLUTIONS`: The list of services shown on the Solutions page.
     - `HERO_CONTENT`: The main heading and buttons on the homepage.
     - `POLICIES_CONTENT`: Content for the Privacy Policy page.

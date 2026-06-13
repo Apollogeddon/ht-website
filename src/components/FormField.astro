@@ -1,0 +1,43 @@
+---
+interface Props {
+  label: string;
+  id: string;
+  name: string;
+  type?: string;
+  rows?: number;
+  required?: boolean;
+}
+
+const { label, id, name, type = "text", rows, required = false } = Astro.props;
+---
+
+<div>
+  <label for={id} class="block text-sm font-medium text-[var(--text-secondary)] mb-1">
+    {label}
+  </label>
+  {
+    rows !== undefined ? (
+      <textarea
+        id={id}
+        name={name}
+        rows={rows}
+        class="form-input w-full px-4 py-3 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none transition-all focus:border-[var(--brand-accent)]"
+        required={required}
+      ></textarea>
+    ) : (
+      <input
+        type={type}
+        id={id}
+        name={name}
+        class="form-input w-full px-4 py-3 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none transition-all focus:border-[var(--brand-accent)]"
+        required={required}
+      />
+    )
+  }
+</div>
+
+<style>
+  .form-input:focus {
+    box-shadow: var(--ring-focus);
+  }
+</style>
