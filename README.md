@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://ht.apollogeddon.com">
-    <img src="./src/assets/logo.png" alt="Logo">
+    <img src="./src/assets/logo.svg" alt="Logo">
   </a>
   <br><br>
 </div>
