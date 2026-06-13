@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 const pagesToCheck = [
   { path: "/", name: "Home" },
-  { path: "/about", name: "About" },
+  { path: "/profiles", name: "Profiles" },
   { path: "/contact", name: "Contact" },
   { path: "/blog", name: "Blog Index" },
   { path: "/solutions", name: "Solutions" },

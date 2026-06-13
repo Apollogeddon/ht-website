@@ -22,7 +22,16 @@ test.describe("External link integrity", () => {
   });
 });
 
-const pagesToCheck = ["/", "/about", "/contact", "/solutions", "/testimonials", "/policies", "/blog", "/blog/welcome"];
+const pagesToCheck = [
+  "/",
+  "/profiles",
+  "/contact",
+  "/solutions",
+  "/testimonials",
+  "/policies",
+  "/blog",
+  "/blog/welcome",
+];
 
 test.describe("Link integrity", () => {
   for (const path of pagesToCheck) {
