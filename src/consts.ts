@@ -70,7 +70,6 @@ export const PRINCIPAL_CONSULTANT = {
   name: "Tina Hudson",
   role: "Principal Consultant",
   bio: "Tina is a seasoned human resources and organizational design professional with extensive experience in helping businesses optimize their people resources.",
-  linkedin: "",
 };
 
 export const SOLUTION_ICON_PATHS: Record<number, string> = {
@@ -92,7 +91,6 @@ export const SOLUTIONS = [
       "Analyzing talent pools for workforce and succession planning",
       "Identifying gaps in organizational and employee capabilities",
     ],
-    body: "[Placeholder — content to be supplied]",
   },
   {
     slug: "organisation-analysis",
@@ -103,7 +101,6 @@ export const SOLUTIONS = [
       "Manage human resource costs effectively",
       "Align structure with strategic priorities",
     ],
-    body: "[Placeholder — content to be supplied]",
   },
   {
     slug: "strategy-into-action",
@@ -111,7 +108,6 @@ export const SOLUTIONS = [
     description:
       "Translating your high-level business goals into practical, day-to-day employee activities and metrics.",
     features: ["Performance management systems", "KPI development", "Change management support"],
-    body: "[Placeholder — content to be supplied]",
   },
   {
     slug: "improving-accountability",
@@ -119,34 +115,35 @@ export const SOLUTIONS = [
     description:
       "Drive accountability through careful job design, clarifying roles and authorities to improve performance management.",
     features: ["Job description review", "Decision rights framework", "Performance review processes"],
-    body: "[Placeholder — content to be supplied]",
   },
   {
     slug: "the-right-people-in-the-right-jobs",
     title: "The Right People in the Right Jobs",
     description: "Ensuring you have the right talent in critical roles to drive business success.",
     features: ["Capability assessment", "Recruitment framework", "Succession planning"],
-    body: "[Placeholder — content to be supplied]",
   },
   {
     slug: "hr-leadership-network",
     title: "HR Leadership Network",
     description: "Connecting HR leaders and providing them with the tools and support they need to drive change.",
     features: ["Networking opportunities", "Best practice sharing", "Leadership development"],
-    body: "[Placeholder — content to be supplied]",
   },
 ];
 
 export const HOME_ABOUT_US = {
   eyebrow: "About Us",
   title: "About Harnessing Talent",
-  paragraphs: ["[Placeholder — content to be supplied from old site]"],
+  paragraphs: [
+    "At Harnessing Talent, we partner with organizations to unlock the full potential of their people. We work with you to improve employee engagement and trust through the implementation of practical, outcome-focused human resources processes and systems.",
+  ],
 };
 
 export const HOME_SOLUTIONS_EXPERTISE = {
   eyebrow: "Solutions & Expertise",
   title: "Our Solutions & Expertise",
-  paragraphs: ["[Placeholder — content to be supplied from old site]"],
+  paragraphs: [
+    "Our expertise spans across all facets of human resources and organizational design. We deliver tailored strategies to help your leaders build high-performing teams, manage change effectively, and foster an engaging workplace culture.",
+  ],
 };
 
 export const WHY_CHOOSE_US = {
@@ -183,8 +180,6 @@ export const FOOTER_SECTIONS = {
 export const UI_LABELS = {
   readMore: "Read more",
   backToBlog: "Back to all posts",
-  photoPlaceholder: "Photo",
-  imagePlaceholder: "Business Success Image",
 };
 
 export const BLOG_CONTENT = {
