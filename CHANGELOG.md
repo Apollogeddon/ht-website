@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.3.0](https://github.com/Apollogeddon/ht-website/compare/v1.2.5...v1.3.0) (2026-06-13)
+
+
+### Features
+
+* add external image assets ([040678c](https://github.com/Apollogeddon/ht-website/commit/040678c6d69b06808110face97d065c19c7c8e42))
+* add standalone profiles page and dynamic solution detail routes ([e6b9bda](https://github.com/Apollogeddon/ht-website/commit/e6b9bdaa762dde338ebbf4a24fa40c97d6fc5d9a))
+* add Web3Forms integration for contact form submissions ([fba951d](https://github.com/Apollogeddon/ht-website/commit/fba951d1f1cfe95e425440f917df6ceb09b1334a))
+* implement reusable Button and Quote, refactor contact and profiles with new components ([91b6f53](https://github.com/Apollogeddon/ht-website/commit/91b6f53bb6377a72cf58e936dd48870646b8bab5))
+* integrate images across pages and update Avatar, FeatureSection, QuotesSection, TrustedBy ([6a92e4b](https://github.com/Apollogeddon/ht-website/commit/6a92e4b215bbfb8d0a14c85685521c0b9b395e93))
+* replace logo PNG with potrace-traced SVG with dark/light mode support ([26be213](https://github.com/Apollogeddon/ht-website/commit/26be21382a65e6cc103b82a2fc6b489606ea657e))
+
+
+### Bug Fixes
+
+* **deps:** bump the dependencies group across 1 directory with 7 updates ([47192bb](https://github.com/Apollogeddon/ht-website/commit/47192bb28c900646c9f18684a3c0eab2dbd7f699))
+* **deps:** bump the dependencies group across 1 directory with 7 updates ([971437a](https://github.com/Apollogeddon/ht-website/commit/971437a3caa1477b47b17e68c0b463b32ca39270))
+* tighten header contrast ratio and update e2e tests for new routes ([eb124dd](https://github.com/Apollogeddon/ht-website/commit/eb124dd74eb085f143a85018b265676a456a8937))
+* update content in consts and remove placeholder text in profiles and solutions pages ([811760e](https://github.com/Apollogeddon/ht-website/commit/811760e4eabb7a8e0ee8b199f98773070ec029e0))
+* update pagesToCheck to replace '/about' with '/profiles' ([42f6c3c](https://github.com/Apollogeddon/ht-website/commit/42f6c3c344d5f600aed067556a00b83be1820d2f))
+
 ## [1.2.5](https://github.com/Apollogeddon/ht-website/compare/v1.2.4...v1.2.5) (2026-05-27)
 
 
