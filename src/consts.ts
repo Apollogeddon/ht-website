@@ -69,7 +69,7 @@ export const TRUSTED_ORGS = ["Kalyra Communities"];
 export const PRINCIPAL_CONSULTANT = {
   name: "Tina Hudson",
   role: "Principal Consultant",
-  bio: "Tina is a seasoned human resources and organizational design professional with extensive experience in helping businesses optimize their people resources.",
+  bio: "Tina is a seasoned human resources and organisational design professional with extensive experience in helping businesses optimise their people resources.",
 };
 
 export const SOLUTION_ICON_PATHS: Record<number, string> = {
@@ -88,14 +88,14 @@ export const SOLUTIONS = [
     description: "Develop strategic people plans to align with business strategy and foster high-performing cultures.",
     features: [
       "Trusted advice to senior executives on HR matters",
-      "Analyzing talent pools for workforce and succession planning",
-      "Identifying gaps in organizational and employee capabilities",
+      "Analysing talent pools for workforce and succession planning",
+      "Identifying gaps in organisational and employee capabilities",
     ],
   },
   {
     slug: "organisation-analysis",
     title: "Organisation Analysis",
-    description: "Deliver human resources strategic plans that support organizational effectiveness.",
+    description: "Deliver human resources strategic plans that support organisational effectiveness.",
     features: [
       "Link people initiatives with business objectives",
       "Manage human resource costs effectively",
@@ -134,7 +134,7 @@ export const HOME_ABOUT_US = {
   eyebrow: "About Us",
   title: "About Harnessing Talent",
   paragraphs: [
-    "At Harnessing Talent, we partner with organizations to unlock the full potential of their people. We work with you to improve employee engagement and trust through the implementation of practical, outcome-focused human resources processes and systems.",
+    "At Harnessing Talent, we partner with organisations to unlock the full potential of their people. We work with you to improve employee engagement and trust through the implementation of practical, outcome-focused human resources processes and systems.",
   ],
 };
 
@@ -142,7 +142,7 @@ export const HOME_SOLUTIONS_EXPERTISE = {
   eyebrow: "Solutions & Expertise",
   title: "Our Solutions & Expertise",
   paragraphs: [
-    "Our expertise spans across all facets of human resources and organizational design. We deliver tailored strategies to help your leaders build high-performing teams, manage change effectively, and foster an engaging workplace culture.",
+    "Our expertise spans across all facets of human resources and organisational design. We deliver tailored strategies to help your leaders build high-performing teams, manage change effectively, and foster an engaging workplace culture.",
   ],
 };
 
@@ -207,7 +207,6 @@ export const TESTIMONIALS_CONTENT = {
   description: "Hear what our clients say about working with Harnessing Talent.",
 };
 
-
 export const POLICIES_CONTENT = {
   title: "Our Policies",
   privacyTitle: "Privacy Policy",
@@ -250,7 +249,7 @@ export const POLICIES_CONTENT = {
     {
       title: "How we store your personal information",
       content:
-        "Your Personal Information is stored in a manner that reasonably protects it from misuse and loss and from unauthorized access, modification or disclosure.",
+        "Your Personal Information is stored in a manner that reasonably protects it from misuse and loss and from unauthorised access, modification or disclosure.",
     },
     {
       title: "Access to your personal information",

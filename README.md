@@ -21,7 +21,7 @@ A modern, responsive website for **Harnessing Talent**, a management consultancy
 /
 ├── public/             # Static assets (images, favicon, etc.)
 ├── src/
-│   ├── assets/         # Optimized assets (logo, images)
+│   ├── assets/         # Optimised assets (logo, images)
 │   ├── components/     # Reusable UI components (Header, Footer, ThemeToggle)
 │   ├── content/        # Content Collections (Blog posts and Testimonials)
 │   ├── layouts/        # Page wrappers (MainLayout)

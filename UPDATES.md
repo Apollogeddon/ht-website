@@ -47,7 +47,7 @@ Testimonials are now stored as individual files in the content collection.
 Most of the static text on the website (titles, descriptions, service lists, and contact information) is centralized in a single configuration file.
 
 1. **Open:** `src/consts.ts`
-2. **Find the relevant section:** The file is organized into exported constants such as:
+2. **Find the relevant section:** The file is organised into exported constants such as:
     - `SITE_TITLE` & `SITE_DESCRIPTION`: Global site identity.
     - `SOLUTIONS`: The list of services shown on the Solutions page.
     - `HERO_CONTENT`: The main heading and buttons on the homepage.
@@ -67,7 +67,7 @@ The contact form is powered by Web3Forms. If you ever need to change the email a
 
 ## 🖼️ Updating Images
 
-### Recommended: Using Optimized Assets
+### Recommended: Using Optimised Assets
 
 For the best performance, place images in `src/assets/` and use Astro's `<Image />` component.
 
