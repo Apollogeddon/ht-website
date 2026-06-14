@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.2](https://github.com/Apollogeddon/ht-website/compare/v1.3.1...v1.3.2) (2026-06-14)
+
+
+### Bug Fixes
+
+* removed unused dependencies and clean up icon paths ([8378d33](https://github.com/Apollogeddon/ht-website/commit/8378d33402c567be0dfe3147446c7607ca7fdf0f))
+* update @apollogeddon/forgejs to version 2.3.2 ([b01e701](https://github.com/Apollogeddon/ht-website/commit/b01e70188db60a5082ead02ec687b869a2eaa833))
+* update permissions to allow write access for contents in workflow ([a5a9e91](https://github.com/Apollogeddon/ht-website/commit/a5a9e91ffc024f1ab6ee1cea7aabb94253310616))
+
 ## [1.3.1](https://github.com/Apollogeddon/ht-website/compare/v1.3.0...v1.3.1) (2026-06-14)
 
 
