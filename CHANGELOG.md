@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/Apollogeddon/ht-website/compare/v1.3.3...v1.3.4) (2026-06-14)
+
+
+### Bug Fixes
+
+* enhance spam protection with autocomplete and accessibility attributes ([08c5023](https://github.com/Apollogeddon/ht-website/commit/08c5023af9c1649801e12fb74c0082cf73f2dbe0))
+
 ## [1.3.3](https://github.com/Apollogeddon/ht-website/compare/v1.3.2...v1.3.3) (2026-06-14)
 
 
