@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
-import { DATE_LOCALE, DATE_OPTIONS, ROUTES, UI_LABELS } from "../../consts";
+import CtaSection from "../../components/CtaSection.astro";
+import { DATE_LOCALE, DATE_OPTIONS, ROUTES, UI_LABELS, WE_CAN_HELP } from "../../consts";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { ICONS } from "../../styles";
 
@@ -74,4 +75,11 @@ const readingTime = Math.max(1, Math.ceil((post.body?.split(/\s+/).filter(Boolea
       </div>
     </div>
   </div>
+
+  <CtaSection
+    title={WE_CAN_HELP.title}
+    description={WE_CAN_HELP.description}
+    primaryLabel={WE_CAN_HELP.primaryLabel}
+    primaryHref={ROUTES.CONTACT}
+  />
 </MainLayout>

@@ -59,8 +59,8 @@ To start the local development server:
 npm run dev
 ```
 
-* The site will be available at: `http://localhost:4321`
-* Changes to files will automatically reload the page.
+- The site will be available at: `http://localhost:4321`
+- Changes to files will automatically reload the page.
 
 ## 4. Code Quality
 

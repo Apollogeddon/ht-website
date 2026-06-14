@@ -207,12 +207,6 @@ export const TESTIMONIALS_CONTENT = {
   description: "Hear what our clients say about working with Harnessing Talent.",
 };
 
-export const HOME_CTA = {
-  title: "Ready to unlock the potential of your people?",
-  description: "Let's have a conversation about what's holding your organisation back — and how to fix it.",
-  primaryLabel: "Start the conversation",
-  secondaryLabel: "Explore our solutions",
-};
 
 export const POLICIES_CONTENT = {
   title: "Our Policies",

@@ -8,12 +8,12 @@ import QuotesSection from "../components/QuotesSection.astro";
 import TrustedBy from "../components/TrustedBy.astro";
 import {
   HOME_ABOUT_US,
-  HOME_CTA,
   HOME_SOLUTIONS_EXPERTISE,
   HOME_TESTIMONIAL,
   QUOTES,
   ROUTES,
   TRUSTED_ORGS,
+  WE_CAN_HELP,
   WHY_CHOOSE_US,
 } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
@@ -61,11 +61,9 @@ import MainLayout from "../layouts/MainLayout.astro";
   />
 
   <CtaSection
-    title={HOME_CTA.title}
-    description={HOME_CTA.description}
-    primaryLabel={HOME_CTA.primaryLabel}
+    title={WE_CAN_HELP.title}
+    description={WE_CAN_HELP.description}
+    primaryLabel={WE_CAN_HELP.primaryLabel}
     primaryHref={ROUTES.CONTACT}
-    secondaryLabel={HOME_CTA.secondaryLabel}
-    secondaryHref={ROUTES.SOLUTIONS}
   />
 </MainLayout>
