@@ -8,15 +8,14 @@
   <br><br>
 </div>
 
-A modern, responsive website for **Harnessing Talent**, a management consultancy based in Adelaide. Built with [Astro](https://astro.build/) and [Tailwind CSS v4](https://tailwindcss.com/).
+Website for **[Harnessing Talent](https://ht.apollogeddon.com)**, a management consultancy based in Adelaide, South Australia. The site showcases the consulting services, team profiles, and client testimonials, with an integrated blog. Built with [Astro](https://astro.build/) for performance and [Tailwind CSS](https://tailwindcss.com/) for styling, it is designed to be fast, accessible, and straightforward for non-developers to maintain.
 
 ## 🚀 Key Features
 
-* **Modern Stack:** Built on Astro for high performance and zero-JS by default (where possible).
-* **Styling:** Professional "Orange & Grey" theme using Tailwind CSS.
-* **Dark Mode:** Fully supported dark/light mode with system preference detection.
-* **Content Collections:** Type-safe blog management using Markdown.
-* **Responsive:** Mobile-first design for all pages.
+* **Performance-first:** Astro ships zero JavaScript by default, delivering fast load times out of the box.
+* **SEO-ready:** Open Graph, Twitter cards, and canonical URLs configured on every page.
+* **Blog & testimonials:** Content managed via Astro Content Collections — type-safe, Markdown-based.
+* **Accessible:** Automated accessibility testing on every build with axe-core.
 
 ## 📂 Project Structure
 
