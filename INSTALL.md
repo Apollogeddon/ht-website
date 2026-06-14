@@ -56,7 +56,7 @@ The contact form uses [Web3Forms](https://web3forms.com/) to send emails. You ne
 2. In the project folder, find the file named `.env.example` and make a copy of it in the same folder named `.env`.
 3. Open `.env` in VS Code and replace the placeholder with your Access Key:
 
-    ```
+    ```text
     PUBLIC_WEB3FORMS_ACCESS_KEY=your-key-here
     ```
 

@@ -164,7 +164,7 @@ Once you're happy with your changes, follow these steps to publish them to the l
 
 Type a short description of your change in the **Message** box at the top. Commit messages must follow this format:
 
-```
+```text
 type: short description in lowercase
 ```
 

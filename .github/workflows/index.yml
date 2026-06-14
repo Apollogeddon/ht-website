@@ -12,10 +12,11 @@ concurrency:
 
 jobs:
   testing:
-    uses: apollogeddon/forgejs/.github/workflows/testing.yml@v2.2.1
+    uses: apollogeddon/forgejs/.github/workflows/testing.yml@v2.3.2
     with:
       node_version: '22'
       working_directory: '.'
+      build_env_vars: "PUBLIC_WEB3FORMS_ACCESS_KEY=${{ vars.PUBLIC_WEB3FORMS_ACCESS_KEY }}"
     permissions:
       contents: read
       pull-requests: write
@@ -24,7 +25,7 @@ jobs:
   deploy:
     needs: testing
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    uses: apollogeddon/forgejs/.github/workflows/website.yml@v2.2.1
+    uses: apollogeddon/forgejs/.github/workflows/website.yml@v2.3.2
     with:
       artifact_name: 'dist'
     permissions:
