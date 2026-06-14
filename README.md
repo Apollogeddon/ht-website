@@ -1,11 +1,14 @@
 <div align="center">
   <a href="https://ht.apollogeddon.com">
-    <img src="./src/assets/logo.svg" alt="Logo">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./src/assets/logo-dark.svg">
+      <img src="./src/assets/logo.svg" alt="Harnessing Talent">
+    </picture>
   </a>
   <br><br>
 </div>
 
-A modern, responsive website for **Harnessing Talent**, a management consultancy based in Adelaide. Recreated using [Astro](https://astro.build/), [React](https://react.dev/), and [Tailwind CSS v4](https://tailwindcss.com/).
+A modern, responsive website for **Harnessing Talent**, a management consultancy based in Adelaide. Built with [Astro](https://astro.build/) and [Tailwind CSS v4](https://tailwindcss.com/).
 
 ## 🚀 Key Features
 
@@ -27,7 +30,6 @@ A modern, responsive website for **Harnessing Talent**, a management consultancy
 │   ├── layouts/        # Page wrappers (MainLayout)
 │   ├── pages/          # Route definitions (index, profiles, solutions, etc.)
 │   ├── styles/         # Global CSS with Tailwind v4 imports
-│   ├── classes.ts      # Tailwind CSS class constants for UI consistency
 │   ├── consts.ts       # Global site constants and content
 │   └── styles.ts       # Color palettes and icon paths
 ├── astro.config.mjs    # Astro configuration
