@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1](https://github.com/Apollogeddon/ht-website/compare/v1.3.0...v1.3.1) (2026-06-14)
+
+
+### Bug Fixes
+
+* correct to aus spelling for all content ([cf27ae9](https://github.com/Apollogeddon/ht-website/commit/cf27ae99394635d0eafb3c2b02e76f3cbda287e8))
+* unify CTA sections and improve mobile layout for the contacts page ([723161a](https://github.com/Apollogeddon/ht-website/commit/723161a646b669d680bc0406e3c25cdfac8a274b))
+
 ## [1.3.0](https://github.com/Apollogeddon/ht-website/compare/v1.2.5...v1.3.0) (2026-06-13)
 
 
