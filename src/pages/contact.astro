@@ -31,7 +31,7 @@ import MainLayout from "../layouts/MainLayout.astro";
           <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 lg:p-10 border border-[var(--border-strong)] shadow-sm">
             <form id="contact-form" class="space-y-4">
               <!-- Web3Forms Honeypot Spam Protection -->
-              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;" autocomplete="off" tabindex="-1" aria-hidden="true">
               
               <div class="grid sm:grid-cols-2 gap-4">
                 <FormField label={CONTACT_PAGE.form.firstName} id="first-name" name="firstName" required />
