@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.5](https://github.com/Apollogeddon/ht-website/compare/v1.3.4...v1.3.5) (2026-07-01)
+
+
+### Bug Fixes
+
+* **deps:** bump the dependencies group across 1 directory with 2 updates ([d0ce919](https://github.com/Apollogeddon/ht-website/commit/d0ce919dd1683c673b8e9f929382715f15257918))
+* **deps:** bump the dependencies group across 1 directory with 2 updates ([7c335b1](https://github.com/Apollogeddon/ht-website/commit/7c335b16ee9819c5f6efa3d1103ccea4a40b88ba))
+* **deps:** bump the dependencies group across 1 directory with 4 updates ([cb68920](https://github.com/Apollogeddon/ht-website/commit/cb68920d21afdcae0c432ad0b2e0bc31c8c40171))
+* **deps:** bump the dependencies group across 1 directory with 4 updates ([0cdc646](https://github.com/Apollogeddon/ht-website/commit/0cdc646970ca6605d28305c82f174cdce77f21ef))
+* **deps:** patch vulnerabilities via osv-scanner ([9345eca](https://github.com/Apollogeddon/ht-website/commit/9345eca6d0ce8b626855ca7536aa43d11d8c6e88))
+
 ## [1.3.4](https://github.com/Apollogeddon/ht-website/compare/v1.3.3...v1.3.4) (2026-06-14)
 
 
