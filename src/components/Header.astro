@@ -92,7 +92,7 @@ import ThemeToggle from "./Themes.astro";
 <div
   id="mobile-menu"
   inert
-  class="fixed inset-0 z-[100] bg-[var(--brand-accent)] flex flex-col items-center justify-center overflow-y-auto py-16 transition-transform duration-300 translate-x-full"
+  class="fixed inset-0 z-[100] bg-[var(--brand-fill)] flex flex-col items-center justify-center overflow-y-auto py-16 transition-transform duration-300 translate-x-full"
 >
   <button
     id="mobile-menu-close"
@@ -118,7 +118,7 @@ import ThemeToggle from "./Themes.astro";
                 <ul class="mt-2 flex flex-col items-center space-y-1">
                   {(item as any).children.map((child: { label: string; href: string }) => (
                     <li>
-                      <a href={child.href} class="text-sm text-white/70 hover:text-white transition-colors">
+                      <a href={child.href} class="text-sm text-white hover:opacity-80 transition-opacity">
                         {child.label}
                       </a>
                     </li>
