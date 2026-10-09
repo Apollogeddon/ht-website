@@ -48,7 +48,9 @@ const postsWithMeta = posts.map((post) => {
               >
                 <a href={`${ROUTES.BLOG}/${post.id}`} class="block">
                   <p class="text-sm text-[var(--text-secondary)] opacity-80 mb-2">
-                    {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
+                    <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
+                      {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
+                    </time>
                     <span class="mx-2">·</span>
                     {readingTime} min read
                   </p>

@@ -8,6 +8,9 @@ export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
   year: "numeric",
   month: "long",
   day: "numeric",
+  // frontmatter dates are midnight UTC; formatting them in the build machine's zone showed
+  // the day before on builds west of UTC
+  timeZone: "UTC",
 };
 
 export const THEME_STORAGE_KEY = "theme";
