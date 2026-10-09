@@ -5,7 +5,7 @@
   "homepage": "https://ht.apollogeddon.com",
   "scripts": {
     "dev": "astro dev",
-    "type": "astro sync && tsc --noEmit --ignoreDeprecations 5.0",
+    "type": "astro check",
     "lint:ts": "biome check --fix",
     "lint:md": "markdownlint-cli2 --fix",
     "lint": "biome check --fix && npm run lint:md",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@apollogeddon/forgejs": "3.2.1",
+    "@astrojs/check": "0.9.10",
     "@axe-core/playwright": "4.13.0",
     "@playwright/test": "1.63.0",
     "@tailwindcss/vite": "4.3.3",

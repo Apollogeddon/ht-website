@@ -1,10 +1,10 @@
 ---
 interface Props {
-  eyebrow?: string;
+  eyebrow?: string | undefined;
   title: string;
-  description?: string;
+  description?: string | undefined;
   align?: "left" | "center";
-  level?: 1 | 2;
+  level?: 1 | 2 | undefined;
 }
 
 const { eyebrow, title, description, align = "left", level = 2 } = Astro.props;

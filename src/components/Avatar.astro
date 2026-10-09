@@ -11,13 +11,13 @@ interface Props {
 
 const { name, role, src, size = "md" } = Astro.props;
 
-const sizeClasses: Record<string, string> = {
+const sizeClasses: Record<NonNullable<Props["size"]>, string> = {
   sm: "w-16 h-16 text-lg",
   md: "w-24 h-24 text-2xl",
   lg: "w-32 h-32 text-3xl",
 };
 
-const sizePx: Record<string, number> = {
+const sizePx: Record<NonNullable<Props["size"]>, number> = {
   sm: 64,
   md: 96,
   lg: 128,
