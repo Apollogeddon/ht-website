@@ -38,5 +38,7 @@ export default defineConfig({
     url: "http://localhost:4321",
     reuseExistingServer: !process.env.CI,
     timeout: 300 * 1000,
+    // the contact form is disabled without a key; e2e/forms.spec.ts checks this one is sent
+    env: { PUBLIC_WEB3FORMS_ACCESS_KEY: "e2e-test-key" },
   },
 });
