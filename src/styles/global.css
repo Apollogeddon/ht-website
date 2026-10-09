@@ -412,7 +412,8 @@
     color: var(--brand-accent-hover);
   }
 
-  .scroll-reveal {
+  /* hidden only when the script that reveals it can run; .js is set in MainLayout */
+  .js .scroll-reveal {
     opacity: 0;
     transform: translateY(1rem);
     transition:
@@ -421,7 +422,7 @@
     transition-delay: var(--delay, 0ms);
   }
 
-  .scroll-reveal.visible {
+  .js .scroll-reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }

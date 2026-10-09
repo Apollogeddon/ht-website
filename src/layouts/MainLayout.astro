@@ -40,22 +40,45 @@ const { title, description = SITE_DESCRIPTION } = Astro.props;
 		<title>{title} | {SITE_TITLE}</title>
 		<ClientRouter />
 		<script is:inline define:vars={{ THEME_STORAGE_KEY }}>
+			// storage can throw when site data is blocked; the theme then follows the system
+			const readTheme = () => {
+				try {
+					return localStorage.getItem(THEME_STORAGE_KEY);
+				} catch {
+					return null;
+				}
+			};
+			const syncToggle = () => {
+				const isDark = document.documentElement.classList.contains('dark');
+				document.querySelectorAll('.theme-toggle-btn').forEach((btn) => btn.setAttribute('aria-pressed', String(isDark)));
+			};
 			const applyTheme = () => {
-				const theme = localStorage.getItem(THEME_STORAGE_KEY);
+				// "js" lets the CSS hide content that only a script reveals; a page swap
+				// replaces the root's classes, so it is set again with the theme
+				document.documentElement.classList.add('js');
+				const theme = readTheme();
 				if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 					document.documentElement.classList.add('dark');
 				} else {
 					document.documentElement.classList.remove('dark');
 				}
+				syncToggle();
 			};
 
 			applyTheme();
 			document.addEventListener('astro:after-swap', applyTheme);
+			// the toggle doesn't exist yet when this first runs in the head
+			document.addEventListener('DOMContentLoaded', syncToggle);
 
 			document.addEventListener('click', function(e) {
 				if (e.target.closest('.theme-toggle-btn')) {
 					const isDark = document.documentElement.classList.toggle('dark');
-					localStorage.setItem(THEME_STORAGE_KEY, isDark ? 'dark' : 'light');
+					syncToggle();
+					try {
+						localStorage.setItem(THEME_STORAGE_KEY, isDark ? 'dark' : 'light');
+					} catch {
+						// the choice just won't be remembered
+					}
 				}
 			});
 		</script>
