@@ -9,8 +9,9 @@ test.describe("Keyboard and screen reader navigation", () => {
     const submenu = about.locator("ul");
     await expect(submenu).toBeHidden();
 
+    // Tab straight away, as a keyboard user does: a submenu still fading in from
+    // visibility: hidden would be skipped
     await about.locator("> a").focus();
-    await expect(submenu).toBeVisible();
     await page.keyboard.press("Tab");
     await expect(submenu.locator("a").first()).toBeFocused();
   });

@@ -52,7 +52,7 @@ import ThemeToggle from "./Themes.astro";
                       class="absolute top-full left-1/2 -translate-x-1/2 mt-3 min-w-56 rounded-lg shadow-lg border py-1 z-10
                              opacity-0 invisible group-hover:opacity-100 group-hover:visible
                              group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0
-                             transition-all duration-200 translate-y-1 group-hover:translate-y-0"
+                             transition-[opacity,translate] duration-200 translate-y-1 group-hover:translate-y-0"
                       style={{ backgroundColor: "var(--bg-secondary)", borderColor: "var(--border-subtle)" }}
                     >
                       {(item as any).children.map((child: { label: string; href: string }) => (
