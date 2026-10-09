@@ -5,39 +5,31 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-    
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # never cancel a run on main mid-release, or the release is created but never deployed
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  testing:
-    uses: apollogeddon/forgejs/.github/workflows/testing.yml@v2.3.2
+  # checks, release-please and the GitHub Pages deploy, which runs when a release is published
+  website:
+    uses: apollogeddon/forgejs/.github/workflows/website.yml@main
     with:
       node_version: '22'
-      working_directory: '.'
       build_env_vars: "PUBLIC_WEB3FORMS_ACCESS_KEY=${{ vars.PUBLIC_WEB3FORMS_ACCESS_KEY }}"
     permissions:
       contents: write
-      pull-requests: write
       packages: read
-
-  deploy:
-    needs: testing
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    uses: apollogeddon/forgejs/.github/workflows/website.yml@v2.3.2
-    with:
-      artifact_name: 'dist'
-    permissions:
-      contents: write
-      pull-requests: write
       pages: write
       id-token: write
+      pull-requests: write
 
   validate:
-    needs: deploy
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: website
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.website.outputs.new_release_published == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Validate live site
         run: curl -f --retry 5 --retry-delay 10 --retry-connrefused https://ht.apollogeddon.com
