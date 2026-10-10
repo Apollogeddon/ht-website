@@ -10,14 +10,14 @@
 
 Website for **[Harnessing Talent](https://ht.apollogeddon.com)**, a management consultancy based in Adelaide, South Australia. The site showcases the consulting services, team profiles, and client testimonials, with an integrated blog. Built with [Astro](https://astro.build/) for performance and [Tailwind CSS](https://tailwindcss.com/) for styling, it is designed to be fast, accessible, and straightforward for non-developers to maintain.
 
-## 🚀 Key Features
+## Key Features
 
 * **Performance-first:** Astro ships zero JavaScript by default, delivering fast load times out of the box.
 * **SEO-ready:** Open Graph, Twitter cards, and canonical URLs configured on every page.
 * **Blog & testimonials:** Content managed via Astro Content Collections — type-safe, Markdown-based.
 * **Accessible:** Automated accessibility testing on every build with axe-core.
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 /
@@ -35,7 +35,7 @@ Website for **[Harnessing Talent](https://ht.apollogeddon.com)**, a management c
 └── package.json        # Project dependencies and scripts
 ```
 
-## 🛠️ Quick Start
+## Quick Start
 
 See [INSTALL.md](./INSTALL.md) for detailed setup instructions.
 
@@ -47,6 +47,18 @@ npm install
 npm run dev
 ```
 
-## 📝 Managing Content
+## Managing Content
 
 See [UPDATES.md](./UPDATES.md) for guides on adding **Blog Posts** and **Testimonials**.
+
+## License
+
+The code in this repository is licensed under the MIT License. See [`LICENSE`](./LICENSE).
+
+The MIT License does not cover the website's content, which belongs to Harnessing Talent: all rights reserved. That content includes:
+- the written text in `src/consts.ts` and on the pages
+- the blog posts and testimonials in `src/content/`
+- the logos, images and other media in `src/assets/` and `public/`
+- the Harnessing Talent name and branding
+
+Don't reuse any of it without Harnessing Talent's permission.
