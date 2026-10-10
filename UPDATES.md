@@ -10,11 +10,11 @@ Every change you make follows the same three steps:
 2. **Commit** — save a snapshot of your changes with a short description.
 3. **Push** — send the changes to GitHub, which automatically updates the live site.
 
-The live site usually updates within 2–3 minutes of pushing. See [Publishing Your Changes](#-publishing-your-changes) at the bottom of this guide for the exact steps.
+The live site usually updates within 2–3 minutes of pushing. See [Publishing Your Changes](#publishing-your-changes) at the bottom of this guide for the exact steps.
 
 ---
 
-## ✍️ Adding a New Blog Post
+## Adding a New Blog Post
 
 Blog posts are stored as simple text files in the `src/content/blog/` folder.
 
@@ -42,7 +42,7 @@ Blog posts are stored as simple text files in the `src/content/blog/` folder.
 
 ---
 
-## 💬 Adding a New Testimonial
+## Adding a New Testimonial
 
 Testimonials are stored as individual files in `src/content/testimonials/`.
 
@@ -63,7 +63,7 @@ Testimonials are stored as individual files in `src/content/testimonials/`.
 
 ---
 
-## 📝 Updating Website Text
+## Updating Website Text
 
 Most of the text on the website lives in one file: `src/consts.ts`. Open it in VS Code to make changes.
 
@@ -105,7 +105,7 @@ export const HOME_ABOUT_US = {
 
 ---
 
-## ✉️ Updating the Contact Form Email
+## Updating the Contact Form Email
 
 If you need to change the email address that receives contact form submissions:
 
@@ -116,7 +116,7 @@ If you need to change the email address that receives contact form submissions:
 
 ---
 
-## 🖼️ Adding Images
+## Adding Images
 
 For the best performance, place images in `src/assets/` and use them via Astro's `<Image />` component.
 
@@ -133,7 +133,7 @@ For the best performance, place images in `src/assets/` and use them via Astro's
 
 ---
 
-## 🔍 Checking Your Changes (Linting)
+## Checking Your Changes (Linting)
 
 Before publishing, run a quick check to catch any formatting issues:
 
@@ -150,7 +150,7 @@ Before publishing, run a quick check to catch any formatting issues:
 
 ---
 
-## 🚀 Publishing Your Changes
+## Publishing Your Changes
 
 Once you're happy with your changes, follow these steps to publish them to the live site.
 
