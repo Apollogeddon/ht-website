@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.7](https://github.com/Apollogeddon/ht-website/compare/v1.3.6...v1.3.7) (2026-10-10)
+
+
+### Bug Fixes
+
+* **deps:** bump forgejs to 4.0.0 and let Dependabot update it ([3cf1f6f](https://github.com/Apollogeddon/ht-website/commit/3cf1f6f7e1deacbc53617235247b799261273642))
+* **deps:** bump forgejs to 4.0.0, which bundles with tsdown instead of tsup ([868a0d4](https://github.com/Apollogeddon/ht-website/commit/868a0d46f6bd1282e541c4ab02f675e91a9c4d30))
+
 ## [1.3.6](https://github.com/Apollogeddon/ht-website/compare/v1.3.5...v1.3.6) (2026-10-10)
 
 
