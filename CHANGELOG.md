@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.3.5](https://github.com/Apollogeddon/ht-website/compare/v1.3.4...v1.3.5) (2026-10-10)
+
+
+### Bug Fixes
+
+* **a11y:** give white text on brand colour enough contrast in dark mode ([0f77620](https://github.com/Apollogeddon/ht-website/commit/0f77620122492534fe68d829e6f2f7ab98338887))
+* **a11y:** keyboard submenu, mobile menu focus, theme toggle state, no-JS content ([09e29c7](https://github.com/Apollogeddon/ht-website/commit/09e29c791f8c549d5236d7c280659fcdb4455298))
+* **a11y:** let Tab reach the About Us submenu straight away ([6776f07](https://github.com/Apollogeddon/ht-website/commit/6776f07a9e0ee4f4965b5dd04881a53bc82c9e0f))
+* **blog:** format dates in UTC and mark them up as &lt;time&gt; ([6fa69b7](https://github.com/Apollogeddon/ht-website/commit/6fa69b7c05b5bd5b118191bdfadc469c697c8a21))
+* **build:** only require the Web3Forms key when building ([a4e01ca](https://github.com/Apollogeddon/ht-website/commit/a4e01ca73ac8b895f6d2f025e4a24f5c05f4e554))
+* **build:** only require the Web3Forms key when building ([5f5b8af](https://github.com/Apollogeddon/ht-website/commit/5f5b8af674455f90d4ecc869e60ad5370e119e84))
+* contact form robustness, dark-mode contrast, keyboard access and real tests ([cd115a8](https://github.com/Apollogeddon/ht-website/commit/cd115a8319624a8ce77c5978c74df33edede3ec7))
+* **contact:** make the form fail loudly, work without JavaScript and report clearly ([b3acd09](https://github.com/Apollogeddon/ht-website/commit/b3acd09f9c84b236dc358e16cdf99cbab48ab83a))
+* **deps:** bump astro from 7.2.8 to 7.3.6 in the dependencies group ([#125](https://github.com/Apollogeddon/ht-website/issues/125)) ([0ad9912](https://github.com/Apollogeddon/ht-website/commit/0ad99129939bc18867c0bad29fc83114f5c0500e))
+* **deps:** bump fast-uri from 3.1.2 to 3.1.4 ([be44c4a](https://github.com/Apollogeddon/ht-website/commit/be44c4a3441a3caa26d5cbc18b208f01bcf93dea))
+* **deps:** bump fast-uri from 3.1.2 to 3.1.4 ([8593b02](https://github.com/Apollogeddon/ht-website/commit/8593b021dc04341e58d054c3bc19afe50026da6c))
+* **deps:** bump linkify-it from 5.0.1 to 5.0.2 ([6a13cbf](https://github.com/Apollogeddon/ht-website/commit/6a13cbf7ab4dba9fcee83e0396b27fc2a06dfcef))
+* **deps:** bump linkify-it from 5.0.1 to 5.0.2 ([e22f032](https://github.com/Apollogeddon/ht-website/commit/e22f0322caaf47783cd9fb13e21b9aeae8c7b23f))
+* **deps:** bump svgo from 4.0.1 to 4.0.2 ([16ec53a](https://github.com/Apollogeddon/ht-website/commit/16ec53a747b530ce3947660de8986b8f7ecb0e97))
+* **deps:** bump svgo from 4.0.1 to 4.0.2 ([eb99597](https://github.com/Apollogeddon/ht-website/commit/eb995970fa44b541a67aebbff9ddba58aaee2026))
+* **deps:** bump the dependencies group across 1 directory with 2 updates ([d0ce919](https://github.com/Apollogeddon/ht-website/commit/d0ce919dd1683c673b8e9f929382715f15257918))
+* **deps:** bump the dependencies group across 1 directory with 2 updates ([7c335b1](https://github.com/Apollogeddon/ht-website/commit/7c335b16ee9819c5f6efa3d1103ccea4a40b88ba))
+* **deps:** bump the dependencies group across 1 directory with 4 updates ([8b5f688](https://github.com/Apollogeddon/ht-website/commit/8b5f6884695937597a8fc2ac496ccc1a94ff26c0))
+* **deps:** bump the dependencies group across 1 directory with 4 updates ([598ef87](https://github.com/Apollogeddon/ht-website/commit/598ef87b0b4e722c6b6aa0208790785e27aac72f))
+* **deps:** bump the dependencies group across 1 directory with 4 updates ([cb68920](https://github.com/Apollogeddon/ht-website/commit/cb68920d21afdcae0c432ad0b2e0bc31c8c40171))
+* **deps:** bump the dependencies group across 1 directory with 4 updates ([0cdc646](https://github.com/Apollogeddon/ht-website/commit/0cdc646970ca6605d28305c82f174cdce77f21ef))
+* **deps:** patch vulnerabilities via osv-scanner ([4ac76ec](https://github.com/Apollogeddon/ht-website/commit/4ac76ec133b96277a5283d143493ed05619d4be5))
+* **deps:** patch vulnerabilities via osv-scanner ([794ab7f](https://github.com/Apollogeddon/ht-website/commit/794ab7f223c3e3664d05975136d34096ee6a1f55))
+* **deps:** patch vulnerabilities via osv-scanner ([9345eca](https://github.com/Apollogeddon/ht-website/commit/9345eca6d0ce8b626855ca7536aa43d11d8c6e88))
+* **deps:** update Astro to 7 and the remaining dependencies ([#123](https://github.com/Apollogeddon/ht-website/issues/123)) ([0ba4bf3](https://github.com/Apollogeddon/ht-website/commit/0ba4bf3f6745666b957791f35af9992916ab7774))
+
 ## [1.3.4](https://github.com/Apollogeddon/ht-website/compare/v1.3.3...v1.3.4) (2026-06-14)
 
 
