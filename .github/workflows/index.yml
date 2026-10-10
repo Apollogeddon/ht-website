@@ -16,7 +16,6 @@ jobs:
   website:
     uses: apollogeddon/forgejs/.github/workflows/website.yml@main
     with:
-      node_version: '22'
       build_env_vars: "PUBLIC_WEB3FORMS_ACCESS_KEY=${{ vars.PUBLIC_WEB3FORMS_ACCESS_KEY }}"
     permissions:
       contents: write
