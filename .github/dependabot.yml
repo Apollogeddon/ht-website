@@ -43,7 +43,13 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    cooldown:
-      default-days: 3
+    groups:
+      actions:
+        patterns: ["*"]
     commit-message:
       prefix: "chore(ci)"
+    # CI deliberately tracks forgejs's reusable workflows at @main.
+    ignore:
+      - dependency-name: "apollogeddon/forgejs"
+    cooldown:
+      default-days: 3
