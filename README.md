@@ -5,8 +5,15 @@
       <img src="./src/assets/logo.svg" alt="Harnessing Talent">
     </picture>
   </a>
-  <br><br>
+
+  <p align="center">
+    The Harnessing Talent website, built with Astro
+    <br />
+    <a href="https://ht.apollogeddon.com"><strong>Visit the site</strong></a>
+  </p>
 </div>
+
+<br />
 
 Website for **[Harnessing Talent](https://ht.apollogeddon.com)**, a management consultancy based in Adelaide, South Australia. The site showcases the consulting services, team profiles, and client testimonials, with an integrated blog. Built with [Astro](https://astro.build/) for performance and [Tailwind CSS](https://tailwindcss.com/) for styling, it is designed to be fast, accessible, and straightforward for non-developers to maintain.
 
