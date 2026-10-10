@@ -1,5 +1,4 @@
 ---
-import geoBg from "../assets/external/geometic-bg-white-2.jpg";
 import Quote from "./Quote.astro";
 
 interface QuoteItem {
@@ -14,15 +13,11 @@ interface Props {
 const { quotes } = Astro.props;
 ---
 
-<section
-  class="section-padding-sm relative overflow-hidden bg-[var(--bg-muted)]"
-  style={`background-image: url(${geoBg.src}); background-size: cover; background-position: center;`}
->
-  <div class="absolute inset-0 bg-[var(--bg-primary)] opacity-90 dark:opacity-95"></div>
-  <div class="container-site relative z-10">
+<section class="section-padding-sm bg-[var(--bg-primary)]">
+  <div class="container-site">
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-      {quotes.map((q) => (
-        <Quote text={q.text} author={q.author} variant="grid" />
+      {quotes.map((q, i) => (
+        <Quote text={q.text} author={q.author} variant="grid" class="scroll-reveal" style={`--delay: ${i * 90}ms`} />
       ))}
     </div>
   </div>
