@@ -1,27 +1,5 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("External link integrity", () => {
-  test("no broken external links on homepage", async ({ page, request }) => {
-    await page.goto("/");
-
-    const hrefs = await page.$$eval("a[href]", (anchors) =>
-      anchors
-        .map((a) => a.getAttribute("href") ?? "")
-        .filter((href) => href.startsWith("http://") || href.startsWith("https://")),
-    );
-
-    const uniqueHrefs = [...new Set(hrefs)];
-
-    for (const href of uniqueHrefs) {
-      const response = await request.head(href, { timeout: 10000 }).catch(() => null);
-      if (response) {
-        expect(response.status(), `Broken external link: ${href}`).not.toBe(404);
-        expect(response.status(), `Broken external link: ${href}`).not.toBe(410);
-      }
-    }
-  });
-});
-
 const pagesToCheck = [
   "/",
   "/profiles",

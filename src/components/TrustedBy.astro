@@ -33,7 +33,7 @@ const { orgs } = Astro.props;
         pill.style.opacity = "0";
         setTimeout(() => {
           i = (i + 1) % orgs.length;
-          pill.textContent = orgs[i];
+          pill.textContent = orgs[i] ?? "";
           pill.style.opacity = "1";
         }, 300);
       }, 3000);

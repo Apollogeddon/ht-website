@@ -42,6 +42,15 @@
   --brand-accent: var(--color-brand-600);
   --brand-accent-hover: var(--color-brand-700);
   --brand-light: var(--color-brand-50);
+  /* filled brand surfaces with white text: buttons, bands, the mobile menu */
+  --brand-fill: var(--color-brand-600);
+  --brand-fill-hover: var(--color-brand-700);
+
+  --error: #b91c1c;
+  --error-bg: #fef2f2;
+  --error-fg: #991b1b;
+  --success-bg: #ecfdf3;
+  --success-fg: #166534;
 
   --header-bg: rgba(210, 203, 192, 0.93);
   --header-border: var(--border-subtle);
@@ -59,7 +68,9 @@
   --gradient-hero:
     radial-gradient(ellipse 80% 60% at 60% -10%, rgba(255, 241, 224, 0.8) 0%, transparent 60%),
     linear-gradient(160deg, var(--brand-light) 0%, var(--bg-primary) 50%);
-  --gradient-brand: linear-gradient(135deg, #f28b3c 0%, #b45309 100%);
+  /* white text sits on this, so it starts at brand-500 (5.1:1), not brand-400 (2.5:1) */
+  --gradient-brand: linear-gradient(135deg, #b45309 0%, #78350f 100%);
+  --gradient-brand-text: linear-gradient(135deg, #b45309 0%, #78350f 100%);
 
   --surface-glass: rgba(255, 255, 255, 0.7);
   --ring-focus: 0 0 0 3px rgba(180, 83, 9, 0.25);
@@ -84,6 +95,15 @@
   --brand-accent: var(--color-brand-400);
   --brand-accent-hover: var(--color-brand-300);
   --brand-light: rgba(180, 83, 9, 0.15);
+  /* brand-400 is right for text on dark backgrounds but only 2.5:1 under white text */
+  --brand-fill: var(--color-brand-500);
+  --brand-fill-hover: var(--color-brand-600);
+
+  --error: #f87171;
+  --error-bg: rgba(248, 113, 113, 0.12);
+  --error-fg: #fca5a5;
+  --success-bg: rgba(34, 197, 94, 0.12);
+  --success-fg: #86efac;
 
   --header-bg: rgba(18, 15, 13, 0.92);
   --header-border: var(--border-subtle);
@@ -101,7 +121,8 @@
   --gradient-hero:
     radial-gradient(ellipse 80% 60% at 60% -10%, rgba(180, 83, 9, 0.15) 0%, transparent 60%),
     linear-gradient(160deg, rgba(180, 83, 9, 0.12) 0%, var(--bg-primary) 50%);
-  --gradient-brand: linear-gradient(135deg, #f28b3c 0%, #b45309 100%);
+  --gradient-brand: linear-gradient(135deg, #b45309 0%, #78350f 100%);
+  --gradient-brand-text: linear-gradient(135deg, #f9b578 0%, #f28b3c 100%);
 
   --surface-glass: rgba(35, 31, 28, 0.65);
   --ring-focus: 0 0 0 3px rgba(242, 139, 60, 0.3);
@@ -162,7 +183,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: var(--brand-accent);
+    background-color: var(--brand-fill);
     color: #fff;
     font-weight: 600;
     padding: 0.75rem 1.75rem;
@@ -179,7 +200,7 @@
   }
 
   .btn-primary:hover {
-    background-color: var(--brand-accent-hover);
+    background-color: var(--brand-fill-hover);
     transform: translateY(-1px);
     box-shadow: var(--shadow-brand);
   }
@@ -204,7 +225,8 @@
   }
 
   .btn-secondary:hover {
-    background-color: var(--brand-accent);
+    background-color: var(--brand-fill);
+    border-color: var(--brand-fill);
     color: #fff;
     transform: translateY(-1px);
   }
@@ -358,7 +380,7 @@
   }
 
   .text-gradient-brand {
-    background: var(--gradient-brand);
+    background: var(--gradient-brand-text);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -390,7 +412,8 @@
     color: var(--brand-accent-hover);
   }
 
-  .scroll-reveal {
+  /* hidden only when the script that reveals it can run; .js is set in MainLayout */
+  .js .scroll-reveal {
     opacity: 0;
     transform: translateY(1rem);
     transition:
@@ -399,7 +422,7 @@
     transition-delay: var(--delay, 0ms);
   }
 
-  .scroll-reveal.visible {
+  .js .scroll-reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }

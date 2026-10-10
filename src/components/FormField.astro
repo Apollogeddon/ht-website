@@ -3,12 +3,18 @@ interface Props {
   label: string;
   id: string;
   name: string;
-  type?: string;
+  type?: "text" | "email" | "tel";
   rows?: number;
   required?: boolean;
+  autocomplete?: string;
+  /** Shown under the field once the visitor has tried to submit it invalid. */
+  error?: string;
 }
 
-const { label, id, name, type = "text", rows, required = false } = Astro.props;
+const { label, id, name, type = "text", rows, required = false, autocomplete, error } = Astro.props;
+const errorId = error ? `${id}-error` : undefined;
+const fieldClass =
+  "form-input w-full px-4 py-3 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none transition-all focus:border-[var(--brand-accent)]";
 ---
 
 <div>
@@ -21,23 +27,46 @@ const { label, id, name, type = "text", rows, required = false } = Astro.props;
         id={id}
         name={name}
         rows={rows}
-        class="form-input w-full px-4 py-3 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none transition-all focus:border-[var(--brand-accent)]"
+        class={fieldClass}
         required={required}
-      ></textarea>
+        autocomplete={autocomplete}
+        aria-describedby={errorId}
+      />
     ) : (
       <input
         type={type}
         id={id}
         name={name}
-        class="form-input w-full px-4 py-3 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none transition-all focus:border-[var(--brand-accent)]"
+        class={fieldClass}
         required={required}
+        autocomplete={autocomplete}
+        aria-describedby={errorId}
       />
     )
   }
+  {error && (
+    <p id={errorId} class="field-error mt-1 text-sm">
+      {error}
+    </p>
+  )}
 </div>
 
 <style>
   .form-input:focus {
     box-shadow: var(--ring-focus);
+  }
+
+  /* :user-invalid matches only after the visitor has interacted or tried to submit */
+  .form-input:user-invalid {
+    border-color: var(--error);
+  }
+
+  .field-error {
+    display: none;
+    color: var(--error);
+  }
+
+  div:has(> .form-input:user-invalid) > .field-error {
+    display: block;
   }
 </style>

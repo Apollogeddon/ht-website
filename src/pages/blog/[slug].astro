@@ -41,7 +41,7 @@ const readingTime = Math.max(1, Math.ceil((post.body?.split(/\s+/).filter(Boolea
         <article class="card-base p-10">
           <header class="mb-12 border-b border-[var(--border-subtle)] pb-12">
             <div class="flex items-center gap-3 mb-4 text-sm text-[var(--text-secondary)]">
-              <time class="text-[var(--brand-accent)] font-bold">
+              <time class="text-[var(--brand-accent)] font-bold" datetime={post.data.pubDate.toISOString().slice(0, 10)}>
                 {post.data.pubDate.toLocaleDateString(DATE_LOCALE, DATE_OPTIONS)}
               </time>
               <span class="opacity-40">·</span>

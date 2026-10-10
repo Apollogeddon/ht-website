@@ -10,6 +10,11 @@ import {
 } from "../consts";
 
 const currentYear = new Date().getFullYear();
+
+// picked by route rather than by position, so reordering the navigation can't change them
+const serviceRoutes: string[] = [ROUTES.SOLUTIONS, ROUTES.BLOG, ROUTES.TESTIMONIALS];
+const serviceLinks = NAVIGATION.filter((item) => serviceRoutes.includes(item.href));
+const aboutLink = NAVIGATION.find((item) => item.href === ROUTES.PROFILES);
 ---
 
 <footer class="bg-[var(--bg-muted)] text-[var(--text-secondary)] border-t border-[var(--border-subtle)] transition-colors duration-300">
@@ -26,23 +31,25 @@ const currentYear = new Date().getFullYear();
       <div>
         <p class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.services}</p>
         <ul class="text-[var(--text-secondary)] text-sm space-y-2">
-          <li><a href={NAVIGATION[1].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[1].label}</a></li>
-          <li><a href={NAVIGATION[2].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[2].label}</a></li>
-          <li><a href={NAVIGATION[3].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[3].label}</a></li>
+          {serviceLinks.map((item) => (
+            <li><a href={item.href} class="hover:text-[var(--brand-accent)] transition-colors">{item.label}</a></li>
+          ))}
         </ul>
       </div>
 
       <div>
         <p class="text-lg font-bold mb-4 text-[var(--text-primary)]">{FOOTER_SECTIONS.company}</p>
         <ul class="text-[var(--text-secondary)] text-sm space-y-2">
-          <li><a href={NAVIGATION[4].href} class="hover:text-[var(--brand-accent)] transition-colors">{NAVIGATION[4].label}</a></li>
+          {aboutLink && (
+            <li><a href={aboutLink.href} class="hover:text-[var(--brand-accent)] transition-colors">{aboutLink.label}</a></li>
+          )}
           <li><a href={ROUTES.CONTACT} class="hover:text-[var(--brand-accent)] transition-colors">{CONTACT_PAGE.title}</a></li>
           <li><a href={ROUTES.POLICIES} class="hover:text-[var(--brand-accent)] transition-colors">{POLICIES_CONTENT.title}</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="border-t border-[var(--border-subtle)] mt-12 pt-8 text-center text-[var(--text-secondary)] text-sm opacity-80">
+    <div class="border-t border-[var(--border-subtle)] mt-12 pt-8 text-center text-[var(--text-secondary)] text-sm">
       <p>&copy; {currentYear} {SITE_TITLE}. {FOOTER_SECTIONS.copyright}</p>
     </div>
   </div>

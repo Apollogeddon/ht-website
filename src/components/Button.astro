@@ -9,7 +9,7 @@ const { href, label, variant = "primary" } = Astro.props;
 
 const variantClasses: Record<string, string> = {
   primary:
-    "bg-[var(--brand-accent)] text-white hover:bg-[var(--brand-accent-hover)] hover:-translate-y-0.5 hover:shadow-md",
+    "bg-[var(--brand-fill)] text-white hover:bg-[var(--brand-fill-hover)] hover:-translate-y-0.5 hover:shadow-md",
   secondary: "border-2 border-[var(--brand-accent)] text-[var(--brand-accent)] hover:bg-[var(--brand-light)]",
   onDark:
     "bg-white text-[var(--color-brand-600)] hover:bg-[var(--color-brand-50)] hover:shadow-lg hover:-translate-y-0.5",

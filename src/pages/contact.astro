@@ -1,9 +1,12 @@
 ---
+import { PUBLIC_WEB3FORMS_ACCESS_KEY } from "astro:env/client";
 import adelaideNorthTerrace from "../assets/external/adelaide-north-terrace.jpg";
 import FormField from "../components/FormField.astro";
 import PageHero from "../components/PageHero.astro";
 import { CONTACT_PAGE } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
+
+const form = CONTACT_PAGE.form;
 ---
 
 <MainLayout title={CONTACT_PAGE.title}>
@@ -29,25 +32,47 @@ import MainLayout from "../layouts/MainLayout.astro";
 
           <!-- Contact Form -->
           <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 lg:p-10 border border-[var(--border-strong)] shadow-sm">
-            <form id="contact-form" class="space-y-4">
+            <!-- action and method make the form work before, or without, JavaScript: the
+                 browser posts straight to Web3Forms instead of putting the message in the URL -->
+            <form
+              id="contact-form"
+              class="space-y-4"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              data-sending={form.sending}
+              data-failure={form.failure}
+            >
+              <input type="hidden" name="access_key" value={PUBLIC_WEB3FORMS_ACCESS_KEY ?? ""} />
+              <input type="hidden" name="subject" value={form.subject} />
               <!-- Web3Forms Honeypot Spam Protection -->
               <input type="checkbox" name="botcheck" class="hidden" style="display: none;" autocomplete="off" tabindex="-1" aria-hidden="true">
-              
+
               <div class="grid sm:grid-cols-2 gap-4">
-                <FormField label={CONTACT_PAGE.form.firstName} id="first-name" name="firstName" required />
-                <FormField label={CONTACT_PAGE.form.lastName} id="last-name" name="lastName" required />
+                <FormField label={form.firstName} id="first-name" name="firstName" autocomplete="given-name" error={form.errors.firstName} required />
+                <FormField label={form.lastName} id="last-name" name="lastName" autocomplete="family-name" error={form.errors.lastName} required />
               </div>
-              <FormField label={CONTACT_PAGE.form.email} id="email" name="email" type="email" required />
-              <FormField label={CONTACT_PAGE.form.message} id="message" name="message" rows={4} required />
-              <div id="form-message" class="hidden rounded-lg p-4 text-sm font-bold"></div>
+              <FormField label={form.email} id="email" name="email" type="email" autocomplete="email" error={form.errors.email} required />
+              <FormField label={form.message} id="message" name="message" rows={4} error={form.errors.message} required />
+              <div id="form-message" role="alert" class="form-message hidden rounded-lg p-4 text-sm font-semibold"></div>
+              {!PUBLIC_WEB3FORMS_ACCESS_KEY && (
+                <p class="form-message form-message-error rounded-lg p-4 text-sm font-semibold">{form.unavailable}</p>
+              )}
               <button
                 type="submit"
                 id="submit-btn"
                 class="btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={!PUBLIC_WEB3FORMS_ACCESS_KEY}
               >
-                {CONTACT_PAGE.form.submit}
+                {form.submit}
               </button>
             </form>
+            <div id="form-success" class="hidden text-center py-8" tabindex="-1" role="status">
+              <svg class="mx-auto mb-4 h-12 w-12 text-[var(--success-fg)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-2">{form.success.title}</h2>
+              <p class="text-[var(--text-secondary)]">{form.success.body}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -55,60 +80,56 @@ import MainLayout from "../layouts/MainLayout.astro";
   </div>
 </MainLayout>
 
+<style>
+  .form-message-error {
+    background-color: var(--error-bg);
+    color: var(--error-fg);
+  }
+</style>
+
 <script>
   const initContactForm = () => {
-    const form = document.getElementById("contact-form") as HTMLFormElement;
-    const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement | null;
     const formMessage = document.getElementById("form-message");
+    const success = document.getElementById("form-success");
 
-    if (!form || !submitBtn || !formMessage) return;
+    if (!form || !submitBtn || !formMessage || !success) return;
     if (form.dataset.initialized === "true") return;
 
     form.dataset.initialized = "true";
-
-    const WORKER_URL = "https://api.web3forms.com/submit";
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       submitBtn.disabled = true;
       const originalBtnText = submitBtn.textContent;
-      submitBtn.textContent = "Sending...";
+      submitBtn.textContent = form.dataset.sending ?? "";
       formMessage.classList.add("hidden");
 
-      const formData = new FormData(form);
-      
-      // Use Web3Forms Access Key from environment variables
-      const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY;
-      formData.append("access_key", accessKey);
-      formData.append("subject", "New Inquiry from Harnessing Talent Website");
-
-      const data = Object.fromEntries(formData.entries());
-
       try {
-        const response = await fetch(WORKER_URL, {
+        const response = await fetch(form.action, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
         });
+        if (!response.ok) throw new Error(`Web3Forms answered ${response.status}`);
 
-        const result = await response.json();
-
-        if (response.ok) {
-          formMessage.textContent = "Thank you! Your message has been sent successfully.";
-          formMessage.classList.remove("hidden", "bg-red-100", "text-red-700", "border-red-200");
-          formMessage.classList.add("bg-green-100", "text-green-700", "border-green-200", "border");
-          form.reset();
-        } else {
-          throw new Error(result.message || "Something went wrong.");
-        }
-      } catch (err: any) {
-        formMessage.textContent = err.message || "Failed to send message. Please try again later.";
-        formMessage.classList.remove("hidden", "bg-green-100", "text-green-700", "border-green-200");
-        formMessage.classList.add("bg-red-100", "text-red-700", "border-red-200", "border");
+        // replace the form with the thank-you panel and move focus to it, so screen
+        // readers announce it and nobody misses it under an emptied form
+        form.classList.add("hidden");
+        success.classList.remove("hidden");
+        success.focus();
+      } catch (err) {
+        console.error("contact form:", err);
+        // a fixed message: the raw error ("Failed to fetch", a JSON parse error) means
+        // nothing to a visitor
+        formMessage.textContent = form.dataset.failure ?? "";
+        formMessage.classList.remove("hidden");
+        formMessage.classList.add("form-message-error");
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;

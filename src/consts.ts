@@ -8,6 +8,9 @@ export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
   year: "numeric",
   month: "long",
   day: "numeric",
+  // frontmatter dates are midnight UTC; formatting them in the build machine's zone showed
+  // the day before on builds west of UTC
+  timeZone: "UTC",
 };
 
 export const THEME_STORAGE_KEY = "theme";
@@ -190,6 +193,20 @@ export const CONTACT_PAGE = {
     email: "Email Address",
     message: "Message",
     submit: "Send Message",
+    sending: "Sending…",
+    subject: "New Inquiry from Harnessing Talent Website",
+    errors: {
+      firstName: "Please enter your first name.",
+      lastName: "Please enter your last name.",
+      email: "Please enter a valid email address.",
+      message: "Please enter a message.",
+    },
+    success: {
+      title: "Thank you!",
+      body: "Your message has been sent. We'll be in touch soon.",
+    },
+    failure: "Sorry, your message couldn't be sent. Please try again in a moment.",
+    unavailable: "The contact form is unavailable right now. Please try again later.",
   },
 };
 
