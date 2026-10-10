@@ -1,9 +1,13 @@
 version: 2
+# Every update waits 3 days after a version is published before it's proposed, so a
+# compromised release has time to be caught and yanked upstream first.
 updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    cooldown:
+      default-days: 3
     # Limit open PRs to prevent flooding
     open-pull-requests-limit: 10
     # Group non-major updates to reduce PR volume
@@ -21,6 +25,8 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    cooldown:
+      default-days: 3
     commit-message:
       prefix: "chore(ci)"
