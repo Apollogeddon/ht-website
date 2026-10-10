@@ -7,9 +7,13 @@ import { loadEnv } from "vite";
 // The contact form is the site's only way to reach the business, so a deploy without its
 // Web3Forms key must fail rather than ship a form whose every submission is rejected.
 // Only builds of a push to main deploy; pull request builds, Dependabot's included, may not
-// get repository variables, and the e2e tests supply their own key.
+// get repository variables, and the e2e tests supply their own key. Other commands that load
+// this config, such as `astro check` in the linting job, don't get the key and don't deploy.
 const env = loadEnv(process.env.NODE_ENV ?? "production", process.cwd(), "");
-const deploying = process.env.GITHUB_EVENT_NAME === "push" && process.env.GITHUB_REF === "refs/heads/main";
+const deploying =
+  process.argv.includes("build") &&
+  process.env.GITHUB_EVENT_NAME === "push" &&
+  process.env.GITHUB_REF === "refs/heads/main";
 if (deploying && !env.PUBLIC_WEB3FORMS_ACCESS_KEY) {
   throw new Error("PUBLIC_WEB3FORMS_ACCESS_KEY is not set: the contact form would not work");
 }
