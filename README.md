@@ -7,7 +7,7 @@
   </a>
 
   <p align="center">
-    Website for Harnessing Talent, a management consultancy in Adelaide, South Australia
+    The Harnessing Talent website, built with Astro
     <br />
     <a href="https://ht.apollogeddon.com"><strong>Visit the site</strong></a>
   </p>
