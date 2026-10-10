@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import markRaw from "../assets/logo-mark.svg?raw";
 import Button from "./Button.astro";
 import IllustrationPanel from "./IllustrationPanel.astro";
 import SectionHeading from "./SectionHeading.astro";
@@ -71,9 +72,11 @@ const {
         }
       </div>
       <div class={reverse ? "lg:order-1" : ""}>
-        {imageSrc && hero ? (
+        {hero ? (
           <div class="hero-portrait">
-            <Image src={imageSrc} alt={imageAlt} class="hero-portrait-image" />
+            <div class="hero-mark" aria-hidden="true">
+              <Fragment set:html={markRaw.replace("<svg", '<svg class="hero-mark-svg"')} />
+            </div>
           </div>
         ) : imageSrc ? (
           <Image

@@ -571,7 +571,7 @@
   /* the portrait sits in the logo's arch: a rounded-top frame with an offset outline */
   .hero-portrait {
     position: relative;
-    width: min(100%, 22rem);
+    width: min(78%, 22rem);
     margin-inline: auto;
   }
 
@@ -583,13 +583,26 @@
     border-radius: 999px 999px 1.5rem 1.5rem;
   }
 
-  .hero-portrait-image {
+  /* the logo mark, large, in the same arch-shaped panel */
+  .hero-mark {
     position: relative;
+    display: grid;
+    place-items: center;
     width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
+    aspect-ratio: 5 / 6;
+    padding-top: 12%;
     border-radius: 999px 999px 1.5rem 1.5rem;
+    /* opaque, so the offset outline behind it doesn't show through in dark mode */
+    background:
+      radial-gradient(circle at 50% 45%, var(--bg-secondary) 0%, transparent 70%),
+      linear-gradient(var(--brand-light), var(--brand-light)), var(--bg-secondary);
     box-shadow: var(--shadow-lg);
+    color: var(--brand-accent);
+  }
+
+  .hero-mark-svg {
+    width: 64%;
+    height: auto;
   }
 
   /* the same warm grade on every photo, so stock and local shots read as one set */
