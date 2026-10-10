@@ -2,6 +2,7 @@
   "name": "app",
   "type": "module",
   "version": "1.3.5",
+  "description": "The Harnessing Talent website, built with Astro",
   "homepage": "https://ht.apollogeddon.com",
   "scripts": {
     "dev": "astro dev",
