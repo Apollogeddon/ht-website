@@ -23,7 +23,7 @@
     "@axe-core/playwright": "4.13.0",
     "@playwright/test": "1.63.0",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "7.2.8",
+    "astro": "7.3.6",
     "markdownlint-cli2": "0.23.3",
     "tailwindcss": "4.3.3"
   },
