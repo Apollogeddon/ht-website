@@ -572,9 +572,15 @@
   .hero-mark {
     display: grid;
     place-items: center;
-    width: min(80%, 24rem);
+    width: min(45%, 12rem);
     margin-inline: auto;
     color: var(--brand-accent);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-mark {
+      width: min(80%, 24rem);
+    }
   }
 
   .hero-mark-svg {

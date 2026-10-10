@@ -71,7 +71,7 @@ const {
           )
         }
       </div>
-      <div class={reverse ? "lg:order-1" : ""}>
+      <div class={hero ? "order-first lg:order-last" : reverse ? "lg:order-1" : ""}>
         {hero ? (
           <div class="hero-mark" aria-hidden="true">
             <Fragment set:html={markRaw.replace("<svg", '<svg class="hero-mark-svg"')} />
