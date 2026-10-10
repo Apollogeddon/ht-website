@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: "growth" | "people" | "strategy";
+  variant?: "growth" | "people" | "strategy" | "arch";
 }
 
 const { variant = "people" } = Astro.props;
@@ -26,6 +26,16 @@ const { variant = "people" } = Astro.props;
   ></div>
 
   <div class="absolute inset-0 flex items-center justify-center p-10">
+    {
+      variant === "arch" && (
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+          <path d="M20 170 A80 80 0 0 1 180 170" stroke="currentColor" stroke-width="10" stroke-linecap="round" class="text-[var(--color-brand-200)]" />
+          <path d="M45 170 A55 55 0 0 1 155 170" stroke="currentColor" stroke-width="10" stroke-linecap="round" class="text-[var(--color-brand-300)]" />
+          <path d="M70 170 A30 30 0 0 1 130 170" stroke="currentColor" stroke-width="10" stroke-linecap="round" class="text-[var(--brand-accent)]" />
+          <rect x="94" y="120" width="12" height="50" rx="3" fill="currentColor" class="text-[var(--brand-accent)]" />
+        </svg>
+      )
+    }
     {
       variant === "people" && (
         <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-70">

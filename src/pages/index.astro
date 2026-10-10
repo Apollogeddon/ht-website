@@ -1,6 +1,6 @@
 ---
-import marketingStrategy from "../assets/external/marketing-board-strategy.jpg";
 import meetingCoffee from "../assets/external/meeting-coffee.jpg";
+import tinaHudson from "../assets/external/tina-hudson.jpg";
 import CtaSection from "../components/CtaSection.astro";
 import FeatureSection from "../components/FeatureSection.astro";
 import HomepageTestimonial from "../components/HomepageTestimonial.astro";
@@ -10,6 +10,7 @@ import {
   HOME_ABOUT_US,
   HOME_SOLUTIONS_EXPERTISE,
   HOME_TESTIMONIAL,
+  PRINCIPAL_CONSULTANT,
   QUOTES,
   ROUTES,
   TRUSTED_ORGS,
@@ -24,18 +25,22 @@ import MainLayout from "../layouts/MainLayout.astro";
     eyebrow={HOME_ABOUT_US.eyebrow}
     title={HOME_ABOUT_US.title}
     paragraphs={HOME_ABOUT_US.paragraphs}
-    imageSrc={meetingCoffee}
-    imageAlt="Team meeting"
-    muted={true}
+    imageSrc={tinaHudson}
+    imageAlt={PRINCIPAL_CONSULTANT.name}
+    primaryLabel="Contact Us"
+    primaryHref={ROUTES.CONTACT}
+    secondaryLabel="Our Solutions"
+    secondaryHref={ROUTES.SOLUTIONS}
     level={1}
+    hero={true}
   />
 
   <FeatureSection
     eyebrow={HOME_SOLUTIONS_EXPERTISE.eyebrow}
     title={HOME_SOLUTIONS_EXPERTISE.title}
     paragraphs={HOME_SOLUTIONS_EXPERTISE.paragraphs}
-    imageSrc={marketingStrategy}
-    imageAlt="Strategy and planning"
+    imageSrc={meetingCoffee}
+    imageAlt="Team meeting"
     reverse={true}
   />
 
@@ -43,10 +48,6 @@ import MainLayout from "../layouts/MainLayout.astro";
     eyebrow={WHY_CHOOSE_US.eyebrow}
     title={WHY_CHOOSE_US.title}
     paragraphs={WHY_CHOOSE_US.paragraphs}
-    primaryLabel="Contact Us"
-    primaryHref={ROUTES.CONTACT}
-    secondaryLabel="Our Solutions"
-    secondaryHref={ROUTES.SOLUTIONS}
     muted={true}
   />
 

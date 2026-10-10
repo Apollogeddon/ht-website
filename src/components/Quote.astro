@@ -15,16 +15,16 @@ const QUOTE_PATH =
 
 {
   variant === "grid" && (
-    <blockquote class={`card-base p-6 flex flex-col gap-3 ${className}`}>
+    <blockquote class={`card-base p-5 flex flex-col gap-3 ${className}`}>
       <svg
-        class="h-6 w-6 text-[var(--brand-accent)] flex-shrink-0"
+        class="h-5 w-5 text-[var(--color-brand-300)] flex-shrink-0"
         fill="currentColor"
         viewBox="0 0 24 24"
         aria-hidden="true"
       >
         <path d={QUOTE_PATH} />
       </svg>
-      <p class="text-[var(--text-secondary)] italic leading-relaxed flex-1">{text}</p>
+      <p class="text-sm text-[var(--text-secondary)] italic leading-relaxed flex-1">{text}</p>
       <footer class="text-sm font-semibold text-[var(--brand-accent)]">— {author}</footer>
     </blockquote>
   )
@@ -54,19 +54,19 @@ const QUOTE_PATH =
   variant === "hero" && (
     <div class={`max-w-3xl mx-auto text-center ${className}`}>
       <svg
-        class="h-10 w-10 mx-auto mb-6 opacity-40"
-        fill="white"
+        class="h-10 w-10 mx-auto mb-6 text-[var(--brand-accent)]"
+        fill="currentColor"
         viewBox="0 0 24 24"
         aria-hidden="true"
       >
         <path d={QUOTE_PATH} />
       </svg>
-      <blockquote class="text-xl lg:text-2xl font-medium text-white leading-relaxed mb-8">
+      <blockquote class="text-xl lg:text-2xl font-medium text-[var(--text-primary)] leading-relaxed mb-8">
         "{text}"
       </blockquote>
       <footer>
-        <p class="font-bold text-white">{author}</p>
-        {role && <p class="text-white text-sm mt-1">{role}</p>}
+        <p class="font-bold text-[var(--text-primary)]">{author}</p>
+        {role && <p class="text-[var(--brand-accent)] text-sm font-semibold mt-1">{role}</p>}
       </footer>
     </div>
   )

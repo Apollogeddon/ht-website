@@ -10,7 +10,7 @@ interface Props {
 const { quote, author, role } = Astro.props;
 ---
 
-<section class="section-padding-sm bg-[var(--brand-fill)]">
+<section class="section-padding-sm bg-[var(--bg-muted)] border-y border-[var(--border-subtle)]">
   <div class="container-site">
     <Quote text={quote} author={author} role={role} variant="hero" />
   </div>

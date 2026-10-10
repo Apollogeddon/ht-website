@@ -19,7 +19,8 @@ interface Props {
   reverse?: boolean;
   muted?: boolean;
   level?: 1 | 2;
-  illustrationVariant?: "growth" | "people" | "strategy";
+  illustrationVariant?: "growth" | "people" | "strategy" | "arch";
+  hero?: boolean;
 }
 
 const {
@@ -36,15 +37,16 @@ const {
   reverse = false,
   muted = false,
   level,
-  illustrationVariant = "growth",
+  illustrationVariant = "arch",
+  hero = false,
 } = Astro.props;
 ---
 
-<section class={`section-padding scroll-reveal ${muted ? "bg-[var(--bg-muted)]" : "bg-[var(--bg-secondary)]"}`}>
+<section class={`${hero ? "section-padding bg-hero" : `section-padding scroll-reveal ${muted ? "bg-[var(--bg-muted)]" : "bg-[var(--bg-secondary)]"}`}`}>
   <div class="container-site">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div class={reverse ? "lg:order-2" : ""}>
-        <SectionHeading eyebrow={eyebrow} title={title} level={level} />
+        <SectionHeading eyebrow={eyebrow} title={title} level={level} size={hero ? "hero" : "default"} />
         <div class="mt-6 space-y-4">
           {paragraphs.map((paragraph) => (
             <p class="text-lg text-[var(--text-secondary)] leading-relaxed">{paragraph}</p>
@@ -69,11 +71,15 @@ const {
         }
       </div>
       <div class={reverse ? "lg:order-1" : ""}>
-        {imageSrc ? (
+        {imageSrc && hero ? (
+          <div class="hero-portrait">
+            <Image src={imageSrc} alt={imageAlt} class="hero-portrait-image" />
+          </div>
+        ) : imageSrc ? (
           <Image
             src={imageSrc}
             alt={imageAlt}
-            class="rounded-2xl shadow-lg w-full object-cover aspect-[4/3]"
+            class="rounded-2xl shadow-lg w-full object-cover aspect-[4/3] photo-warm"
           />
         ) : (
           <IllustrationPanel variant={illustrationVariant} />
