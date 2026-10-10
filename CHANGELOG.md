@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.6](https://github.com/Apollogeddon/ht-website/compare/v1.3.5...v1.3.6) (2026-10-10)
+
+
+### Bug Fixes
+
+* **deps:** override katex to a patched version ([#131](https://github.com/Apollogeddon/ht-website/issues/131)) ([953cd3b](https://github.com/Apollogeddon/ht-website/commit/953cd3bd730570b81b4ac21fbe2280e091c0a184))
+
 ## [1.3.5](https://github.com/Apollogeddon/ht-website/compare/v1.3.4...v1.3.5) (2026-10-10)
 
 
