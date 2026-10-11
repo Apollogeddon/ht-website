@@ -45,11 +45,12 @@ const { testimonials } = Astro.props;
       </svg>
     </button>
 
-    <div id="carousel-dots" class="flex gap-2">
+    <!-- the padding outside the clipped background makes each dot a 24px touch target -->
+    <div id="carousel-dots" class="flex">
       {
         testimonials.map((_, i) => (
           <button
-            class={`w-2.5 h-2.5 rounded-full transition-all duration-200 carousel-dot ${i === 0 ? "bg-[var(--brand-accent)] w-6" : "bg-[var(--border-strong)]"}`}
+            class={`box-content p-[7px] bg-clip-content w-2.5 h-2.5 rounded-full transition-all duration-200 carousel-dot ${i === 0 ? "bg-[var(--brand-accent)] w-6" : "bg-[var(--border-strong)]"}`}
             data-index={i}
             aria-label={`Go to testimonial ${i + 1}`}
           />
