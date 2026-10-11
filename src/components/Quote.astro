@@ -5,9 +5,10 @@ interface Props {
   role?: string;
   variant?: "grid" | "card" | "hero";
   class?: string;
+  style?: string;
 }
 
-const { text, author, role, variant = "card", class: className = "" } = Astro.props;
+const { text, author, role, variant = "card", class: className = "", style } = Astro.props;
 
 const QUOTE_PATH =
   "M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z";
@@ -15,16 +16,16 @@ const QUOTE_PATH =
 
 {
   variant === "grid" && (
-    <blockquote class={`card-base p-6 flex flex-col gap-3 ${className}`}>
+    <blockquote class={`card-base p-5 flex flex-col gap-3 ${className}`} style={style}>
       <svg
-        class="h-6 w-6 text-[var(--brand-accent)] flex-shrink-0"
+        class="h-5 w-5 text-[var(--color-brand-300)] flex-shrink-0"
         fill="currentColor"
         viewBox="0 0 24 24"
         aria-hidden="true"
       >
         <path d={QUOTE_PATH} />
       </svg>
-      <p class="text-[var(--text-secondary)] italic leading-relaxed flex-1">{text}</p>
+      <p class="text-sm text-[var(--text-secondary)] italic leading-relaxed flex-1">{text}</p>
       <footer class="text-sm font-semibold text-[var(--brand-accent)]">— {author}</footer>
     </blockquote>
   )
@@ -54,19 +55,19 @@ const QUOTE_PATH =
   variant === "hero" && (
     <div class={`max-w-3xl mx-auto text-center ${className}`}>
       <svg
-        class="h-10 w-10 mx-auto mb-6 opacity-40"
-        fill="white"
+        class="h-10 w-10 mx-auto mb-6 text-[var(--brand-accent)]"
+        fill="currentColor"
         viewBox="0 0 24 24"
         aria-hidden="true"
       >
         <path d={QUOTE_PATH} />
       </svg>
-      <blockquote class="text-xl lg:text-2xl font-medium text-white leading-relaxed mb-8">
+      <blockquote class="text-xl lg:text-2xl font-medium text-[var(--text-primary)] leading-relaxed mb-8">
         "{text}"
       </blockquote>
       <footer>
-        <p class="font-bold text-white">{author}</p>
-        {role && <p class="text-white text-sm mt-1">{role}</p>}
+        <p class="font-bold text-[var(--text-primary)]">{author}</p>
+        {role && <p class="text-[var(--brand-accent)] text-sm font-semibold mt-1">{role}</p>}
       </footer>
     </div>
   )

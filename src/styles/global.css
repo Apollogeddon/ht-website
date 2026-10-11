@@ -52,7 +52,7 @@
   --success-bg: #ecfdf3;
   --success-fg: #166534;
 
-  --header-bg: rgba(210, 203, 192, 0.93);
+  --header-bg: rgba(244, 240, 236, 0.92);
   --header-border: var(--border-subtle);
 
   --card-bg: var(--bg-secondary);
@@ -105,7 +105,7 @@
   --success-bg: rgba(34, 197, 94, 0.12);
   --success-fg: #86efac;
 
-  --header-bg: rgba(18, 15, 13, 0.92);
+  --header-bg: rgba(26, 23, 21, 0.92);
   --header-border: var(--border-subtle);
 
   --card-bg: var(--bg-secondary);
@@ -561,6 +561,149 @@
 
   .bg-brand-gradient {
     background: var(--gradient-brand);
+  }
+
+  /* the homepage hero: warm cream with a soft glow behind the portrait */
+  .bg-hero {
+    background: radial-gradient(ellipse 50% 70% at 78% 45%, var(--brand-light) 0%, transparent 70%), var(--bg-primary);
+  }
+
+  /* the logo mark on its own, large, on the hero's warm glow */
+  .hero-mark {
+    display: grid;
+    place-items: center;
+    width: min(45%, 12rem);
+    margin-inline: auto;
+    color: var(--brand-accent);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-mark {
+      width: min(80%, 24rem);
+    }
+  }
+
+  .hero-mark-svg {
+    width: 100%;
+    height: auto;
+  }
+
+  /* a faint paper grain over the whole page, so the flat cream reads as a material */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+  }
+
+  .dark body::after {
+    opacity: 0.05;
+    mix-blend-mode: screen;
+  }
+
+  /* a muted band that fades in and out of the cream, so sections don't meet at hard edges */
+  .bg-muted-soft {
+    background: linear-gradient(
+      to bottom,
+      var(--bg-primary) 0%,
+      var(--bg-muted) 14%,
+      var(--bg-muted) 86%,
+      var(--bg-primary) 100%
+    );
+  }
+
+  /* the logo's arch as a faint watermark */
+  .arch-motif {
+    position: absolute;
+    pointer-events: none;
+    color: var(--color-brand-300);
+  }
+
+  /* centred on the mark, so the mark sits inside the rings */
+  .hero-arches {
+    left: 50%;
+    bottom: 26%;
+    width: 190%;
+    transform: translateX(-50%);
+    z-index: -1;
+    opacity: 0.45;
+  }
+
+  .dark .hero-arches {
+    color: var(--color-brand-500);
+    opacity: 0.55;
+  }
+
+  .cta-arches {
+    width: 34rem;
+    right: -9rem;
+    bottom: -3rem;
+    color: #fff;
+    opacity: 0.14;
+  }
+
+  /* drawn in once, each arch a beat after the last */
+  .arch-motif-draw path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: arch-draw 1.6s var(--ease-spring) forwards;
+    animation-delay: calc(var(--i) * 120ms + 150ms);
+  }
+
+  @keyframes arch-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* the hero mark settles in, and a soft glow breathes slowly behind it */
+  .hero-mark-enter {
+    position: relative;
+    animation: mark-enter 0.9s var(--ease-spring) both;
+  }
+
+  .hero-mark-enter::before {
+    content: "";
+    position: absolute;
+    inset: -25%;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--brand-light) 0%, transparent 65%);
+    animation: glow-breathe 7s ease-in-out infinite;
+  }
+
+  @keyframes mark-enter {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem) scale(0.97);
+    }
+  }
+
+  @keyframes glow-breathe {
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: scale(0.95);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arch-motif-draw path {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* the same warm grade on every photo, so stock and local shots read as one set */
+  .photo-warm {
+    filter: sepia(0.12) saturate(0.9) contrast(1.02);
   }
 
   .bg-warm-gradient {

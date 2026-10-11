@@ -1,0 +1,30 @@
+---
+// The logo's arch repeated as faint concentric lines: a background watermark, never content.
+interface Props {
+  class?: string;
+  // "draw" traces the arches in once when the page loads
+  draw?: boolean;
+  // arch radii in the 440-wide viewBox, smallest first
+  radii?: number[];
+}
+
+const { class: className = "", draw = false, radii = [90, 120, 150, 180, 210] } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  class={`arch-motif ${draw ? "arch-motif-draw" : ""} ${className}`}
+  viewBox="0 0 440 230"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  {radii.map((r, i) => (
+    <path
+      d={`M${220 - r} 225 A${r} ${r} 0 0 1 ${220 + r} 225`}
+      stroke="currentColor"
+      stroke-width="1.5"
+      pathLength="1"
+      style={`--i: ${i}`}
+    />
+  ))}
+</svg>

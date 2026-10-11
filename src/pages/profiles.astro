@@ -16,13 +16,13 @@ import MainLayout from "../layouts/MainLayout.astro";
     <div class="container-site">
       <div class="max-w-5xl mx-auto">
         <SectionHeading eyebrow="Our Team" title="Our Profiles" level={1} />
-        <div class="mt-10 flex flex-col md:flex-row gap-10 items-center md:items-start">
+        <div class="mt-10 card-base p-8 lg:p-10 flex flex-col md:flex-row gap-10 items-center">
           <div class="flex-shrink-0">
             <Avatar
               name={PRINCIPAL_CONSULTANT.name}
               role={PRINCIPAL_CONSULTANT.role}
               src={tinaHudson}
-              size="lg"
+              size="xl"
             />
           </div>
           <div class="flex-grow">
