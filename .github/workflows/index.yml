@@ -11,6 +11,10 @@ concurrency:
   # never cancel a run on main mid-release, or the release is created but never deployed
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
+# read-only unless a job grants itself more, as website and lighthouse do
+permissions:
+  contents: read
+
 jobs:
   # checks, release-please and the GitHub Pages deploy, which runs when a release is published
   website:
