@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.5.0](https://github.com/Apollogeddon/ht-website/compare/v1.4.0...v1.5.0) (2026-10-11)
+
+
+### Features
+
+* **seo:** add a sitemap and a robots.txt that points at it ([5cc6952](https://github.com/Apollogeddon/ht-website/commit/5cc69523d00df137716cf2b120453079d47c5753))
+* **seo:** give every page Open Graph and Twitter cards and the business JSON-LD ([cd6d556](https://github.com/Apollogeddon/ht-website/commit/cd6d5565a8552c9ca807c99381140746a8e04e4f))
+* **seo:** sitemap, robots.txt, share cards, JSON-LD and Lighthouse CI ([92a9186](https://github.com/Apollogeddon/ht-website/commit/92a91865a4ce8666ed5d14a94e37dc19a6f35fb3))
+
+
+### Bug Fixes
+
+* **a11y:** give the testimonial carousel's dots 24px touch targets ([34669bf](https://github.com/Apollogeddon/ht-website/commit/34669bf10943ea8a624fb4754243f5bfd1b53b0d))
+
 ## [1.4.0](https://github.com/Apollogeddon/ht-website/compare/v1.3.7...v1.4.0) (2026-10-11)
 
 
