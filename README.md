@@ -134,7 +134,7 @@ Front matter is checked against the schemas in `src/content.config.ts`: `npm run
 
 ## Checks
 
-Commits run through [lefthook](https://github.com/evilmartians/lefthook): Biome checks the staged files, and commitlint checks the message against [Conventional Commits](https://www.conventionalcommits.org/) (`feat: add june blog post`). Biome, commitlint and markdownlint take their base configuration from [forgejs](https://github.com/Apollogeddon/forgejs).
+Commits run through [lefthook](https://github.com/evilmartians/lefthook): Biome checks the staged files, and commitlint checks the message against [Conventional Commits](https://www.conventionalcommits.org/) (`feat: add june blog post`). Biome and commitlint take their base configuration from [forgejs](https://github.com/Apollogeddon/forgejs); markdownlint's rules are this repository's own, in `.markdownlint-cli2.jsonc`.
 
 ### Testing
 
