@@ -1,5 +1,6 @@
 // @ts-check
 
+import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, envField } from "astro/config";
 import { loadEnv } from "vite";
@@ -22,6 +23,8 @@ if (deploying && !env.PUBLIC_WEB3FORMS_ACCESS_KEY) {
 export default defineConfig({
   site: "https://ht.apollogeddon.com",
   base: "/",
+  // /about only redirects to /profiles, so it has no page of its own to list
+  integrations: [sitemap({ filter: (page) => !page.endsWith("/about/") })],
   env: {
     schema: {
       PUBLIC_WEB3FORMS_ACCESS_KEY: envField.string({ context: "client", access: "public", optional: true }),
