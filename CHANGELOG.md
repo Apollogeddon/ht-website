@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.0](https://github.com/Apollogeddon/ht-website/compare/v1.3.7...v1.4.0) (2026-10-11)
+
+
+### Features
+
+* **design:** arch watermark, soft section bands, paper grain and gentle hero animation ([b83455e](https://github.com/Apollogeddon/ht-website/commit/b83455e255864e515b826db02efe5c316ad4db9b))
+* **design:** bring back the growth chart in Why Choose Us ([5d23d0a](https://github.com/Apollogeddon/ht-website/commit/5d23d0a5b7ace69aea64d469b25c1c14f86cfd93))
+* **design:** hero with Tina's portrait, one orange, lighter testimonial and logo-arch graphic ([6751512](https://github.com/Apollogeddon/ht-website/commit/6751512b165a03b588f5daf554f7961426cb56a2))
+* **design:** put the hero's logo mark above the text on mobile ([342f000](https://github.com/Apollogeddon/ht-website/commit/342f000c1c30e93ad4ac968b0a5efed74a9aaaca))
+* **design:** refresh layout, colour and graphics ([c6e8b77](https://github.com/Apollogeddon/ht-website/commit/c6e8b775d4715fa08fe466825df7752424a7a67d))
+* **design:** show the hero's logo mark on its own, without the panel ([e7f703c](https://github.com/Apollogeddon/ht-website/commit/e7f703cc6a0b91ced6f55e4d0e4d8ff8860b8540))
+* **design:** show the logo mark in the hero instead of a photo ([6c41e85](https://github.com/Apollogeddon/ht-website/commit/6c41e854359d3c88bf975dadcae2c82800449578))
+
 ## [1.3.7](https://github.com/Apollogeddon/ht-website/compare/v1.3.6...v1.3.7) (2026-10-10)
 
 
