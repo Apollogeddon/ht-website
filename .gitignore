@@ -10,6 +10,7 @@ node_modules/
 # testing output
 playwright-*
 test-results
+.lighthouseci/
 junit-report.xml
 
 # logs

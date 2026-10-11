@@ -12,6 +12,7 @@
     "lint": "biome check --fix && npm run lint:md",
     "build": "astro build",
     "preview": "astro preview",
+    "lhci": "lhci autorun",
     "pretest": "playwright install --with-deps",
     "test": "playwright test",
     "test:e2e:ui": "playwright test --ui",
