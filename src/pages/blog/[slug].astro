@@ -19,7 +19,12 @@ const { Content } = await render(post);
 const readingTime = Math.max(1, Math.ceil((post.body?.split(/\s+/).filter(Boolean).length ?? 0) / 200));
 ---
 
-<MainLayout title={post.data.title} description={post.data.description}>
+<MainLayout
+  title={post.data.title}
+  description={post.data.description}
+  published={post.data.pubDate}
+  updated={post.data.updatedDate}
+>
   <div class="section-padding">
     <div class="container-site">
       <div class="max-w-4xl mx-auto">

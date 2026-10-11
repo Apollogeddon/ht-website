@@ -14,7 +14,7 @@ export function getStaticPaths() {
 const { solution } = Astro.props;
 ---
 
-<MainLayout title={solution.title}>
+<MainLayout title={solution.title} description={solution.description}>
   <div class="section-padding">
     <div class="container-site">
       <div class="max-w-4xl mx-auto">

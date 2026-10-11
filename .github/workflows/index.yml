@@ -24,6 +24,41 @@ jobs:
       id-token: write
       pull-requests: write
 
+  # forgejs's website workflow runs only the standard scripts, so Lighthouse gets a job of its own
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          registry-url: https://npm.pkg.github.com
+          scope: "@${{ github.repository_owner }}"
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: npm run build
+        env:
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ vars.PUBLIC_WEB3FORMS_ACCESS_KEY }}
+      - name: Lighthouse
+        run: npm run lhci
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse
+          path: .lighthouseci
+          if-no-files-found: ignore
+
   validate:
     needs: website
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.website.outputs.new_release_published == 'true'

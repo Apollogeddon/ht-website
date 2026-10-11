@@ -2,6 +2,8 @@ export const SITE_TITLE = "Harnessing Talent";
 export const SITE_DESCRIPTION =
   "Management consultancy helping businesses achieve success through the best utilisation of their people resources.";
 export const SITE_LANG = "en";
+// Open Graph wants a territory too; the site writes Australian English
+export const OG_LOCALE = "en_AU";
 
 export const DATE_LOCALE = "en-au";
 export const DATE_OPTIONS: Intl.DateTimeFormatOptions = {

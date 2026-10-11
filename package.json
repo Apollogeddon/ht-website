@@ -12,6 +12,7 @@
     "lint": "biome check --fix && npm run lint:md",
     "build": "astro build",
     "preview": "astro preview",
+    "lhci": "lhci autorun",
     "pretest": "playwright install --with-deps",
     "test": "playwright test",
     "test:e2e:ui": "playwright test --ui",
@@ -21,7 +22,9 @@
   "devDependencies": {
     "@apollogeddon/forgejs": "^5.0.0",
     "@astrojs/check": "0.9.10",
+    "@astrojs/sitemap": "3.7.4",
     "@axe-core/playwright": "4.13.0",
+    "@lhci/cli": "0.15.1",
     "@playwright/test": "1.63.0",
     "@tailwindcss/vite": "4.3.3",
     "astro": "7.3.6",
