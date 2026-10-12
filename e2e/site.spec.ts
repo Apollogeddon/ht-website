@@ -99,3 +99,32 @@ test("the trusted-by rotation keeps one timer however often the home page is rev
   }
   await expect.poll(rotations).toBe(1);
 });
+
+test("leaving a page stops watching its scroll-reveal content", async ({ page, isMobile }) => {
+  test.skip(isMobile, "the desktop navigation is hidden on phones");
+  // Counts the observers still watching something: one per page, never one per visit.
+  await page.addInitScript(() => {
+    const live = new Set<IntersectionObserver>();
+    const observe = IntersectionObserver.prototype.observe;
+    const disconnect = IntersectionObserver.prototype.disconnect;
+    IntersectionObserver.prototype.observe = function (this: IntersectionObserver, target: Element) {
+      if (target.classList.contains("scroll-reveal")) live.add(this);
+      return observe.call(this, target);
+    };
+    IntersectionObserver.prototype.disconnect = function (this: IntersectionObserver) {
+      live.delete(this);
+      return disconnect.call(this);
+    };
+    Object.assign(window, { observers: () => live.size });
+  });
+  const observers = () => page.evaluate(() => (window as unknown as { observers: () => number }).observers());
+
+  await page.goto("/");
+  for (let visit = 0; visit < 3; visit++) {
+    await page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Blog Posts" }).click();
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Blog Posts");
+    await page.goBack();
+    await expect(page.getByText("Trusted by:")).toBeVisible();
+  }
+  expect(await observers()).toBeLessThanOrEqual(1);
+});

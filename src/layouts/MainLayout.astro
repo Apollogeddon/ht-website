@@ -160,6 +160,7 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 			});
 		</script>
 		<script>
+			let revealObserver: IntersectionObserver | undefined;
 			const initScrollReveal = () => {
 				const observerOptions = {
 					root: null,
@@ -175,6 +176,7 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 						}
 					});
 				}, observerOptions);
+				revealObserver = observer;
 
 				document.querySelectorAll('.scroll-reveal').forEach(el => {
 					observer.observe(el);
@@ -182,6 +184,8 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 			};
 
 			document.addEventListener('astro:page-load', initScrollReveal);
+			// the swapped-out page's unrevealed elements would otherwise stay observed
+			document.addEventListener('astro:before-swap', () => revealObserver?.disconnect());
 		</script>
 	</head>
 	<body>
