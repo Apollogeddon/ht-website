@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/Apollogeddon/ht-website/compare/v1.5.0...v1.5.1) (2026-10-12)
+
+
+### Bug Fixes
+
+* **trusted-by:** stop the rotation's timer when the client router swaps the page out ([#145](https://github.com/Apollogeddon/ht-website/issues/145)) ([14675f3](https://github.com/Apollogeddon/ht-website/commit/14675f380e356f5b999e4a3c643d478526d8158c))
+
 ## [1.5.0](https://github.com/Apollogeddon/ht-website/compare/v1.4.0...v1.5.0) (2026-10-11)
 
 
