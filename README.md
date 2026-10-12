@@ -149,9 +149,9 @@ Run one file or one browser with Playwright's own options, for example `npx play
 
 ## Deploying
 
-CI is forgejs's [website workflow](https://github.com/Apollogeddon/forgejs/blob/main/.github/workflows/website.yml), called from [`.github/workflows/index.yml`](./.github/workflows/index.yml):
+CI is forgejs's [website workflow](https://github.com/Apollogeddon/forgejs/blob/main/.github/workflows/website.yml), called from [`.github/workflows/index.yml`](./.github/workflows/index.yml) ([`.github/WORKFLOWS.md`](./.github/WORKFLOWS.md) describes each job):
 
-1. On every pull request and push to `main`, it installs, runs the tests, and builds the site with the `PUBLIC_WEB3FORMS_ACCESS_KEY` variable. Dependabot's pull requests are merged once they pass.
+1. On every pull request and push to `main`, it installs, runs the tests, and builds the site with the `PUBLIC_WEB3FORMS_ACCESS_KEY` variable. A separate job runs Lighthouse over the build, and Dependabot's pull requests are merged once both pass.
 2. On `main`, [release-please](https://github.com/googleapis/release-please) keeps a release pull request open, with the next version and the `CHANGELOG.md` entries from the commit messages.
 3. Merging that release pull request tags a release, and the build is deployed to GitHub Pages at <https://ht.apollogeddon.com>. A last job then checks the live site responds.
 
