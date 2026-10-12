@@ -23,21 +23,32 @@ const { orgs } = Astro.props;
 </div>
 
 <script>
+  // Each page load starts a rotation, so the last page's must stop when the client router swaps it out.
+  let rotations: ReturnType<typeof setInterval>[] = [];
+  const stopTrustedBy = () => {
+    rotations.forEach(clearInterval);
+    rotations = [];
+  };
+
   const initTrustedBy = () => {
+    stopTrustedBy();
     document.querySelectorAll<HTMLElement>(".trusted-by-pill").forEach((pill) => {
       const orgs: string[] = JSON.parse(pill.dataset.orgs ?? "[]");
       if (orgs.length <= 1) return;
       let i = 0;
-      setInterval(() => {
-        pill.style.opacity = "0";
-        setTimeout(() => {
-          i = (i + 1) % orgs.length;
-          pill.textContent = orgs[i] ?? "";
-          pill.style.opacity = "1";
-        }, 300);
-      }, 3000);
+      rotations.push(
+        setInterval(() => {
+          pill.style.opacity = "0";
+          setTimeout(() => {
+            i = (i + 1) % orgs.length;
+            pill.textContent = orgs[i] ?? "";
+            pill.style.opacity = "1";
+          }, 300);
+        }, 3000),
+      );
     });
   };
 
   document.addEventListener("astro:page-load", initTrustedBy);
+  document.addEventListener("astro:before-swap", stopTrustedBy);
 </script>
