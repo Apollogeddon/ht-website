@@ -21,6 +21,8 @@ jobs:
     uses: apollogeddon/forgejs/.github/workflows/website.yml@main
     with:
       build_env_vars: "PUBLIC_WEB3FORMS_ACCESS_KEY=${{ vars.PUBLIC_WEB3FORMS_ACCESS_KEY }}"
+      # the auto-merge job below merges once Lighthouse has passed too
+      auto_merge: false
     permissions:
       contents: write
       packages: read
@@ -62,6 +64,15 @@ jobs:
           name: lighthouse
           path: .lighthouseci
           if-no-files-found: ignore
+
+  # last, so a Dependabot pull request merges only once the website checks and Lighthouse pass
+  auto-merge:
+    needs: [website, lighthouse]
+    if: ${{ !failure() && !cancelled() && github.event_name == 'pull_request' }}
+    uses: apollogeddon/forgejs/.github/workflows/merge.yml@main
+    permissions:
+      contents: write
+      pull-requests: write
 
   validate:
     needs: website
