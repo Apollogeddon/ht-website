@@ -56,3 +56,46 @@ test.describe("page rendering", () => {
     await expect(page.getByRole("heading", { level: 1 })).toContainText(/not found/i);
   });
 });
+
+test("the trusted-by rotation keeps one timer however often the home page is revisited", async ({ page, isMobile }) => {
+  test.skip(isMobile, "the desktop navigation is hidden on phones");
+  // The site names one organisation, which doesn't rotate, so serve the home page with two.
+  await page.route(
+    (url) => url.pathname === "/",
+    async (route) => {
+      const response = await route.fetch();
+      const body = (await response.text()).replace(
+        /data-orgs="[^"]*"/,
+        'data-orgs="[&quot;One&quot;,&quot;Two&quot;]"',
+      );
+      await route.fulfill({ response, body });
+    },
+  );
+  // Counts the rotation's timers (3 s) that are still running.
+  await page.addInitScript(() => {
+    const running = new Set<unknown>();
+    const set = window.setInterval.bind(window);
+    const clear = window.clearInterval.bind(window);
+    window.setInterval = ((handler: TimerHandler, timeout?: number, ...args: unknown[]) => {
+      const id = set(handler, timeout, ...args);
+      if (timeout === 3000) running.add(id);
+      return id;
+    }) as typeof window.setInterval;
+    window.clearInterval = ((id?: number) => {
+      running.delete(id);
+      clear(id);
+    }) as typeof window.clearInterval;
+    Object.assign(window, { rotations: () => running.size });
+  });
+  const rotations = () => page.evaluate(() => (window as unknown as { rotations: () => number }).rotations());
+
+  await page.goto("/");
+  await expect.poll(rotations).toBe(1);
+  for (let visit = 0; visit < 3; visit++) {
+    await page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Blog Posts" }).click();
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Blog Posts");
+    await page.goBack();
+    await expect(page.getByText("Trusted by:")).toBeVisible();
+  }
+  await expect.poll(rotations).toBe(1);
+});
