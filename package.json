@@ -20,7 +20,7 @@
     "prepare": "lefthook install"
   },
   "devDependencies": {
-    "@apollogeddon/forgejs": "^5.0.0",
+    "@apollogeddon/forgejs": "^5.1.1",
     "@astrojs/check": "0.9.10",
     "@astrojs/sitemap": "3.7.4",
     "@axe-core/playwright": "4.13.0",
