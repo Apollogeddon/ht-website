@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.5.2](https://github.com/Apollogeddon/ht-website/compare/v1.5.1...v1.5.2) (2026-10-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @apollogeddon/forgejs ([#149](https://github.com/Apollogeddon/ht-website/issues/149)) ([39e9080](https://github.com/Apollogeddon/ht-website/commit/39e9080b3b490ae1bf3865ccbcc1f5ccc5de470b))
+* **deps:** bump the dependencies group with 2 updates ([#148](https://github.com/Apollogeddon/ht-website/issues/148)) ([c307468](https://github.com/Apollogeddon/ht-website/commit/c30746838bb89913570ddd392b981b6e2d6cc217))
+* settle the contact form on a hung send, gate merges on Lighthouse, align with siblings ([#147](https://github.com/Apollogeddon/ht-website/issues/147)) ([006233d](https://github.com/Apollogeddon/ht-website/commit/006233d04cd4700d4238e4cc6f071fdbc13949f4))
+
 ## [1.5.1](https://github.com/Apollogeddon/ht-website/compare/v1.5.0...v1.5.1) (2026-10-12)
 
 
