@@ -3,7 +3,8 @@ import { ROUTES } from "../consts";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="Page Not Found" description="The page you're looking for doesn't exist.">
+{/* served for every missing path, so it has no URL of its own to name as canonical */}
+<MainLayout title="Page Not Found" description="The page you're looking for doesn't exist." noindex>
   <div class="section-padding min-h-[60vh] flex items-center">
     <div class="container-site text-center">
       <p class="eyebrow mb-4">404</p>
