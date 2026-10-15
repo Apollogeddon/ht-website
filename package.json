@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "ht-website",
   "type": "module",
   "version": "1.5.1",
   "description": "The Harnessing Talent website, built with Astro",
