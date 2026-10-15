@@ -68,6 +68,23 @@ test.describe("Contact form", () => {
     await expect(page.locator("#submit-btn")).toBeEnabled();
   });
 
+  test("gives up on a send that never answers, and shows the error", async ({ page }) => {
+    await page.clock.install();
+    // never fulfilled: Web3Forms took the request and never answered
+    await page.route(WEB3FORMS, () => {});
+    await openContact(page);
+    await fillForm(page);
+
+    const requestPromise = page.waitForRequest(WEB3FORMS);
+    await page.click("#submit-btn");
+    await requestPromise;
+    await expect(page.locator("#submit-btn")).toBeDisabled();
+
+    await page.clock.runFor(30_000);
+    await expect(page.locator("#form-message")).toContainText(/couldn't be sent/);
+    await expect(page.locator("#submit-btn")).toBeEnabled();
+  });
+
   test("an empty form is not sent and its fields are marked invalid", async ({ page }) => {
     let sent = false;
     await page.route(WEB3FORMS, (route) => {

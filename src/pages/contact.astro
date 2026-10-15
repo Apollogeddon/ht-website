@@ -88,6 +88,8 @@ const form = CONTACT_PAGE.form;
 </style>
 
 <script>
+  const SEND_TIMEOUT_MS = 30_000;
+
   const initContactForm = () => {
     const form = document.getElementById("contact-form") as HTMLFormElement | null;
     const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement | null;
@@ -107,9 +109,13 @@ const form = CONTACT_PAGE.form;
       submitBtn.textContent = form.dataset.sending ?? "";
       formMessage.classList.add("hidden");
 
+      // a request that never answers would leave the button disabled for good
+      const abort = new AbortController();
+      const timer = setTimeout(() => abort.abort(), SEND_TIMEOUT_MS);
       try {
         const response = await fetch(form.action, {
           method: "POST",
+          signal: abort.signal,
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -131,6 +137,7 @@ const form = CONTACT_PAGE.form;
         formMessage.classList.remove("hidden");
         formMessage.classList.add("form-message-error");
       } finally {
+        clearTimeout(timer);
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;
       }

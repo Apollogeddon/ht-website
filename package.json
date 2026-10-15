@@ -17,7 +17,7 @@
     "test": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "security": "osv-scanner scan -r .",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install || exit 0"
   },
   "devDependencies": {
     "@apollogeddon/forgejs": "^5.1.1",
@@ -36,6 +36,10 @@
     "node": ">=24"
   },
   "overrides": {
-    "katex": "^0.19.0"
+    "katex": "^0.19.0",
+    "smol-toml": "^1.9.1",
+    "tmp": "^0.2.6",
+    "uuid": "^11.1.1",
+    "basic-ftp": "^6.2.3"
   }
 }
