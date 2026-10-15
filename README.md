@@ -125,12 +125,12 @@ When you add or change a token, set it in both `:root` and `.dark`, and check th
 
 | What | Where |
 | :--- | :--- |
-| Blog posts | One Markdown file each in `src/content/blog/`. Front matter: `title`, `description`, `pubDate`, and optionally `updatedDate` and `heroImage`. The file name is the URL: `welcome.md` is `/blog/welcome`. Files starting with `_` are skipped. |
+| Blog posts | One Markdown file each in `src/content/blog/`. Front matter: `title`, `description`, `pubDate`, and optionally `updatedDate`. The file name is the URL: `welcome.md` is `/blog/welcome`. Files starting with `_` are skipped, and an `.mdx` file fails the build, as the site has no MDX support. |
 | Testimonials | One Markdown file each in `src/content/testimonials/`, with `author` and `role` in the front matter and the quote as the body. |
 | Page text, navigation, solutions, contact details, policies | `src/consts.ts`. Each solution there also gets its own page under `/solutions/`. |
 | Images | `src/assets/`, imported and rendered with Astro's `<Image />`, so they are resized and compressed at build time. |
 
-Front matter is checked against the schemas in `src/content.config.ts`: `npm run type` and the build fail on a missing or mistyped field. [UPDATES.md](./UPDATES.md) walks through each of these step by step.
+Front matter is checked against the schemas in `src/content.config.ts`: `npm run type` and the build fail on a missing, mistyped or unknown field. [UPDATES.md](./UPDATES.md) walks through each of these step by step.
 
 ## Checks
 
@@ -149,7 +149,7 @@ Run one file or one browser with Playwright's own options, for example `npx play
 
 ## Deploying
 
-CI is forgejs's [website workflow](https://github.com/Apollogeddon/forgejs/blob/main/.github/workflows/website.yml), called from [`.github/workflows/index.yml`](./.github/workflows/index.yml) ([`.github/WORKFLOWS.md`](./.github/WORKFLOWS.md) describes each job):
+CI is forgejs's [website workflow](https://github.com/Apollogeddon/forgejs/blob/main/.github/workflows/website.yml), called from [`.github/workflows/.index.yaml`](./.github/workflows/.index.yaml) ([`.github/WORKFLOWS.md`](./.github/WORKFLOWS.md) describes each job):
 
 1. On every pull request and push to `main`, it installs, runs the tests, and builds the site with the `PUBLIC_WEB3FORMS_ACCESS_KEY` variable. A separate job runs Lighthouse over the build, and Dependabot's pull requests are merged once both pass.
 2. On `main`, [release-please](https://github.com/googleapis/release-please) keeps a release pull request open, with the next version and the `CHANGELOG.md` entries from the commit messages.
