@@ -35,4 +35,4 @@ The website workflow runs only the standard npm scripts, so Lighthouse has a job
 
 ## Dependabot
 
-[`dependabot.yml`](./dependabot.yml) proposes npm updates daily and GitHub Actions updates weekly. Each waits 3 days after a version is published, except our own `@apollogeddon` packages. npm updates are grouped into one pull request for our own packages and one for the rest, majors included. forgejs's reusable workflows are tracked at `@main`, so Dependabot leaves them alone.
+[`dependabot.yml`](./dependabot.yml) proposes npm updates daily and GitHub Actions updates weekly. Each waits 3 days after a version is published, except our own `@apollogeddon` packages. npm updates are grouped into one pull request for our own packages and one for the rest's minor and patch updates; each major update to the rest comes in a pull request of its own. forgejs's reusable workflows are tracked at `@main`, so Dependabot leaves them alone.

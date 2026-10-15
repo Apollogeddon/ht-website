@@ -24,13 +24,18 @@ updates:
       exclude: ["@apollogeddon/*"]
     # Limit open PRs to prevent flooding
     open-pull-requests-limit: 10
-    # Grouped, majors included as in the sibling repositories: one pull request, so one CI run
+    # Group non-major updates to reduce PR volume
     groups:
       # our own packages, apart from the rest so they never wait on a third-party update
       apollogeddon:
         patterns: ["@apollogeddon/*"]
       dependencies:
-        patterns: ["*"]
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    # Ensure commit messages follow your convention (e.g., 'chore(deps): ...')
     commit-message:
       prefix: "fix(deps)"
 
