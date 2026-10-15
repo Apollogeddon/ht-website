@@ -23,9 +23,11 @@ interface Props {
   /** Set for a blog post, which is shared as an article. */
   published?: Date;
   updated?: Date | undefined;
+  /** For a page with no URL of its own (the 404 page): no canonical or og:url, and not indexed. */
+  noindex?: boolean;
 }
 
-const { title, description = SITE_DESCRIPTION, image, imageAlt, published, updated } = Astro.props;
+const { title, description = SITE_DESCRIPTION, image, imageAlt, published, updated, noindex = false } = Astro.props;
 
 const fullTitle = `${title} | ${SITE_TITLE}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -87,14 +89,14 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
 		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
-		<link rel="canonical" href={canonical} />
+		{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
 		<link rel="sitemap" href={`${import.meta.env.BASE_URL}sitemap-index.xml`} />
 
 		<!-- Open Graph -->
 		<meta property="og:type" content={published ? "article" : "website"} />
 		<meta property="og:site_name" content={SITE_TITLE} />
 		<meta property="og:locale" content={OG_LOCALE} />
-		<meta property="og:url" content={canonical} />
+		{!noindex && <meta property="og:url" content={canonical} />}
 		<meta property="og:title" content={fullTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={share.src} />

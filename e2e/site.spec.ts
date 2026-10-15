@@ -54,6 +54,10 @@ test.describe("page rendering", () => {
     // to 404.html the way GitHub Pages does
     await page.goto("/404.html");
     await expect(page.getByRole("heading", { level: 1 })).toContainText(/not found/i);
+    // served for any missing path, so it names no canonical URL (/404/ doesn't exist) and isn't indexed
+    await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+    await expect(page.locator('meta[property="og:url"]')).toHaveCount(0);
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex");
   });
 });
 

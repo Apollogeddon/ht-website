@@ -4,7 +4,7 @@ This repository uses GitHub Actions to check the site, version it, deploy it to 
 
 ## Index workflow
 
-The [`index.yml`](./workflows/index.yml) workflow runs on every pull request to `main` and every push to `main`. Its token is read-only unless a job grants itself more. It runs these jobs:
+The [`.index.yaml`](./workflows/.index.yaml) workflow runs on every pull request to `main` and every push to `main`. Its token is read-only unless a job grants itself more. It runs these jobs:
 
 1. **Website**: [forgejs](https://github.com/apollogeddon/forgejs)'s reusable `website.yml` (see [Website](#website)).
 2. **Lighthouse**: builds the site and runs [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) over its pages (see [Lighthouse](#lighthouse)).

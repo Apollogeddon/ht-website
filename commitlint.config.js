@@ -1,9 +1,7 @@
 import baseConfig from "@apollogeddon/forgejs/commitlint.config.cjs";
-import type { UserConfig } from "@commitlint/types";
 
-const Configuration: UserConfig = {
+/** @type {import('@commitlint/types').UserConfig} */
+export default {
   extends: baseConfig.extends,
   // Add project-specific rules here
 };
-
-export default Configuration;
