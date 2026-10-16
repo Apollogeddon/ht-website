@@ -153,7 +153,7 @@ CI is [`.github/workflows/.index.yml`](./.github/workflows/.index.yml), which ca
 
 1. On every pull request, the `website` pipeline lints, scans, runs the tests, and builds the site with the `PUBLIC_WEB3FORMS_ACCESS_KEY` variable, and `website / check (lighthouse)` runs Lighthouse over the build. Dependabot's pull requests are merged once both pass.
 2. On `main`, [release-please](https://github.com/googleapis/release-please) (`version`) keeps a release pull request open, with the next version and the `CHANGELOG.md` entries from the commit messages.
-3. Merging that release pull request tags a release; the site is checked and built again, and `pages` deploys it to GitHub Pages at <https://ht.apollogeddon.com>. `website / check` then checks the live site responds.
+3. Merging that release pull request tags a release; the site is checked and built again, and `pages` deploys it to GitHub Pages at <https://ht.apollogeddon.com>. `pages / check` then checks the live site responds.
 
 So a merge to `main` alone doesn't change the live site: it goes out with the next release.
 
