@@ -1,0 +1,128 @@
+name: index
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+  # sent by the merge pipeline, as a merge it makes starts no push run on main
+  repository_dispatch:
+    types: [auto-merged]
+  # weekly, for the patch pipeline; a manual run patches too
+  schedule:
+    - cron: '17 3 * * 1'
+
+concurrency:
+  # a pull request's newer run replaces its older one; every other run has a group of its own, so a run on
+  # main, running or queued, is never cancelled and a release is never created without being deployed
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+# read-only unless a job grants itself more
+permissions:
+  contents: read
+
+# Each job calls one pipeline, or is a stage of one, so the run page reads <pipeline> / <stage>
+jobs:
+  # release-please, on main
+  version:
+    if: ${{ github.event_name != 'pull_request' && github.event_name != 'schedule' }}
+    uses: apollogeddon/forgejs/.github/workflows/version.yml@ci-v2
+    permissions:
+      contents: write
+      pull-requests: write
+
+  # a pull request's checks, and on main a release's, before it deploys
+  website:
+    needs: version
+    if: ${{ !cancelled() && (github.event_name == 'pull_request' || needs.version.outputs.new_release_published == 'true') }}
+    uses: apollogeddon/forgejs/.github/workflows/website.yml@ci-v2
+    with:
+      build_env_vars: "PUBLIC_WEB3FORMS_ACCESS_KEY=${{ vars.PUBLIC_WEB3FORMS_ACCESS_KEY }}"
+    permissions:
+      contents: read
+      packages: read
+      pull-requests: write
+
+  # A website stage of the site's own, as forgejs's website pipeline has no Lighthouse. It scores the build
+  # the pipeline uploaded, which is the one Pages deploys
+  website-check-lighthouse:
+    name: website / check (lighthouse)
+    needs: website
+    if: ${{ !cancelled() && needs.website.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          registry-url: https://npm.pkg.github.com
+          scope: "@${{ github.repository_owner }}"
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download the build
+        uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist
+      - name: Check with Lighthouse
+        run: npm run lhci
+      - name: Upload the Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse
+          path: .lighthouseci
+          if-no-files-found: ignore
+
+  # a release, to GitHub Pages, once the site and Lighthouse pass
+  pages:
+    needs: [version, website, website-check-lighthouse]
+    if: ${{ !cancelled() && needs.website.result == 'success' && needs.website-check-lighthouse.result == 'success' && needs.version.outputs.new_release_published == 'true' }}
+    uses: apollogeddon/forgejs/.github/workflows/pages.yml@ci-v2
+    permissions:
+      pages: write
+      id-token: write
+
+  # the live site responds once a release from main is deployed
+  pages-check:
+    name: pages / check
+    needs: pages
+    if: ${{ !cancelled() && needs.pages.result == 'success' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Check the live site
+        run: curl -f --retry 5 --retry-delay 10 --retry-connrefused https://ht.apollogeddon.com
+
+  # weekly or on a manual run, vulnerable dependencies updated on main
+  patch:
+    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+    uses: apollogeddon/forgejs/.github/workflows/patch.yml@ci-v2
+    permissions:
+      contents: write
+      packages: read
+
+  # Dependabot's pull requests: a review request, and a squash merge once the site and Lighthouse pass
+  merge:
+    needs: [website, website-check-lighthouse]
+    if: ${{ !cancelled() && github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]' }}
+    uses: apollogeddon/forgejs/.github/workflows/merge.yml@ci-v2
+    with:
+      checks_passed: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
+    permissions:
+      contents: write
+      pull-requests: write

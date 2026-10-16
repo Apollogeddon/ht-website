@@ -67,7 +67,7 @@ The key is declared in `astro.config.mjs` as an optional `astro:env` variable. T
 
 ```text
 /
-├── .github/workflows/  # CI: calls forgejs's website workflow, then checks the live site
+├── .github/workflows/  # CI: calls forgejs's pipelines, then checks the live site
 ├── e2e/                # Playwright tests (accessibility, forms, links, navigation, SEO, site)
 ├── public/             # Files copied as-is into the build (favicons)
 ├── src/
@@ -149,11 +149,11 @@ Run one file or one browser with Playwright's own options, for example `npx play
 
 ## Deploying
 
-CI is forgejs's [website workflow](https://github.com/Apollogeddon/forgejs/blob/main/.github/workflows/website.yml), called from [`.github/workflows/.index.yaml`](./.github/workflows/.index.yaml) ([`.github/WORKFLOWS.md`](./.github/WORKFLOWS.md) describes each job):
+CI is [`.github/workflows/.index.yml`](./.github/workflows/.index.yml), which calls forgejs's [pipelines](https://github.com/Apollogeddon/forgejs/tree/main/.github/workflows) ([`.github/WORKFLOWS.md`](./.github/WORKFLOWS.md) describes each job):
 
-1. On every pull request and push to `main`, it installs, runs the tests, and builds the site with the `PUBLIC_WEB3FORMS_ACCESS_KEY` variable. A separate job runs Lighthouse over the build, and Dependabot's pull requests are merged once both pass.
-2. On `main`, [release-please](https://github.com/googleapis/release-please) keeps a release pull request open, with the next version and the `CHANGELOG.md` entries from the commit messages.
-3. Merging that release pull request tags a release, and the build is deployed to GitHub Pages at <https://ht.apollogeddon.com>. A last job then checks the live site responds.
+1. On every pull request, the `website` pipeline lints, scans, runs the tests, and builds the site with the `PUBLIC_WEB3FORMS_ACCESS_KEY` variable, and `website / check (lighthouse)` runs Lighthouse over the build. Dependabot's pull requests are merged once both pass.
+2. On `main`, [release-please](https://github.com/googleapis/release-please) (`version`) keeps a release pull request open, with the next version and the `CHANGELOG.md` entries from the commit messages.
+3. Merging that release pull request tags a release; the site is checked and built again, and `pages` deploys it to GitHub Pages at <https://ht.apollogeddon.com>. `pages / check` then checks the live site responds.
 
 So a merge to `main` alone doesn't change the live site: it goes out with the next release.
 
