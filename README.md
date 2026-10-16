@@ -125,7 +125,7 @@ When you add or change a token, set it in both `:root` and `.dark`, and check th
 
 | What | Where |
 | :--- | :--- |
-| Blog posts | One Markdown file each in `src/content/blog/`. Front matter: `title`, `description`, `pubDate`, and optionally `updatedDate`. The file name is the URL: `welcome.md` is `/blog/welcome`. Files starting with `_` are skipped, and an `.mdx` file fails the build, as the site has no MDX support. |
+| Blog posts | One Markdown file each in `src/content/blog/`. Front matter: `title`, `description`, `pubDate`, and optionally `updatedDate`. The file name is the URL: `welcome.md` is `/blog/welcome`. Files starting with `_` are skipped. A file that ends in anything Markdown-like but lower-case `.md` (`.mdx`, `.mdoc`, `.markdown`, `.MD` and the like), skipped or not, fails the build rather than being left out, as the site has no MDX or Markdoc support. |
 | Testimonials | One Markdown file each in `src/content/testimonials/`, with `author` and `role` in the front matter and the quote as the body. |
 | Page text, navigation, solutions, contact details, policies | `src/consts.ts`. Each solution there also gets its own page under `/solutions/`. |
 | Images | `src/assets/`, imported and rendered with Astro's `<Image />`, so they are resized and compressed at build time. |
