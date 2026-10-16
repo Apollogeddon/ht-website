@@ -17,7 +17,7 @@ A new push to a pull request cancels its previous run. Runs on `main` are never 
 
 forgejs's `website.yml` runs, on every pull request and push:
 
-- **Secrets and dependencies**: Gitleaks over the repository, and OSV-Scanner over `package-lock.json`.
+- **Secrets and dependencies**: Gitleaks over the repository, and OSV-Scanner over `package-lock.json`; `osv-scanner.toml` lists the findings accepted until a set date, each with its reason.
 - **Lint and types**: Biome and `npm run type` (`astro check`).
 - **Tests**: `npm test`, the Playwright suite in `e2e/` (see the README's [Testing](../README.md#testing)).
 - **Build**: `npm run build` with the `PUBLIC_WEB3FORMS_ACCESS_KEY` repository variable, then the built site's internal links are checked with lychee, and every page against WCAG 2.2 A and AA with axe.
