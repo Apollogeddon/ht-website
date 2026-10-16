@@ -28,7 +28,7 @@ jobs:
   # release-please, on main
   version:
     if: ${{ github.event_name != 'pull_request' && github.event_name != 'schedule' }}
-    uses: apollogeddon/forgejs/.github/workflows/version.yml@ci-v2
+    uses: apollogeddon/forgejs/.github/workflows/version.yml@main
     permissions:
       contents: write
       pull-requests: write
@@ -37,7 +37,7 @@ jobs:
   website:
     needs: version
     if: ${{ !cancelled() && (github.event_name == 'pull_request' || needs.version.outputs.new_release_published == 'true') }}
-    uses: apollogeddon/forgejs/.github/workflows/website.yml@ci-v2
+    uses: apollogeddon/forgejs/.github/workflows/website.yml@main
     with:
       build_env_vars: "PUBLIC_WEB3FORMS_ACCESS_KEY=${{ vars.PUBLIC_WEB3FORMS_ACCESS_KEY }}"
     permissions:
@@ -91,7 +91,7 @@ jobs:
   pages:
     needs: [version, website, website-check-lighthouse]
     if: ${{ !cancelled() && needs.website.result == 'success' && needs.website-check-lighthouse.result == 'success' && needs.version.outputs.new_release_published == 'true' }}
-    uses: apollogeddon/forgejs/.github/workflows/pages.yml@ci-v2
+    uses: apollogeddon/forgejs/.github/workflows/pages.yml@main
     permissions:
       pages: write
       id-token: write
@@ -110,8 +110,8 @@ jobs:
 
   # weekly or on a manual run, vulnerable dependencies updated on main
   patch:
-    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-    uses: apollogeddon/forgejs/.github/workflows/patch.yml@ci-v2
+    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch' }}
+    uses: apollogeddon/forgejs/.github/workflows/patch.yml@main
     permissions:
       contents: write
       packages: read
@@ -120,7 +120,7 @@ jobs:
   merge:
     needs: [website, website-check-lighthouse]
     if: ${{ !cancelled() && github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]' }}
-    uses: apollogeddon/forgejs/.github/workflows/merge.yml@ci-v2
+    uses: apollogeddon/forgejs/.github/workflows/merge.yml@main
     with:
       checks_passed: ${{ !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
     permissions:
