@@ -97,8 +97,8 @@ jobs:
       id-token: write
 
   # the live site responds once a release from main is deployed
-  website-check:
-    name: website / check
+  pages-check:
+    name: pages / check
     needs: pages
     if: ${{ !cancelled() && needs.pages.result == 'success' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
