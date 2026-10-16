@@ -20,7 +20,7 @@ Blog posts are stored as simple text files in the `src/content/blog/` folder.
 
 1. In VS Code, open the `src/content/blog/` folder in the file explorer.
 2. Right-click the folder and select **New File**.
-3. Name the file using lowercase letters and hyphens (e.g., `my-new-post.md`).
+3. Name the file using lowercase letters and hyphens (e.g., `my-new-post.md`). It must end in `.md`: the site won't build with any other ending, such as `.markdown` or `.MD`.
 4. Paste in the following template and fill in your details:
 
     ```markdown
@@ -48,7 +48,7 @@ Testimonials are stored as individual files in `src/content/testimonials/`.
 
 1. In VS Code, open the `src/content/testimonials/` folder.
 2. Right-click the folder and select **New File**.
-3. Name the file using the client's name in lowercase with hyphens (e.g., `jane-smith.md`).
+3. Name the file using the client's name in lowercase with hyphens (e.g., `jane-smith.md`). It must end in `.md`, as for blog posts.
 4. Paste in the following template:
 
     ```markdown

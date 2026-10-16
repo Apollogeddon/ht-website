@@ -1,13 +1,15 @@
 import { defineCollection, z } from "astro:content";
-import { readdirSync } from "node:fs";
 import { glob } from "astro/loaders";
+import { unsupportedPosts } from "./content-files";
 
-// The site has no MDX integration, and the glob loader would skip an .mdx file with only a
-// warning, so the build fails on one instead of publishing without it.
+// The site has no MDX or Markdoc integration, and the glob loader would skip any file but .md with
+// at most a warning, so the build fails on one instead of publishing without it.
 function markdownOnly(base: string) {
-  const mdx = readdirSync(base, { recursive: true, encoding: "utf8" }).filter((file) => file.endsWith(".mdx"));
-  if (mdx.length > 0) {
-    throw new Error(`${base}: ${mdx.join(", ")}: posts are Markdown (.md); MDX isn't supported`);
+  const unsupported = unsupportedPosts(base);
+  if (unsupported.length > 0) {
+    throw new Error(
+      `${base}: ${unsupported.join(", ")}: entries are Markdown ending in lower-case .md; MDX and Markdoc aren't supported`,
+    );
   }
   return glob({ pattern: "**/[^_]*.md", base });
 }
