@@ -4,13 +4,14 @@ This guide explains how to add and update content on the Harnessing Talent websi
 
 ## How Publishing Works
 
-Every change you make follows the same three steps:
+Every change you make follows the same four steps:
 
 1. **Edit** — make your changes in VS Code and save the file (`Ctrl+S`).
 2. **Commit** — save a snapshot of your changes with a short description.
-3. **Push** — send the changes to GitHub, which automatically updates the live site.
+3. **Push** — send the changes to GitHub. This doesn't change the live site yet.
+4. **Release** — GitHub collects pushed changes in a release pull request. The live site updates only when that pull request is merged, about 10 minutes after the merge.
 
-The live site usually updates within 2–3 minutes of pushing. See [Publishing Your Changes](#publishing-your-changes) at the bottom of this guide for the exact steps.
+See [Publishing Your Changes](#publishing-your-changes) at the bottom of this guide for the exact steps.
 
 ---
 
@@ -111,7 +112,7 @@ If you need to change the email address that receives contact form submissions:
 
 1. Go to [Web3Forms](https://web3forms.com/) and enter the **new** email address.
 2. They will email a new Access Key to that address.
-3. For the live site: contact the site administrator to update the key in GitHub's repository secrets.
+3. For the live site: contact the site administrator to update the `PUBLIC_WEB3FORMS_ACCESS_KEY` repository variable in GitHub (**Settings → Secrets and variables → Actions → Variables**). The new key takes effect with the next release.
 4. For local development: update the key in your `.env` file.
 
 ---
@@ -146,7 +147,7 @@ Before publishing, run a quick check to catch any formatting issues:
 
 3. If it reports any issues, it will usually fix them automatically. Save any files it changes, then run it again until it passes cleanly.
 
-> **Note:** This check also runs automatically when you commit. If it fails at that point, fix the issues and try committing again.
+> **Note:** When you commit, the code part of this check runs automatically on code files (such as `src/consts.ts`). The check of blog posts and other `.md` files doesn't, so run `npm run lint` yourself after editing one. If the check fails when you commit, fix the issues and try committing again.
 
 ---
 
@@ -173,8 +174,10 @@ type: short description in lowercase
 | Type | When to use | Example |
 | --- | --- | --- |
 | `feat` | Adding something new | `feat: add june blog post` |
-| `fix` | Correcting existing content | `fix: correct typo in about section` |
-| `chore` | General updates (not new content) | `chore: update contact page text` |
+| `fix` | Correcting or updating existing content | `fix: update contact page text` |
+| `chore` | Housekeeping that doesn't change the site | `chore: update vs code settings` |
+
+Only `feat` and `fix` changes start a release. A `chore` change on its own never reaches the live site: it waits for the next `feat` or `fix`. Use `fix` for any change to the site's text.
 
 > **Important:** The format is enforced automatically — if your message doesn't match, the commit will be rejected with an error. Check the format and try again.
 
@@ -182,7 +185,12 @@ type: short description in lowercase
 
 1. Click the **Commit** button (tick icon).
 2. If the lint check runs and finds issues, fix them, save, re-stage the files, and commit again.
-3. Click **Sync Changes** (or **Push**) to send your changes to GitHub.
-4. Wait 2–3 minutes, then check the live site at [ht.apollogeddon.com](https://ht.apollogeddon.com).
+3. Click **Sync Changes** (or **Push**) to send your changes to GitHub. GitHub checks them, which takes a few minutes. The checks are on the repository's **Actions** tab.
+
+### Step 4 — Release
+
+1. After a `feat` or `fix` push, GitHub opens or updates a pull request titled `chore(main): release …` on the repository's **Pull requests** tab. It lists every change waiting to go live.
+2. When you're ready to publish, merge that pull request, or ask the site administrator to merge it.
+3. About 10 minutes after the merge, check the live site at [ht.apollogeddon.com](https://ht.apollogeddon.com).
 
 > **If something looks wrong on the live site**, don't panic — changes can be reversed. Contact the site administrator.
