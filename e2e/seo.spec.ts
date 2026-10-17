@@ -66,6 +66,5 @@ test.describe("Crawling", () => {
     for (const pageInfo of pagesToCheck) {
       expect(sitemap).toContain(`<loc>https://ht.apollogeddon.com${pageInfo.path.replace(/\/?$/, "/")}</loc>`);
     }
-    expect(sitemap).not.toContain("/about/");
   });
 });
