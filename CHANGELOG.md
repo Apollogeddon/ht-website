@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.3](https://github.com/Apollogeddon/ht-website/compare/v1.5.2...v1.5.3) (2026-10-17)
+
+
+### Bug Fixes
+
+* take forgejs 7.0.0 and drop the /about redirect to /profiles ([#160](https://github.com/Apollogeddon/ht-website/issues/160)) ([8cd23b7](https://github.com/Apollogeddon/ht-website/commit/8cd23b7ff34571ac9cfaaff0656bb135d6a4c8a4))
+
 ## [1.5.2](https://github.com/Apollogeddon/ht-website/compare/v1.5.1...v1.5.2) (2026-10-16)
 
 
