@@ -19,9 +19,9 @@ Website for **[Harnessing Talent](https://ht.apollogeddon.com)**, a management c
 
 ## What it is
 
-A static site of a few pages (home, solutions, profiles, testimonials, blog, contact, policies), built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/) v4. Astro renders every page to HTML at build time and ships little JavaScript: a theme toggle, the testimonial carousel, scroll reveals and the contact form's submit handler. The output in `dist/` is published to GitHub Pages.
+A static site of a few pages (home, solutions, profiles, testimonials, blog, contact, policies), built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/). Astro renders every page to HTML at build time and ships little JavaScript: a theme toggle, the testimonial carousel, scroll reveals and the contact form's submit handler. The output in `dist/` is published to GitHub Pages.
 
-The contact form posts to [Web3Forms](https://web3forms.com/), which emails each submission on; there is no server of our own. Every page sets a title, description, canonical URL and Open Graph and Twitter card tags from `src/layouts/MainLayout.astro`.
+The contact form posts to [Web3Forms](https://web3forms.com/), which emails each submission on; there is no server of our own. Every page sets a title, description, canonical URL and Open Graph and Twitter card tags from `src/layouts/MainLayout.astro`. The build also writes a sitemap (`sitemap-index.xml`), a `robots.txt` that points to it, and a 404 page.
 
 Two guides cover the site for its editors, without needing to know the code:
 
@@ -51,6 +51,7 @@ The site is then at <http://localhost:4321> and reloads as you save. `npm instal
 | `npm run type` | `astro check`: type-checks the `.astro` and TypeScript files and the content collections' front matter. |
 | `npm test` | Build the site, serve it, and run the Playwright tests against it. Installs Playwright's browsers first. |
 | `npm run test:e2e:ui` | The same tests in Playwright's interactive UI. |
+| `npm run lhci` | Run Lighthouse CI over the pages in `lighthouserc.cjs`, from the built `dist/` (run `npm run build` first), with the scores CI requires. |
 | `npm run security` | Scan the dependencies for known vulnerabilities with [OSV-Scanner](https://google.github.io/osv-scanner/) (needs `osv-scanner` on your PATH). |
 
 ## Environment variables
@@ -68,8 +69,8 @@ The key is declared in `astro.config.mjs` as an optional `astro:env` variable. T
 ```text
 /
 ├── .github/workflows/  # CI: calls forgejs's pipelines, then checks the live site
-├── e2e/                # Playwright tests (accessibility, forms, links, navigation, SEO, site)
-├── public/             # Files copied as-is into the build (favicons)
+├── e2e/                # Playwright tests (accessibility, content, forms, links, navigation, SEO, site)
+├── public/             # Files copied as-is into the build (favicons, the logo and the default social image)
 ├── src/
 │   ├── assets/         # Logos and photos, optimised by Astro at build time
 │   ├── components/     # UI components (Header, Footer, buttons, cards, sections)
@@ -79,6 +80,7 @@ The key is declared in `astro.config.mjs` as an optional `astro:env` variable. T
 │   ├── styles/
 │   │   └── global.css  # Tailwind import, design tokens and shared component classes
 │   ├── consts.ts       # The site's text, navigation and routes
+│   ├── content-files.ts # Finds Markdown-like files the content collections would skip, so the build fails on them
 │   ├── content.config.ts # The content collections' schemas
 │   └── styles.ts       # SVG icon paths and the brand palette for script use
 ├── astro.config.mjs    # Astro configuration, including the environment variable schema
@@ -126,7 +128,7 @@ When you add or change a token, set it in both `:root` and `.dark`, and check th
 | What | Where |
 | :--- | :--- |
 | Blog posts | One Markdown file each in `src/content/blog/`. Front matter: `title`, `description`, `pubDate`, and optionally `updatedDate`. The file name is the URL: `welcome.md` is `/blog/welcome`. Files starting with `_` are skipped. A file that ends in anything Markdown-like but lower-case `.md` (`.mdx`, `.mdoc`, `.markdown`, `.MD` and the like), skipped or not, fails the build rather than being left out, as the site has no MDX or Markdoc support. |
-| Testimonials | One Markdown file each in `src/content/testimonials/`, with `author` and `role` in the front matter and the quote as the body. |
+| Testimonials | One Markdown file each in `src/content/testimonials/`, with `author` and `role` in the front matter and the quote as the body. As with posts, files starting with `_` are skipped, and a Markdown-like file not ending in lower-case `.md` fails the build. |
 | Page text, navigation, solutions, contact details, policies | `src/consts.ts`. Each solution there also gets its own page under `/solutions/`. |
 | Images | `src/assets/`, imported and rendered with Astro's `<Image />`, so they are resized and compressed at build time. |
 
@@ -143,6 +145,7 @@ Commits run through [lefthook](https://github.com/evilmartians/lefthook): Biome 
 - `a11y.spec.ts` scans every page with [axe-core](https://github.com/dequelabs/axe-core) in both the light and the dark theme, and fails on any violation it can detect.
 - `forms.spec.ts` checks the contact form: its fields, sending to Web3Forms and the thank-you that follows, the error shown when sending fails, validation of an empty form, and that it still posts without JavaScript. Web3Forms is intercepted, so nothing is sent.
 - `navigation.spec.ts` checks keyboard and screen reader use of the menus and the theme toggle, and that content revealed on scroll is visible without JavaScript.
+- `content.spec.ts` checks that a Markdown-like file the content collections would skip (`.mdx`, `.MD` and the like) is found, and that the site's own content passes.
 - `links.spec.ts` checks for broken internal links, `seo.spec.ts` for each page's title, description, canonical and social tags, and `site.spec.ts` that each page renders.
 
 Run one file or one browser with Playwright's own options, for example `npx playwright test e2e/a11y.spec.ts --project=chromium`. Locally, Playwright reuses a server already running on port 4321; stop `npm run dev` first if you want the tests to run against a fresh build. The HTML report opens with `npx playwright show-report`.
