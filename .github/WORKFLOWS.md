@@ -11,10 +11,10 @@ The [`.index.yml`](./workflows/.index.yml) workflow (`index`) runs on every pull
 3. **website / check (lighthouse)**: runs [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) over the website pipeline's build (see [Lighthouse](#lighthouse)).
 4. **pages** (`pages / deploy`): when a release was published and the website checks and Lighthouse passed, deploys the build to GitHub Pages.
 5. **pages / check**: after that deploy, checks the live site at <https://ht.apollogeddon.com> responds.
-6. **patch** (`patch / update`): weekly and on a manual run, upgrades dependencies OSV-Scanner finds vulnerable and commits the new lock file to `main`.
+6. **patch** (`patch / update`): weekly, on a manual run and on the `auto-merged` dispatch, upgrades dependencies OSV-Scanner finds vulnerable and commits the new lock file to `main`.
 7. **merge** (`merge / review`, `merge / squash`): on Dependabot's pull requests, asks for a review, which CODEOWNERS doesn't request on a bot's, and squash-merges once the website checks and Lighthouse have passed. GitHub Actions updates aren't merged automatically: a workflow token may not change workflow files, so a person merges those. The merge sends `auto-merged`, which runs the workflow on `main`, as a merge made with the workflow token starts no push run.
 
-A new push to a pull request cancels its previous run. Runs on `main` are never cancelled, so a release is never created without its deploy. The forgejs pipelines are called at `@ci-v2` while forgejs's new pipelines are trialled ([forgejs#238](https://github.com/apollogeddon/forgejs/pull/238)); they move to `@main` when that merges.
+A new push to a pull request cancels its previous run. Runs on `main` are never cancelled, so a release is never created without its deploy. The forgejs pipelines are called at `@main`.
 
 ## Website
 
@@ -33,4 +33,4 @@ forgejs's website pipeline has no Lighthouse stage, so it's a job of this workfl
 
 ## Dependabot
 
-[`dependabot.yml`](./dependabot.yml) proposes npm updates daily and GitHub Actions updates weekly. Each waits 3 days after a version is published, except our own `@apollogeddon` packages. npm updates are grouped into one pull request for our own packages and one for the rest's minor and patch updates; each major update to the rest comes in a pull request of its own. forgejs's pipelines are tracked at a branch (`@ci-v2`, then `@main`), so Dependabot leaves them alone.
+[`dependabot.yml`](./dependabot.yml) proposes npm updates daily and GitHub Actions updates weekly. Each waits 3 days after a version is published, except our own `@apollogeddon` packages. npm updates are grouped into one pull request for our own packages and one for the rest's minor and patch updates; each major update to the rest comes in a pull request of its own. forgejs's pipelines are tracked at a branch (`@main`), so Dependabot leaves them alone.
